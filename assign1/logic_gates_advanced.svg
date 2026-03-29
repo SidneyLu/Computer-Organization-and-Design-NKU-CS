@@ -1,0 +1,91 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#05111f"/>
+      <stop offset="55%" stop-color="#0a2034"/>
+      <stop offset="100%" stop-color="#091825"/>
+    </linearGradient>
+    <filter id="glow2" x="-20%" y="-20%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="0" stdDeviation="7" flood-color="#52e8ff" flood-opacity="0.35"/>
+    </filter>
+    <filter id="shadow2" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#01070d" flood-opacity="0.42"/>
+    </filter>
+    <pattern id="grid2" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#7dd3fc" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+    <style>
+      text { font-family: "Microsoft YaHei", "Noto Sans SC", sans-serif; fill: #e0f6ff; }
+      .title { font-size: 36px; font-weight: 700; }
+      .subtitle { font-size: 18px; fill: #8dc7de; }
+      .name { font-size: 24px; font-weight: 700; }
+      .tag { font-size: 16px; font-weight: 700; fill: #6ed8ff; }
+      .eq { font-size: 18px; font-weight: 700; fill: #9ef7ff; }
+      .body { font-size: 17px; fill: #d5eaf5; }
+      .footer { font-size: 15px; fill: #8fbdd4; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="900" fill="url(#bg2)"/>
+  <rect width="1200" height="900" fill="url(#grid2)"/>
+  <circle cx="1080" cy="100" r="110" fill="#22d3ee" opacity="0.05"/>
+
+  <text x="70" y="82" class="title">复合逻辑门</text>
+  <text x="70" y="118" class="subtitle">在基础逻辑门之上继续组合，形成更丰富的运算能力</text>
+
+  <rect x="70" y="170" width="500" height="285" rx="24" ry="24" fill="#0d2339" stroke="#49ddff" stroke-opacity="0.42" stroke-width="2" filter="url(#shadow2)"/>
+  <rect x="630" y="170" width="500" height="285" rx="24" ry="24" fill="#142436" stroke="#ffb86c" stroke-opacity="0.42" stroke-width="2" filter="url(#shadow2)"/>
+  <rect x="70" y="490" width="500" height="285" rx="24" ry="24" fill="#0f2739" stroke="#5df3c0" stroke-opacity="0.42" stroke-width="2" filter="url(#shadow2)"/>
+  <rect x="630" y="490" width="500" height="285" rx="24" ry="24" fill="#1a213c" stroke="#b794f6" stroke-opacity="0.45" stroke-width="2" filter="url(#shadow2)"/>
+
+  <text x="110" y="215" class="name">与非门 NAND</text>
+  <text x="110" y="244" class="tag">先与后非</text>
+  <path d="M175 268 L230 268 A72 72 0 0 1 230 406 L175 406 Z" fill="#091621" stroke="#f7fdff" stroke-width="5.8" filter="url(#glow2)"/>
+  <circle cx="322" cy="337" r="14" fill="#091621" stroke="#f7fdff" stroke-width="5.8" filter="url(#glow2)"/>
+  <line x1="92" y1="312" x2="175" y2="312" stroke="#f7fdff" stroke-width="7" stroke-linecap="round" filter="url(#glow2)"/>
+  <line x1="92" y1="362" x2="175" y2="362" stroke="#f7fdff" stroke-width="7" stroke-linecap="round" filter="url(#glow2)"/>
+  <line x1="336" y1="337" x2="405" y2="337" stroke="#f7fdff" stroke-width="7" stroke-linecap="round" filter="url(#glow2)"/>
+  <text x="110" y="430" class="eq">Y = ¬(A·B)</text>
+  <text x="110" y="462" class="body">两个输入都为 1 时，输出才变成 0。</text>
+  <text x="110" y="494" class="body">功能：常用作“万能门”，可拼出任意逻辑。</text>
+
+  <text x="670" y="215" class="name">或非门 NOR</text>
+  <text x="670" y="244" class="tag">先或后非</text>
+  <path d="M723 268 Q775 337 723 406" fill="none" stroke="#f7fdff" stroke-width="5.8" filter="url(#glow2)"/>
+  <path d="M730 268 Q820 268 875 337 Q820 406 730 406" fill="#101923" stroke="#f7fdff" stroke-width="5.8" filter="url(#glow2)"/>
+  <circle cx="888" cy="337" r="14" fill="#101923" stroke="#f7fdff" stroke-width="5.8" filter="url(#glow2)"/>
+  <line x1="650" y1="312" x2="730" y2="312" stroke="#f7fdff" stroke-width="7" stroke-linecap="round" filter="url(#glow2)"/>
+  <line x1="650" y1="362" x2="730" y2="362" stroke="#f7fdff" stroke-width="7" stroke-linecap="round" filter="url(#glow2)"/>
+  <line x1="902" y1="337" x2="972" y2="337" stroke="#f7fdff" stroke-width="7" stroke-linecap="round" filter="url(#glow2)"/>
+  <text x="670" y="430" class="eq">Y = ¬(A+B)</text>
+  <text x="670" y="462" class="body">只要任意一个输入为 1，输出就是 0。</text>
+  <text x="670" y="494" class="body">功能：适合“都不满足才通过”的控制条件。</text>
+
+  <text x="110" y="535" class="name">异或门 XOR</text>
+  <text x="110" y="564" class="tag">相同为 0，不同为 1</text>
+  <path d="M161 588 Q213 657 161 726" fill="none" stroke="#f7fdff" stroke-width="5.8" filter="url(#glow2)"/>
+  <path d="M173 588 Q225 657 173 726" fill="none" stroke="#f7fdff" stroke-width="5.8" filter="url(#glow2)"/>
+  <path d="M180 588 Q270 588 325 657 Q270 726 180 726" fill="#091b22" stroke="#f7fdff" stroke-width="5.8" filter="url(#glow2)"/>
+  <line x1="92" y1="632" x2="176" y2="632" stroke="#f7fdff" stroke-width="7" stroke-linecap="round" filter="url(#glow2)"/>
+  <line x1="92" y1="682" x2="176" y2="682" stroke="#f7fdff" stroke-width="7" stroke-linecap="round" filter="url(#glow2)"/>
+  <line x1="325" y1="657" x2="396" y2="657" stroke="#f7fdff" stroke-width="7" stroke-linecap="round" filter="url(#glow2)"/>
+  <text x="110" y="750" class="eq">Y = A ⊕ B</text>
+  <text x="110" y="782" class="body">两个输入不同，输出为 1。</text>
+  <text x="110" y="814" class="body">功能：常见于加法器、数据校验、奇偶判断。</text>
+
+  <text x="670" y="535" class="name">同或门 XNOR</text>
+  <text x="670" y="564" class="tag">相同为 1，不同为 0</text>
+  <path d="M721 588 Q773 657 721 726" fill="none" stroke="#f7fdff" stroke-width="5.8" filter="url(#glow2)"/>
+  <path d="M733 588 Q785 657 733 726" fill="none" stroke="#f7fdff" stroke-width="5.8" filter="url(#glow2)"/>
+  <path d="M740 588 Q830 588 885 657 Q830 726 740 726" fill="#111725" stroke="#f7fdff" stroke-width="5.8" filter="url(#glow2)"/>
+  <circle cx="898" cy="657" r="14" fill="#111725" stroke="#f7fdff" stroke-width="5.8" filter="url(#glow2)"/>
+  <line x1="650" y1="632" x2="736" y2="632" stroke="#f7fdff" stroke-width="7" stroke-linecap="round" filter="url(#glow2)"/>
+  <line x1="650" y1="682" x2="736" y2="682" stroke="#f7fdff" stroke-width="7" stroke-linecap="round" filter="url(#glow2)"/>
+  <line x1="912" y1="657" x2="982" y2="657" stroke="#f7fdff" stroke-width="7" stroke-linecap="round" filter="url(#glow2)"/>
+  <text x="670" y="750" class="eq">Y = ¬(A ⊕ B)</text>
+  <text x="670" y="782" class="body">两个输入相同，输出为 1。</text>
+  <text x="670" y="814" class="body">功能：常见于相等比较、同步判定、身份比对。</text>
+
+  <rect x="70" y="810" width="1060" height="50" rx="16" ry="16" fill="#0d2135" stroke="#58d8ff" stroke-opacity="0.35" stroke-width="1.5"/>
+  <text x="95" y="842" class="footer">理解重点：NAND 与 NOR 看“结果取反”，XOR 与 XNOR 看“是否相同”</text>
+</svg>
