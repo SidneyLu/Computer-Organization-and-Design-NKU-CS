@@ -1,0 +1,8 @@
+0.7
+2020.2
+May 22 2025
+00:13:55
+D:/1012/lab2/lab2.sim/sim_1/behav/xsim/glbl.v,1741209010,verilog,,,,glbl,,,,,,,,
+D:/1012/lab2/lab2.srcs/sim_1/imports/1012/tb.v,1775965341,verilog,,,,tb,,,C:/Xilinx/2025.1/Vivado/data/rsb/busdef,,,,,
+D:/1012/lab2/lab2.srcs/sources_1/imports/1012/multiply.v,1775809918,verilog,,D:/1012/lab2/lab2.srcs/sim_1/imports/1012/tb.v,,booth_radix2_ppgen;final_adder_68;multiply;wallace_tree_32,,,C:/Xilinx/2025.1/Vivado/data/rsb/busdef,,,,,
+D:/1012/lab2/lab2.srcs/sources_1/imports/1012/multiply_display.v,1462260806,verilog,,,,multiply_display,,,C:/Xilinx/2025.1/Vivado/data/rsb/busdef,,,,,

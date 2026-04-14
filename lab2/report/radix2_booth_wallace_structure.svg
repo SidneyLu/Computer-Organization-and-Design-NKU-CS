@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="920" viewBox="0 0 1400 920">
+  <defs>
+    <style>
+      .box { fill: #ececec; stroke: #222; stroke-width: 2; }
+      .thin { stroke: #222; stroke-width: 2; fill: none; }
+      .dash { stroke: #666; stroke-width: 1.5; stroke-dasharray: 7 5; fill: none; }
+      .label { font-family: "Microsoft YaHei", "Noto Sans SC", Arial, sans-serif; font-size: 22px; fill: #b22222; text-anchor: middle; font-weight: 700; }
+      .small { font-family: "Microsoft YaHei", "Noto Sans SC", Arial, sans-serif; font-size: 18px; fill: #1f4e79; text-anchor: middle; font-weight: 600; }
+      .tiny { font-family: "Microsoft YaHei", "Noto Sans SC", Arial, sans-serif; font-size: 16px; fill: #8a5a00; text-anchor: middle; font-weight: 600; }
+      .left { text-anchor: start; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#222"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1400" height="920" fill="#ffffff"/>
+
+  <!-- Output -->
+  <rect class="box" x="585" y="22" width="230" height="72"/>
+  <text class="label" x="700" y="66">乘法结果 product[63:0]</text>
+  <path class="thin" d="M700 120 L700 95" marker-end="url(#arrow)"/>
+
+  <!-- Final adder -->
+  <polygon class="box" points="330,120 1070,120 1185,260 860,260 705,178 540,260 215,260"/>
+  <text class="label" x="700" y="172">第三层：final_adder_68</text>
+  <text class="label" x="700" y="208">68 位最终加法器</text>
+  <text class="small" x="700" y="242">输入：wallace_sum, wallace_carry</text>
+
+  <!-- Wallace tree frame -->
+  <rect class="dash" x="90" y="310" width="1220" height="285" rx="18"/>
+  <text class="label" x="700" y="340">第二层：wallace_tree_32</text>
+  <text class="small" x="700" y="370">3:2 压缩器逐层归约：32 → 22 → 15 → 10 → 7 → 5 → 4 → 3 → 2</text>
+
+  <!-- CSA boxes -->
+  <rect class="box" x="115" y="408" width="90" height="150"/>
+  <rect class="box" x="255" y="408" width="90" height="150"/>
+  <rect class="box" x="395" y="408" width="90" height="150"/>
+  <rect class="box" x="910" y="408" width="90" height="150"/>
+  <rect class="box" x="1050" y="408" width="90" height="150"/>
+  <rect class="box" x="1190" y="408" width="90" height="150"/>
+
+  <text class="label" x="160" y="455">CSA</text>
+  <text class="small" x="160" y="500">3:2</text>
+  <text class="small" x="160" y="535">压缩器</text>
+
+  <text class="label" x="300" y="455">CSA</text>
+  <text class="small" x="300" y="500">3:2</text>
+  <text class="small" x="300" y="535">压缩器</text>
+
+  <text class="label" x="440" y="455">CSA</text>
+  <text class="small" x="440" y="500">3:2</text>
+  <text class="small" x="440" y="535">压缩器</text>
+
+  <text class="label" x="955" y="455">CSA</text>
+  <text class="small" x="955" y="500">3:2</text>
+  <text class="small" x="955" y="535">压缩器</text>
+
+  <text class="label" x="1095" y="455">CSA</text>
+  <text class="small" x="1095" y="500">3:2</text>
+  <text class="small" x="1095" y="535">压缩器</text>
+
+  <text class="label" x="1235" y="455">CSA</text>
+  <text class="small" x="1235" y="500">3:2</text>
+  <text class="small" x="1235" y="535">压缩器</text>
+
+  <text class="label" x="700" y="495">…（多级并行归约）…</text>
+
+  <!-- Wires from Wallace tree to adder -->
+  <path class="thin" d="M160 408 L160 300 L380 300 L380 260"/>
+  <path class="thin" d="M300 408 L300 330 L520 330 L520 260"/>
+  <path class="thin" d="M440 408 L440 360 L620 360 L620 260"/>
+  <path class="thin" d="M955 408 L955 360 L780 360 L780 260"/>
+  <path class="thin" d="M1095 408 L1095 330 L900 330 L900 260"/>
+  <path class="thin" d="M1235 408 L1235 300 L1020 300 L1020 260"/>
+
+  <!-- Partial product bus -->
+  <rect class="box" x="80" y="620" width="1240" height="62"/>
+  <text class="label" x="700" y="658">第一层输出总线：partial_products（32 × 68 bit）</text>
+
+  <!-- Flow from bus to Wallace tree -->
+  <path class="thin" d="M160 620 L160 558" marker-end="url(#arrow)"/>
+  <path class="thin" d="M300 620 L300 558" marker-end="url(#arrow)"/>
+  <path class="thin" d="M440 620 L440 558" marker-end="url(#arrow)"/>
+  <path class="thin" d="M955 620 L955 558" marker-end="url(#arrow)"/>
+  <path class="thin" d="M1095 620 L1095 558" marker-end="url(#arrow)"/>
+  <path class="thin" d="M1235 620 L1235 558" marker-end="url(#arrow)"/>
+
+  <!-- Booth frame -->
+  <rect class="dash" x="70" y="690" width="1260" height="180" rx="18"/>
+  <text class="label" x="700" y="722">第一层：booth_radix2_ppgen</text>
+  <text class="small" x="700" y="750">标准 radix-2 Booth，按相邻两位窗口 {b_i, b_(i-1)} 生成 32 路部分积</text>
+
+  <!-- Booth cells -->
+  <rect class="box" x="115" y="772" width="120" height="110"/>
+  <rect class="box" x="285" y="772" width="120" height="110"/>
+  <rect class="box" x="995" y="772" width="120" height="110"/>
+  <rect class="box" x="1165" y="772" width="120" height="110"/>
+
+  <text class="small" x="175" y="806">Booth 单元</text>
+  <text class="tiny" x="175" y="833">窗口 {b₀,b₋₁}</text>
+  <text class="tiny" x="175" y="858">输出 P₀</text>
+
+  <text class="small" x="345" y="806">Booth 单元</text>
+  <text class="tiny" x="345" y="833">窗口 {b₁,b₀}</text>
+  <text class="tiny" x="345" y="858">输出 P₁</text>
+
+  <text class="small" x="1055" y="806">Booth 单元</text>
+  <text class="tiny" x="1055" y="833">窗口 {b₃₀,b₂₉}</text>
+  <text class="tiny" x="1055" y="858">输出 P₃₀</text>
+
+  <text class="small" x="1225" y="806">Booth 单元</text>
+  <text class="tiny" x="1225" y="833">窗口 {b₃₁,b₃₀}</text>
+  <text class="tiny" x="1225" y="858">输出 P₃₁</text>
+
+  <text class="label" x="700" y="828">…（中间省略，共 32 个 Booth 判决）…</text>
+
+  <!-- Booth outputs to bus -->
+  <path class="thin" d="M175 772 L175 682" marker-end="url(#arrow)"/>
+  <path class="thin" d="M345 772 L345 682" marker-end="url(#arrow)"/>
+  <path class="thin" d="M1055 772 L1055 682" marker-end="url(#arrow)"/>
+  <path class="thin" d="M1225 772 L1225 682" marker-end="url(#arrow)"/>
+
+  <!-- Input buses -->
+  <path class="thin" d="M80 898 L1320 898"/>
+  <path class="thin" d="M80 872 L1320 872"/>
+
+  <path class="thin" d="M175 882 L175 898"/>
+  <path class="thin" d="M345 882 L345 898"/>
+  <path class="thin" d="M1055 882 L1055 898"/>
+  <path class="thin" d="M1225 882 L1225 898"/>
+
+  <path class="thin" d="M175 882 L175 872"/>
+  <path class="thin" d="M345 882 L345 872"/>
+  <path class="thin" d="M1055 882 L1055 872"/>
+  <path class="thin" d="M1225 882 L1225 872"/>
+
+  <!-- Input source boxes -->
+  <rect class="box" x="470" y="842" width="180" height="48"/>
+  <rect class="box" x="760" y="842" width="180" height="48"/>
+  <text class="label" x="560" y="873">被乘数 X</text>
+  <text class="label" x="850" y="873">乘数 Y</text>
+
+  <path class="thin" d="M560 842 L560 872"/>
+  <path class="thin" d="M850 842 L850 898"/>
+
+  <text class="tiny left" x="88" y="866">X 总线</text>
+  <text class="tiny left" x="88" y="892">Y 总线</text>
+
+</svg>
