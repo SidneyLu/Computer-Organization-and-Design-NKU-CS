@@ -1,0 +1,46 @@
+
+/mnt/d/1012/assign2/build/riscv_len256_rep20000:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000000010144 <_start>:
+   10144:	00002497          	auipc	s1,0x2
+   10148:	8a44b483          	ld	s1,-1884(s1) # 119e8 <_GLOBAL_OFFSET_TABLE_+0x8>
+   1014c:	00002917          	auipc	s2,0x2
+   10150:	8a493903          	ld	s2,-1884(s2) # 119f0 <_GLOBAL_OFFSET_TABLE_+0x10>
+   10154:	00002f17          	auipc	t5,0x2
+   10158:	8a4f3f03          	ld	t5,-1884(t5) # 119f8 <_GLOBAL_OFFSET_TABLE_+0x18>
+   1015c:	000f3983          	ld	s3,0(t5)
+   10160:	00000413          	li	s0,0
+
+0000000000010164 <outer_loop>:
+   10164:	00048513          	mv	a0,s1
+   10168:	00090593          	mv	a1,s2
+   1016c:	10000293          	li	t0,256
+
+0000000000010170 <dot_loop>:
+   10170:	00052303          	lw	t1,0(a0)
+   10174:	0005a383          	lw	t2,0(a1)
+   10178:	02730eb3          	mul	t4,t1,t2
+   1017c:	01d40433          	add	s0,s0,t4
+   10180:	00450513          	addi	a0,a0,4
+   10184:	00458593          	addi	a1,a1,4
+   10188:	fff28293          	addi	t0,t0,-1
+   1018c:	fe0292e3          	bnez	t0,10170 <dot_loop>
+
+0000000000010190 <dot_loop_end>:
+   10190:	fff98993          	addi	s3,s3,-1
+   10194:	fc0998e3          	bnez	s3,10164 <outer_loop>
+   10198:	00002f17          	auipc	t5,0x2
+   1019c:	868f3f03          	ld	t5,-1944(t5) # 11a00 <_GLOBAL_OFFSET_TABLE_+0x20>
+   101a0:	000f3f03          	ld	t5,0(t5)
+   101a4:	01e41863          	bne	s0,t5,101b4 <failed>
+   101a8:	00000513          	li	a0,0
+   101ac:	05d00893          	li	a7,93
+   101b0:	00000073          	ecall
+
+00000000000101b4 <failed>:
+   101b4:	00100513          	li	a0,1
+   101b8:	05d00893          	li	a7,93
+   101bc:	00000073          	ecall

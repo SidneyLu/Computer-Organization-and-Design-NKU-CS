@@ -1,0 +1,173 @@
+[
+  {
+    "length": 256,
+    "repeat": 20000,
+    "mac_operations": 5120000,
+    "armv9": {
+      "binary": "armv9_len256_rep20000",
+      "avg_ms": 31.076,
+      "min_ms": 28.008,
+      "max_ms": 40.135,
+      "runs_ms": [
+        30.957,
+        29.197,
+        28.853,
+        30.243,
+        30.141,
+        40.135,
+        28.008
+      ],
+      "loop_instruction_count": 5,
+      "loop_bytes": 20,
+      "loop_body": [
+        "400100:\tb8404404 \tldr\tw4, [x0], #4",
+        "400104:\tb8404425 \tldr\tw5, [x1], #4",
+        "400108:\t9b050882 \tmadd\tx2, x4, x5, x2",
+        "40010c:\t71000463 \tsubs\tw3, w3, #0x1",
+        "400110:\t54ffff81 \tb.ne\t400100 <dot_loop>  // b.any"
+      ]
+    },
+    "riscv": {
+      "binary": "riscv_len256_rep20000",
+      "avg_ms": 24.029,
+      "min_ms": 20.925,
+      "max_ms": 27.461,
+      "runs_ms": [
+        23.265,
+        26.604,
+        26.585,
+        21.997,
+        21.364,
+        27.461,
+        20.925
+      ],
+      "loop_instruction_count": 8,
+      "loop_bytes": 32,
+      "loop_body": [
+        "10170:\t00052303          \tlw\tt1,0(a0)",
+        "10174:\t0005a383          \tlw\tt2,0(a1)",
+        "10178:\t02730eb3          \tmul\tt4,t1,t2",
+        "1017c:\t01d40433          \tadd\ts0,s0,t4",
+        "10180:\t00450513          \taddi\ta0,a0,4",
+        "10184:\t00458593          \taddi\ta1,a1,4",
+        "10188:\tfff28293          \taddi\tt0,t0,-1",
+        "1018c:\tfe0292e3          \tbnez\tt0,10170 <dot_loop>"
+      ]
+    },
+    "speed_ratio_riscv_over_arm": 0.773
+  },
+  {
+    "length": 1024,
+    "repeat": 20000,
+    "mac_operations": 20480000,
+    "armv9": {
+      "binary": "armv9_len1024_rep20000",
+      "avg_ms": 78.783,
+      "min_ms": 74.494,
+      "max_ms": 84.839,
+      "runs_ms": [
+        78.684,
+        76.512,
+        77.2,
+        84.839,
+        74.494,
+        79.049,
+        80.702
+      ],
+      "loop_instruction_count": 5,
+      "loop_bytes": 20,
+      "loop_body": [
+        "400100:\tb8404404 \tldr\tw4, [x0], #4",
+        "400104:\tb8404425 \tldr\tw5, [x1], #4",
+        "400108:\t9b050882 \tmadd\tx2, x4, x5, x2",
+        "40010c:\t71000463 \tsubs\tw3, w3, #0x1",
+        "400110:\t54ffff81 \tb.ne\t400100 <dot_loop>  // b.any"
+      ]
+    },
+    "riscv": {
+      "binary": "riscv_len1024_rep20000",
+      "avg_ms": 61.942,
+      "min_ms": 54.537,
+      "max_ms": 68.599,
+      "runs_ms": [
+        63.219,
+        54.537,
+        67.659,
+        58.548,
+        66.486,
+        54.547,
+        68.599
+      ],
+      "loop_instruction_count": 8,
+      "loop_bytes": 32,
+      "loop_body": [
+        "10170:\t00052303          \tlw\tt1,0(a0)",
+        "10174:\t0005a383          \tlw\tt2,0(a1)",
+        "10178:\t02730eb3          \tmul\tt4,t1,t2",
+        "1017c:\t01d40433          \tadd\ts0,s0,t4",
+        "10180:\t00450513          \taddi\ta0,a0,4",
+        "10184:\t00458593          \taddi\ta1,a1,4",
+        "10188:\tfff28293          \taddi\tt0,t0,-1",
+        "1018c:\tfe0292e3          \tbnez\tt0,10170 <dot_loop>"
+      ]
+    },
+    "speed_ratio_riscv_over_arm": 0.786
+  },
+  {
+    "length": 4096,
+    "repeat": 20000,
+    "mac_operations": 81920000,
+    "armv9": {
+      "binary": "armv9_len4096_rep20000",
+      "avg_ms": 288.155,
+      "min_ms": 269.251,
+      "max_ms": 309.283,
+      "runs_ms": [
+        269.251,
+        272.056,
+        295.822,
+        309.283,
+        294.068,
+        306.459,
+        270.143
+      ],
+      "loop_instruction_count": 5,
+      "loop_bytes": 20,
+      "loop_body": [
+        "400100:\tb8404404 \tldr\tw4, [x0], #4",
+        "400104:\tb8404425 \tldr\tw5, [x1], #4",
+        "400108:\t9b050882 \tmadd\tx2, x4, x5, x2",
+        "40010c:\t71000463 \tsubs\tw3, w3, #0x1",
+        "400110:\t54ffff81 \tb.ne\t400100 <dot_loop>  // b.any"
+      ]
+    },
+    "riscv": {
+      "binary": "riscv_len4096_rep20000",
+      "avg_ms": 203.98,
+      "min_ms": 182.947,
+      "max_ms": 236.298,
+      "runs_ms": [
+        193.016,
+        201.349,
+        212.917,
+        182.947,
+        201.661,
+        199.674,
+        236.298
+      ],
+      "loop_instruction_count": 8,
+      "loop_bytes": 32,
+      "loop_body": [
+        "10170:\t00052303          \tlw\tt1,0(a0)",
+        "10174:\t0005a383          \tlw\tt2,0(a1)",
+        "10178:\t02730eb3          \tmul\tt4,t1,t2",
+        "1017c:\t01d40433          \tadd\ts0,s0,t4",
+        "10180:\t00450513          \taddi\ta0,a0,4",
+        "10184:\t00458593          \taddi\ta1,a1,4",
+        "10188:\tfff28293          \taddi\tt0,t0,-1 # fff <DOT_PER_CHUNK+0xf87>",
+        "1018c:\tfe0292e3          \tbnez\tt0,10170 <dot_loop>"
+      ]
+    },
+    "speed_ratio_riscv_over_arm": 0.708
+  }
+]

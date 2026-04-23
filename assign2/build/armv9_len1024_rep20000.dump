@@ -1,0 +1,38 @@
+
+/mnt/d/1012/assign2/build/armv9_len1024_rep20000:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+00000000004000d4 <_start>:
+  4000d4:	90000009 	adrp	x9, 400000 <OUTER_REPEAT+0x3fb1e0>
+  4000d8:	91054129 	add	x9, x9, #0x150
+  4000dc:	b000000a 	adrp	x10, 401000 <q_vec+0xeb0>
+  4000e0:	9105414a 	add	x10, x10, #0x150
+  4000e4:	9000000b 	adrp	x11, 400000 <OUTER_REPEAT+0x3fb1e0>
+  4000e8:	9105016b 	add	x11, x11, #0x140
+  4000ec:	f9400167 	ldr	x7, [x11]
+  4000f0:	aa1f03e2 	mov	x2, xzr
+
+00000000004000f4 <outer_loop>:
+  4000f4:	aa0903e0 	mov	x0, x9
+  4000f8:	aa0a03e1 	mov	x1, x10
+  4000fc:	52808003 	mov	w3, #0x400                 	// #1024
+
+0000000000400100 <dot_loop>:
+  400100:	b8404404 	ldr	w4, [x0], #4
+  400104:	b8404425 	ldr	w5, [x1], #4
+  400108:	9b050882 	madd	x2, x4, x5, x2
+  40010c:	71000463 	subs	w3, w3, #0x1
+  400110:	54ffff81 	b.ne	400100 <dot_loop>  // b.any
+
+0000000000400114 <dot_loop_end>:
+  400114:	f10004e7 	subs	x7, x7, #0x1
+  400118:	54fffee1 	b.ne	4000f4 <outer_loop>  // b.any
+  40011c:	90000006 	adrp	x6, 400000 <OUTER_REPEAT+0x3fb1e0>
+  400120:	910520c6 	add	x6, x6, #0x148
+  400124:	f94000c6 	ldr	x6, [x6]
+  400128:	eb06005f 	cmp	x2, x6
+  40012c:	1a9f07e0 	cset	w0, ne  // ne = any
+  400130:	d2800ba8 	mov	x8, #0x5d                  	// #93
+  400134:	d4000001 	svc	#0x0

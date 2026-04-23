@@ -1,0 +1,410 @@
+\documentclass{article}
+
+\usepackage{a4}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{ctex}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{xurl}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{fvextra}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue,citecolor=black}
+\setlist[itemize]{nosep,leftmargin=1.8em}
+\setlist[enumerate]{nosep,leftmargin=1.8em}
+\captionsetup{font=small}
+\RecustomVerbatimEnvironment{verbatim}{Verbatim}{
+  breaklines=true,
+  breakanywhere=true,
+  fontsize=\small
+}
+\setlength{\parindent}{2em}
+
+\begin{document}
+
+\begin{titlepage}
+    \thispagestyle{empty}
+    \begin{center}
+        \vspace*{1.5cm}
+
+        {\heiti\zihao{1}《组成原理》指令集实验指导手册\par}
+        \vspace{0.9cm}
+        {\heiti\zihao{2}缩放点积注意力中的 Query-Key 点积：\par}
+        \vspace{0.35cm}
+        {\heiti\zihao{2}ARM（ARMv9-A / AArch64）vs RISC-V 指令集对比实验\par}
+
+        \vfill
+
+        \includegraphics[width=0.42\textwidth]{nankai.png}
+
+        \vfill
+
+        \begin{minipage}{0.42\textwidth}
+            \raggedright
+            {\heiti\zihao{3}姓名：鲁昕宁\par}
+            \vspace{1.0cm}
+            {\heiti\zihao{3}学号：2414015\par}
+            \vspace{1.0cm}
+            {\heiti\zihao{3}班号：1012\par}
+        \end{minipage}
+    \end{center}
+\end{titlepage}
+
+\section{实验目的}
+本实验以缩放点积注意力中的 Query-Key 点积为对象，设计一份面向同学的指令集对比实验指导。与只做长度为 $8$ 的最小正确性样例不同，本次实验进一步扩大测试数据量，并在保持同一算法内核的前提下，同时观察两个层面：
+
+\begin{enumerate}
+    \item \textbf{核心循环的代码密度}：比较 ARMv9-A（AArch64）与 RISC-V 在点积循环中的静态指令条数和循环体字节数。
+    \item \textbf{更大工作负载下的模拟运行时间}：在 WSL + QEMU User 环境中，测量不同向量长度下向量内积的平均执行用时。
+\end{enumerate}
+
+通过本实验，读者应完成以下目标：
+\begin{enumerate}
+    \item 理解 Query-Key 点积在缩放点积注意力中的作用，并明确本实验只研究点积内核，不扩展到 softmax、多头或 Value 加权。
+    \item 掌握如何分别用 ARMv9-A / AArch64 与 RV64IM 汇编实现同一个点积循环，并在相同输入下验证功能一致性。
+    \item 学会在 WSL + QEMU User 环境下完成编译、运行、反汇编和批量计时。
+    \item 理解“静态指令数更少”和“当前模拟平台上测得更快”并不一定是同一件事。
+\end{enumerate}
+
+\section{问题描述与应用场景}
+Transformer 中最常见的注意力打分步骤可以抽象为 Query 向量与 Key 向量的点积。若只保留最核心的一步，则可以写成：
+\[
+    score = \sum_{i=0}^{N-1} q_i \times k_i
+\]
+这里的 $score$ 可以看作缩放点积注意力中未归一化的相关性分数。真实模型中还会继续执行缩放、softmax 和对 $V$ 的加权，但这些步骤会引入额外控制流与浮点计算，不利于把实验重点稳定地压缩到“点积循环如何用不同 ISA 表达”这一问题上。
+
+本实验选取 Query-Key 点积作为实验对象，有三点原因。第一，它保留了注意力机制中最核心的乘加循环，具有明确的实际应用背景。第二，它同时包含顺序访存、乘法和累加，足够体现 ISA 在循环表达上的差异。第三，它可以被压缩为一个很小的汇编内核，便于使用反汇编工具准确锁定核心循环位置，并在扩大数据量后继续保持分析目标清晰。
+
+因此，本实验关注的是同一个点积内核在 ARMv9-A 与 RISC-V 上的实现方式，以及在统一输入、统一 QEMU 环境下观察到的代码密度与运行时间结果。
+
+\section{实验环境准备}
+\subsection{软件环境}
+\begin{table}[H]
+    \centering
+    \caption{实验环境}
+    \begin{tabular}{p{0.24\textwidth} p{0.68\textwidth}}
+        \toprule
+        项目 & 说明 \\
+        \midrule
+        主机环境 & Windows + WSL2 \\
+        Linux 发行版 & Ubuntu 22.04.5 LTS \\
+        模拟器 & \texttt{qemu-aarch64}、\texttt{qemu-riscv64} \\
+        已确认版本 & QEMU User 6.2.0 \\
+        ARM 目标 & ARMv9-A，AArch64 state，源码中使用 \texttt{.arch armv9-a} \\
+        RISC-V 目标 & RV64IM，显式关闭压缩指令扩展 C（\texttt{.option norvc}） \\
+        编译工具 & \texttt{gcc-aarch64-linux-gnu}、\texttt{gcc-riscv64-linux-gnu} \\
+        反汇编工具 & \texttt{aarch64-linux-gnu-objdump}、\texttt{riscv64-linux-gnu-objdump} \\
+        计时方式 & Python \texttt{perf\_counter\_ns}，每组 1 次热身 + 7 次实测取平均 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{推荐安装命令}
+若 WSL 中尚未安装交叉编译器，可在 Ubuntu 中执行以下命令：
+\begin{Verbatim}[frame=single]
+apt-get update
+apt-get install -y \
+    qemu-user \
+    gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu \
+    gcc-riscv64-linux-gnu binutils-riscv64-linux-gnu
+\end{Verbatim}
+
+\subsection{工具链兼容性说明}
+Ubuntu 22.04 默认提供的 \texttt{gcc-11} 对命令行参数 \texttt{-march=armv9-a} 的支持并不完整，但本实验的 ARM 源码中已经直接写入 \texttt{.arch armv9-a}，因此可以在不额外添加该命令行参数的情况下正确汇编和链接。由于实验内核只使用了 \texttt{ldr}、\texttt{madd}、\texttt{subs} 等基础 AArch64 指令，这样的处理不会影响本实验的代码密度和循环分析结论。
+
+\section{算法设计与实验对象说明}
+\subsection{统一输入模式}
+为保证两种 ISA 的实验完全可复现，本实验不再只使用单次长度为 $8$ 的向量，而是采用“固定 8 元模式 + 重复扩展”的方式生成更长输入向量：
+\[
+q_{\text{base}} = [1,2,3,4,5,6,7,8], \qquad
+k_{\text{base}} = [8,7,6,5,4,3,2,1]
+\]
+两者单次 8 元点积结果为：
+\[
+1\times8 + 2\times7 + \cdots + 8\times1 = 120
+\]
+若向量长度为 $LEN$，且 $LEN$ 是 8 的整数倍，则单轮点积结果为：
+\[
+score_{\text{round}} = 120 \times \frac{LEN}{8}
+\]
+若外层重复执行 $REPEAT$ 次，则程序最终校验值为：
+\[
+score_{\text{total}} = score_{\text{round}} \times REPEAT
+\]
+
+\subsection{测试工作负载}
+本实验选择三组更大的测试数据量，全部由同一份汇编源码通过预处理宏 \texttt{LEN} 和 \texttt{REPEAT} 编译得到：
+\begin{table}[H]
+    \centering
+    \caption{测试工作负载设置}
+    \begin{tabular}{p{0.16\textwidth} p{0.16\textwidth} p{0.18\textwidth} p{0.18\textwidth} p{0.20\textwidth}}
+        \toprule
+        向量长度 LEN & 重复次数 REPEAT & MAC 总次数 & 单轮点积结果 & 总校验值 \\
+        \midrule
+        256 & 20000 & 5,120,000 & 3,840 & 76,800,000 \\
+        1024 & 20000 & 20,480,000 & 15,360 & 307,200,000 \\
+        4096 & 20000 & 81,920,000 & 61,440 & 1,228,800,000 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{程序结构}
+两份汇编都采用相同的总体结构：
+\begin{Verbatim}[frame=single]
+total_acc = 0
+repeat_count = REPEAT
+
+while repeat_count > 0:
+    acc = dot(q, k, LEN)
+    total_acc += acc
+    repeat_count -= 1
+
+if total_acc == EXPECTED_TOTAL:
+    exit(0)
+else:
+    exit(1)
+\end{Verbatim}
+
+其中真正用于对比 ISA 差异的是 \texttt{dot\_loop} 这一层内层循环。外层重复主要是为了让程序执行时间更稳定、便于测量。程序结束时采用“内部比对校验值，正确则退出码为 0，错误则退出码为 1”的方式完成正确性验证，因此不再受退出码 0--255 范围的限制。
+
+\section{实验步骤及预期结果}
+\subsection{步骤一：运行一键基准脚本}
+目录中提供了 \texttt{benchmark\_dot.py}，它会自动完成以下工作：
+\begin{enumerate}
+    \item 按三组 \texttt{LEN} 和 \texttt{REPEAT} 参数分别编译 ARMv9-A 与 RISC-V 程序；
+    \item 在 QEMU User 中执行 1 次热身与 7 次正式计时；
+    \item 使用 \texttt{objdump -d} 提取 \texttt{dot\_loop}；
+    \item 输出 \texttt{benchmark\_results.json} 与 \texttt{benchmark\_results.md}。
+\end{enumerate}
+
+在 WSL 的 \texttt{/mnt/d/1012/assign2} 目录中执行：
+\begin{Verbatim}[frame=single]
+python3 benchmark_dot.py
+\end{Verbatim}
+
+\subsection{步骤二：手动编译与运行示例}
+若只想手动验证其中一组，例如 \texttt{LEN=1024}、\texttt{REPEAT=20000}，可执行：
+\begin{Verbatim}[frame=single]
+aarch64-linux-gnu-gcc -nostdlib -static -x assembler-with-cpp \
+    -DLEN=1024 -DREPEAT=20000 \
+    -o armv9_dot "1012-2414015-鲁昕宁-arm.s"
+
+riscv64-linux-gnu-gcc -nostdlib -static -x assembler-with-cpp \
+    -DLEN=1024 -DREPEAT=20000 -march=rv64im -mabi=lp64 \
+    -o riscv_dot "1012-2414015-鲁昕宁-riscv.s"
+\end{Verbatim}
+
+\begin{Verbatim}[frame=single]
+qemu-aarch64 ./armv9_dot
+echo $?
+
+qemu-riscv64 ./riscv_dot
+echo $?
+\end{Verbatim}
+
+若程序实现正确，两次 \texttt{echo \$?} 的输出都应为 \texttt{0}。这说明 ARM 与 RISC-V 版本都正确算出了总校验值。
+
+\subsection{步骤三：反汇编并定位核心循环}
+\begin{Verbatim}[frame=single]
+aarch64-linux-gnu-objdump -d armv9_dot > armv9_dot.dump
+riscv64-linux-gnu-objdump -d riscv_dot > riscv_dot.dump
+\end{Verbatim}
+
+打开 \texttt{armv9\_dot.dump} 与 \texttt{riscv\_dot.dump} 后，搜索标签 \texttt{dot\_loop} 和 \texttt{dot\_loop\_end}。两者之间的指令就是本实验需要统计的核心循环体。读者应重点观察：
+\begin{itemize}
+    \item 每轮循环包含多少条指令；
+    \item 哪些指令完成访存，哪些指令完成乘加，哪些指令完成循环控制；
+    \item 某些操作是否被更强的单条指令融合。
+\end{itemize}
+
+\subsection{步骤四：记录代码密度与时间结果}
+本实验的预期观察结果有两层：
+\begin{enumerate}
+    \item ARMv9-A 版本的内层循环更短，静态指令数更少；
+    \item 在本机 WSL + QEMU User 6.2.0 的测量结果中，RISC-V 版本的平均模拟运行时间更短。
+\end{enumerate}
+
+这两个结果并不矛盾。前者反映的是 ISA 在表达同一循环时的静态代码密度，后者反映的是当前模拟器实现与当前测试平台组合下的 wall-clock 时间。
+
+\section{核心代码片段与指令集差异分析}
+\subsection{ARMv9-A（AArch64）核心循环}
+\begin{Verbatim}[frame=single]
+dot_loop:
+    ldr  w4, [x0], #4
+    ldr  w5, [x1], #4
+    madd x2, x4, x5, x2
+    subs w3, w3, #1
+    bne  dot_loop
+\end{Verbatim}
+
+\subsection{RISC-V 核心循环}
+\begin{Verbatim}[frame=single]
+dot_loop:
+    lw   t1, 0(a0)
+    lw   t2, 0(a1)
+    mul  t4, t1, t2
+    add  s0, s0, t4
+    addi a0, a0, 4
+    addi a1, a1, 4
+    addi t0, t0, -1
+    bnez t0, dot_loop
+\end{Verbatim}
+
+\subsection{核心循环代码密度对比}
+\begin{table}[H]
+    \centering
+    \caption{核心循环代码密度对比}
+    \begin{tabular}{p{0.17\textwidth} p{0.17\textwidth} p{0.17\textwidth} p{0.38\textwidth}}
+        \toprule
+        架构 & 每轮循环指令数 & 循环体字节数 & 主要原因 \\
+        \midrule
+        ARMv9-A（AArch64） & 5 & 20 B & 使用了后索引寻址的 \texttt{ldr}，并用 \texttt{madd} 把乘法与累加融合为一条指令 \\
+        RV64IM（禁用 C） & 8 & 32 B & 访存、乘法、累加、地址更新和循环计数分别由独立指令完成 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{更大数据量下的时间测量结果}
+\begin{table}[H]
+    \centering
+    \caption{QEMU User 下的向量内积平均用时}
+    \begin{tabular}{p{0.13\textwidth} p{0.14\textwidth} p{0.18\textwidth} p{0.16\textwidth} p{0.16\textwidth} p{0.12\textwidth}}
+        \toprule
+        LEN & REPEAT & MAC 总次数 & ARMv9 平均用时 & RISC-V 平均用时 & RISC-V / ARM \\
+        \midrule
+        256 & 20000 & 5,120,000 & 31.08 ms & 24.03 ms & 0.77 \\
+        1024 & 20000 & 20,480,000 & 78.78 ms & 61.94 ms & 0.79 \\
+        4096 & 20000 & 81,920,000 & 288.16 ms & 203.98 ms & 0.71 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{结果解释}
+从静态循环可见，ARMv9-A（AArch64）通过后索引寻址与 \texttt{madd} 指令，把“取数并更新地址”以及“乘法并累加”压缩到更少的指令中，因此在 \textbf{代码密度} 这一指标上明显优于 RISC-V。
+
+但在本实验的 WSL + QEMU User 6.2.0 环境中，三组更大工作负载下测得的 wall-clock 时间却表现为 RISC-V 更短。这说明：\textbf{静态指令数更少，并不自动等价于当前模拟器中运行更快。} QEMU User 的翻译策略、不同后端的 helper 实现、宿主机执行路径以及系统噪声都会影响最终时间结果。
+
+因此，本实验得到两个可以同时成立的结论：
+\begin{enumerate}
+    \item 若评价标准是核心循环的静态指令条数与循环体大小，则 ARMv9-A 的代码密度更高；
+    \item 若评价标准是本机 QEMU User 6.2.0 中的平均模拟执行时间，则本次测量中 RISC-V 更快。
+\end{enumerate}
+
+需要特别说明的是，第二个结论仅适用于当前模拟环境，不能直接外推为“真实 ARMv9 硬件一定慢于真实 RISC-V 硬件”。它更适合作为“代码密度结果和模拟运行时间结果可能分离”的一个实验观察。
+
+\section{实验流程与思路图}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[
+        node distance=5mm,
+        block/.style={
+            rectangle,
+            rounded corners,
+            draw,
+            align=center,
+            minimum width=9.2cm,
+            minimum height=0.82cm,
+            font=\small
+        },
+        line/.style={-Latex, thick}
+    ]
+        \node[block] (a) {选定实验对象：缩放点积注意力中的 Query-Key 点积内核};
+        \node[block, below=of a] (b) {用固定 8 元模式扩展生成多组统一输入向量};
+        \node[block, below=of b] (c) {分别编写 ARMv9-A / AArch64 与 RV64IM 汇编程序};
+        \node[block, below=of c] (d) {通过 \texttt{LEN} 与 \texttt{REPEAT} 参数编译出多组工作负载};
+        \node[block, below=of d] (e) {在 QEMU User 中运行并校验退出码为 0};
+        \node[block, below=of e] (f) {使用 \texttt{objdump -d} 提取 \texttt{dot\_loop} 内层循环};
+        \node[block, below=of f] (g) {统计 5 条 vs 8 条指令，以及 20 B vs 32 B 循环体大小};
+        \node[block, below=of g] (h) {运行 \texttt{benchmark\_dot.py} 测量不同数据量下的平均用时};
+        \node[block, below=of h] (i) {对比代码密度结果与 QEMU 模拟用时结果并总结差异};
+
+        \draw[line] (a) -- (b);
+        \draw[line] (b) -- (c);
+        \draw[line] (c) -- (d);
+        \draw[line] (d) -- (e);
+        \draw[line] (e) -- (f);
+        \draw[line] (f) -- (g);
+        \draw[line] (g) -- (h);
+        \draw[line] (h) -- (i);
+    \end{tikzpicture}
+    \caption{更大数据量下的实验流程与思路图}
+\end{figure}
+
+\section{实验评估方法}
+为判断读者是否真正完成并理解本实验，可从以下三方面进行评估：
+\begin{table}[H]
+    \centering
+    \caption{实验评估设计}
+    \begin{tabular}{p{0.18\textwidth} p{0.46\textwidth} p{0.26\textwidth}}
+        \toprule
+        评估维度 & 观察点 & 达标标准 \\
+        \midrule
+        实验操作 & 是否成功完成编译、QEMU 运行、反汇编和批量计时 & 两份程序均可运行，退出码为 0，并产出计时结果表 \\
+        结果分析 & 是否能准确定位 \texttt{dot\_loop} 并统计循环指令数 & 能给出 ARMv9 为 5 条、RISC-V 为 8 条的结论 \\
+        知识掌握 & 是否能解释“代码密度”和“QEMU 时间结果”为什么可能不同 & 能说明模拟器实现、翻译策略与静态指令数并非一一对应 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+若读者只能“跑出时间”却不能说明 ARMv9 为什么循环更短，则说明实验操作完成了，但对 ISA 表达能力的理解仍不充分。反之，若读者既能分析循环体，又能说明为什么在 QEMU 中出现了与代码密度不同的时间结果，则说明实验目标已经达到。
+
+\section{附：源码目录与运行命令}
+\subsection{建议提交文件}
+\begin{Verbatim}[frame=single]
+1012-2414015-鲁昕宁-指令集实验设计.pdf
+1012-2414015-鲁昕宁-arm.s
+1012-2414015-鲁昕宁-riscv.s
+benchmark_dot.py
+1012-2414015-鲁昕宁-指令集作业.zip
+\end{Verbatim}
+
+\subsection{当前目录建议结构}
+\begin{Verbatim}[frame=single]
+assign2/
+|-- assign2.tex
+|-- 1012-2414015-鲁昕宁-arm.s
+|-- 1012-2414015-鲁昕宁-riscv.s
+|-- benchmark_dot.py
+|-- benchmark_results.json
+|-- benchmark_results.md
+|-- 1012-2414015-鲁昕宁-指令集实验设计.pdf
+`-- 1012-2414015-鲁昕宁-指令集作业.zip
+\end{Verbatim}
+
+\subsection{完整运行命令汇总}
+\begin{Verbatim}[frame=single]
+cd /mnt/d/1012/assign2
+
+# 一键编译 + 运行 + 反汇编 + 计时
+python3 benchmark_dot.py
+
+# 手动验证一组参数
+aarch64-linux-gnu-gcc -nostdlib -static -x assembler-with-cpp \
+    -DLEN=1024 -DREPEAT=20000 \
+    -o armv9_dot "1012-2414015-鲁昕宁-arm.s"
+qemu-aarch64 ./armv9_dot
+echo $?
+aarch64-linux-gnu-objdump -d armv9_dot > armv9_dot.dump
+
+riscv64-linux-gnu-gcc -nostdlib -static -x assembler-with-cpp \
+    -DLEN=1024 -DREPEAT=20000 -march=rv64im -mabi=lp64 \
+    -o riscv_dot "1012-2414015-鲁昕宁-riscv.s"
+qemu-riscv64 ./riscv_dot
+echo $?
+riscv64-linux-gnu-objdump -d riscv_dot > riscv_dot.dump
+
+# 生成 PDF
+latexmk -xelatex assign2.tex
+\end{Verbatim}
+
+\end{document}
