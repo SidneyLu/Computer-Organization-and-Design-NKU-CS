@@ -1,0 +1,15 @@
+Time resolution is 1 ps
+=== [Test 1] Writing to registers ===
+
+=== [Test 2] Reading from rdata1 & rdata2 ===
+raddr1=1, rdata1=0x12345678 (Expected: 0x12345678)
+raddr2=2, rdata2=0x87654321 (Expected: 0x87654321)
+raddr1=3, rdata1=0xaaaaaaaa (Expected: 0xAAAAAAAA)
+raddr2=0, rdata2=0x0 (Expected: 0x00000000)
+
+=== [Test 3] Reading from test_port ===
+test_addr=1, test_data=0x12345678 (Expected: 0x12345678)
+test_addr=0, test_data=0x0 (Expected: 0x00000000)
+
+=== Simulation Finished ===
+$finish called at time : 141 ns : File "D:/1012/lab3/lab3.srcs/sim_1/new/tb.v" Line 122

@@ -1,0 +1,112 @@
+#-----------------------------------------------------------
+# Vivado v2025.1 (64-bit)
+# SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
+# IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+# SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+# Start of session at: Thu Apr 23 11:40:32 2026
+# Process ID         : 27124
+# Current directory  : D:/1012/lab3/lab3.runs/impl_1
+# Command line       : vivado.exe -log regfile_display.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source regfile_display.tcl -notrace
+# Log file           : D:/1012/lab3/lab3.runs/impl_1/regfile_display.vdi
+# Journal file       : D:/1012/lab3/lab3.runs/impl_1\vivado.jou
+# Running On         : DESKTOP-JH0OJSQ
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : AMD Ryzen 7 4800HS with Radeon Graphics         
+# CPU Frequency      : 2895 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 16556 MB
+# Swap memory        : 13359 MB
+# Total Virtual      : 29915 MB
+# Available Virtual  : 9722 MB
+#-----------------------------------------------------------
+source regfile_display.tcl -notrace
+
+*** Halting run - EA reset detected ***
+
+
+
+    while executing
+"start_step write_bitstream"
+    (file "regfile_display.tcl" line 104)
+INFO: [Common 17-206] Exiting Vivado at Thu Apr 23 11:40:36 2026...
+#-----------------------------------------------------------
+# Vivado v2025.1 (64-bit)
+# SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
+# IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+# SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+# Start of session at: Thu Apr 23 11:40:50 2026
+# Process ID         : 15856
+# Current directory  : D:/1012/lab3/lab3.runs/impl_1
+# Command line       : vivado.exe -log regfile_display.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source regfile_display.tcl -notrace
+# Log file           : D:/1012/lab3/lab3.runs/impl_1/regfile_display.vdi
+# Journal file       : D:/1012/lab3/lab3.runs/impl_1\vivado.jou
+# Running On         : DESKTOP-JH0OJSQ
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : AMD Ryzen 7 4800HS with Radeon Graphics         
+# CPU Frequency      : 2895 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 16556 MB
+# Swap memory        : 13359 MB
+# Total Virtual      : 29915 MB
+# Available Virtual  : 10289 MB
+#-----------------------------------------------------------
+source regfile_display.tcl -notrace
+Command: open_checkpoint regfile_display_routed.dcp
+
+Starting open_checkpoint Task
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.066 . Memory (MB): peak = 301.441 ; gain = 5.695
+INFO: [Device 21-403] Loading part xc7a200tfbg676-2
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.017 . Memory (MB): peak = 747.762 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 554 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2025.1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Read ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 847.156 ; gain = 1.379
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+INFO: [Designutils 20-5722] Start Reading Physical Databases.
+Reading placement.
+Read Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1494.184 ; gain = 0.000
+Reading placer database...
+Read Device Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 1494.184 ; gain = 0.000
+Read PlaceDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.255 . Memory (MB): peak = 1494.184 ; gain = 0.000
+Read PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1494.184 ; gain = 0.000
+Reading routing.
+Read RouteStorage: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.065 . Memory (MB): peak = 1494.184 ; gain = 0.000
+Read Physdb Files: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.349 . Memory (MB): peak = 1494.184 ; gain = 0.000
+Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.427 . Memory (MB): peak = 1494.184 ; gain = 17.523
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1494.184 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 2 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 2 instances
+
+INFO: [Project 1-604] Checkpoint was created with Vivado v2025.1 (64-bit) build 6140274
+WARNING: [Vivado 12-23575] Critical violations of the methodology design rules detected. Critical violations may contribute to timing failures or cause functional issues in hardware. Run report_methodology for more information.
+open_checkpoint: Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1494.184 ; gain = 1208.730
+Command: write_bitstream -force regfile_display.bit
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a200t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a200t'
+Running DRC as a precondition to command write_bitstream
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/2025.1/Vivado/data/ip'.
+INFO: [DRC 23-27] Running DRC with 2 threads
+ERROR: [DRC UCIO-1] Unconstrained Logical Port: 1 out of 38 logical ports have no user assigned specific location constraint (LOC). This may cause I/O contention or incompatibility with the board power or connectivity affecting performance, signal integrity or in extreme cases cause damage to the device or the components to which it is connected. To correct this violation, specify all pin locations. This design will fail to generate a bitstream unless all logical ports have a user specified site LOC constraint defined.  To allow bitstream creation with unspecified pin locations (not recommended), use this command: set_property SEVERITY {Warning} [get_drc_checks UCIO-1].  NOTE: When using the Vivado Runs infrastructure (e.g. launch_runs Tcl command), add this command to a .tcl file and add that file as a pre-hook for write_bitstream step for the implementation run.  Problem ports: input_sel[0].
+INFO: [Vivado 12-3199] DRC finished with 1 Errors
+INFO: [Vivado 12-3200] Please refer to the DRC report (report_drc) for more information.
+ERROR: [Vivado 12-1345] Error(s) found during DRC. Bitgen not run.
+INFO: [Common 17-83] Releasing license: Implementation
+20 Infos, 1 Warnings, 0 Critical Warnings and 2 Errors encountered.
+write_bitstream failed
+write_bitstream: Time (s): cpu = 00:00:08 ; elapsed = 00:00:06 . Memory (MB): peak = 1612.168 ; gain = 117.984
+ERROR: [Common 17-39] 'write_bitstream' failed due to earlier errors.
+
+INFO: [Common 17-206] Exiting Vivado at Thu Apr 23 11:41:21 2026...
