@@ -193,18 +193,34 @@ Vivado 日志显示上述 testbench 均通过：
 \sourcecode{testbench \texttt{tb\_simd\_mul\_compare} 的 Verilog 源码}{../sim/tb_simd_mul_compare.v}
 
 \subsection{代表性基础模块波形}
-图 \ref{fig:wave-relu} 给出了 \texttt{tb\_relu\_s20} 的代表性波形。可以看到：
-\begin{itemize}
-  \item 输入为大负数时，输出被截断为 0；
-  \item 输入进入线性区间后，输出与输入低 8 位保持一致；
-  \item 输入超过 255 后，输出稳定钳位在 255。
-\end{itemize}
+下面给出 4 个基础模块的代表性波形，按模块验证顺序依次展示。
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\textwidth]{figures/wave_mul8_basic.png}
+  \caption{基础模块波形：\texttt{mul8} 的乘法响应}
+  \label{fig:wave-mul8}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\textwidth]{figures/wave_add8_basic.png}
+  \caption{基础模块波形：\texttt{add8} 的加法响应}
+  \label{fig:wave-add8}
+\end{figure}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.92\textwidth]{figures/wave_relu_basic.png}
   \caption{基础模块波形：\texttt{relu\_s20} 的截断与饱和行为}
   \label{fig:wave-relu}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\textwidth]{figures/wave_div4_basic.png}
+  \caption{基础模块波形：\texttt{div4} 的右移除 4 行为}
+  \label{fig:wave-div4}
 \end{figure}
 
 \section{里程碑2：链式运算器集成与系统仿真}

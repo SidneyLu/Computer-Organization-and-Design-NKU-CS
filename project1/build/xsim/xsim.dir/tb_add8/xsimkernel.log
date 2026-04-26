@@ -1,0 +1,7 @@
+Running: xsim.dir/tb_add8/xsimk.exe -wdb D:/1012/project1/build/xsim/waves/tb_add8.wdb -simmode gui -simrunnum 0 -socket 13263
+Design successfully loaded
+Design Loading Memory Usage: 9960 KB (Peak: 9960 KB)
+Design Loading CPU Usage: 15 ms
+Simulation completed
+Simulation Memory Usage: 18808 KB (Peak: 18808 KB)
+Simulation CPU Usage: 515 ms

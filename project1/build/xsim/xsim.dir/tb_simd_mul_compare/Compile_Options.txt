@@ -1,0 +1,1 @@
+-nolog -L "unisims_ver" --debug "typical" --timescale "1ns/1ps" -s "tb_simd_mul_compare" "xil_defaultlib.tb_simd_mul_compare" "xil_defaultlib.glbl" 

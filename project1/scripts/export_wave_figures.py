@@ -211,6 +211,167 @@ def export_relu_figure() -> None:
     plt.close(fig)
 
 
+def export_mul8_figure() -> None:
+    parser = VCDParser(WAVE_DIR / "tb_mul8.vcd")
+    a_name = "tb_mul8.a_u8"
+    b_name = "tb_mul8.b_s8"
+    p_name = "tb_mul8.p_s16"
+    traces = parser.collect([a_name, b_name, p_name])
+
+    # Zoom in around the first a_u8 transition so the multiplication response is visible.
+    t_min_ps = 252000
+    t_max_ps = 260000
+    a_width = parser.width_of(a_name)
+    b_width = parser.width_of(b_name)
+    p_width = parser.width_of(p_name)
+
+    a_t, a_v = step_window(
+        traces[a_name],
+        t_min_ps,
+        t_max_ps,
+        lambda raw: bits_to_int(raw, a_width, signed=False),
+    )
+    b_t, b_v = step_window(
+        traces[b_name],
+        t_min_ps,
+        t_max_ps,
+        lambda raw: bits_to_int(raw, b_width, signed=True),
+    )
+    p_t, p_v = step_window(
+        traces[p_name],
+        t_min_ps,
+        t_max_ps,
+        lambda raw: bits_to_int(raw, p_width, signed=True),
+    )
+
+    fig, axes = plt.subplots(3, 1, figsize=(9, 6), sharex=True)
+    axes[0].step(a_t, a_v, where="post", label="a_u8", linewidth=1.8)
+    axes[0].set_title("Mul8 Basic Module Waveform")
+    axes[0].set_ylabel("a_u8")
+    axes[0].grid(True, linestyle="--", linewidth=0.5, alpha=0.5)
+    axes[0].legend(loc="upper left")
+    axes[0].axvline(256.0, color="gray", linewidth=0.8, linestyle=":")
+    axes[0].text(256.15, max(a_v) if a_v else 0.0, "a_u8 = 1", fontsize=9, va="bottom")
+
+    axes[1].step(b_t, b_v, where="post", label="b_s8", linewidth=1.8, color="tab:orange")
+    axes[1].set_ylabel("b_s8")
+    axes[1].grid(True, linestyle="--", linewidth=0.5, alpha=0.5)
+    axes[1].legend(loc="upper left")
+
+    axes[2].step(p_t, p_v, where="post", label="p_s16", linewidth=1.8, color="tab:green")
+    axes[2].set_ylabel("p_s16")
+    axes[2].set_xlabel("Time / ns")
+    axes[2].grid(True, linestyle="--", linewidth=0.5, alpha=0.5)
+    axes[2].legend(loc="upper left")
+    axes[2].axvline(256.0, color="gray", linewidth=0.8, linestyle=":")
+    axes[2].text(256.15, max(p_v) if p_v else 0.0, "response to a_u8 = 1", fontsize=9, va="bottom")
+    fig.tight_layout()
+    fig.savefig(FIG_DIR / "wave_mul8_basic.png", dpi=200)
+    plt.close(fig)
+
+
+def export_add8_figure() -> None:
+    parser = VCDParser(WAVE_DIR / "tb_add8.vcd")
+    a_name = "tb_add8.a_u8"
+    b_name = "tb_add8.b_u8"
+    y_name = "tb_add8.y_u8"
+    traces = parser.collect([a_name, b_name, y_name])
+
+    # Use the same zoom window as mul8 so the carry-free addition trend is easy to compare.
+    t_min_ps = 252000
+    t_max_ps = 260000
+    a_width = parser.width_of(a_name)
+    b_width = parser.width_of(b_name)
+    y_width = parser.width_of(y_name)
+
+    a_t, a_v = step_window(
+        traces[a_name],
+        t_min_ps,
+        t_max_ps,
+        lambda raw: bits_to_int(raw, a_width, signed=False),
+    )
+    b_t, b_v = step_window(
+        traces[b_name],
+        t_min_ps,
+        t_max_ps,
+        lambda raw: bits_to_int(raw, b_width, signed=False),
+    )
+    y_t, y_v = step_window(
+        traces[y_name],
+        t_min_ps,
+        t_max_ps,
+        lambda raw: bits_to_int(raw, y_width, signed=False),
+    )
+
+    fig, axes = plt.subplots(3, 1, figsize=(9, 6), sharex=True)
+    axes[0].step(a_t, a_v, where="post", label="a_u8", linewidth=1.8)
+    axes[0].set_title("Add8 Basic Module Waveform")
+    axes[0].set_ylabel("a_u8")
+    axes[0].grid(True, linestyle="--", linewidth=0.5, alpha=0.5)
+    axes[0].legend(loc="upper left")
+    axes[0].axvline(256.0, color="gray", linewidth=0.8, linestyle=":")
+    axes[0].text(256.15, max(a_v) if a_v else 0.0, "a_u8 = 1", fontsize=9, va="bottom")
+
+    axes[1].step(b_t, b_v, where="post", label="b_u8", linewidth=1.8, color="tab:orange")
+    axes[1].set_ylabel("b_u8")
+    axes[1].grid(True, linestyle="--", linewidth=0.5, alpha=0.5)
+    axes[1].legend(loc="upper left")
+
+    axes[2].step(y_t, y_v, where="post", label="y_u8", linewidth=1.8, color="tab:green")
+    axes[2].set_ylabel("y_u8")
+    axes[2].set_xlabel("Time / ns")
+    axes[2].grid(True, linestyle="--", linewidth=0.5, alpha=0.5)
+    axes[2].legend(loc="upper left")
+    axes[2].axvline(256.0, color="gray", linewidth=0.8, linestyle=":")
+    axes[2].text(256.15, max(y_v) if y_v else 0.0, "y_u8 follows b_u8 + 1", fontsize=9, va="bottom")
+    fig.tight_layout()
+    fig.savefig(FIG_DIR / "wave_add8_basic.png", dpi=200)
+    plt.close(fig)
+
+
+def export_div4_figure() -> None:
+    parser = VCDParser(WAVE_DIR / "tb_div4.vcd")
+    x_name = "tb_div4.x_u10"
+    y_name = "tb_div4.y_u8"
+    traces = parser.collect([x_name, y_name])
+
+    # Show enough samples to make the x>>2 staircase obvious without crowding the axis.
+    t_min_ps = 0
+    t_max_ps = 64000
+    x_width = parser.width_of(x_name)
+    y_width = parser.width_of(y_name)
+
+    x_t, x_v = step_window(
+        traces[x_name],
+        t_min_ps,
+        t_max_ps,
+        lambda raw: bits_to_int(raw, x_width, signed=False),
+    )
+    y_t, y_v = step_window(
+        traces[y_name],
+        t_min_ps,
+        t_max_ps,
+        lambda raw: bits_to_int(raw, y_width, signed=False),
+    )
+
+    fig, axes = plt.subplots(2, 1, figsize=(9, 4.8), sharex=True)
+    axes[0].step(x_t, x_v, where="post", label="x_u10", linewidth=1.8)
+    axes[0].set_title("Div4 Basic Module Waveform")
+    axes[0].set_ylabel("x_u10")
+    axes[0].grid(True, linestyle="--", linewidth=0.5, alpha=0.5)
+    axes[0].legend(loc="upper left")
+
+    axes[1].step(y_t, y_v, where="post", label="y_u8", linewidth=1.8, color="tab:orange")
+    axes[1].set_ylabel("y_u8")
+    axes[1].set_xlabel("Time / ns")
+    axes[1].grid(True, linestyle="--", linewidth=0.5, alpha=0.5)
+    axes[1].legend(loc="upper left")
+    axes[1].text(40.0, max(y_v) * 0.85 if y_v else 0.0, "y_u8 = x_u10 >> 2", fontsize=9)
+    fig.tight_layout()
+    fig.savefig(FIG_DIR / "wave_div4_basic.png", dpi=200)
+    plt.close(fig)
+
+
 def export_system_figure() -> None:
     parser = VCDParser(WAVE_DIR / "tb_cnn_core.vcd")
     labels = [
@@ -330,6 +491,9 @@ def export_pipeline_figure() -> None:
 
 def main() -> None:
     FIG_DIR.mkdir(parents=True, exist_ok=True)
+    export_mul8_figure()
+    export_add8_figure()
+    export_div4_figure()
     export_relu_figure()
     export_system_figure()
     export_pipeline_figure()

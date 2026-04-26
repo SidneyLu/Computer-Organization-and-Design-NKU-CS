@@ -1,0 +1,1738 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
+| Date         : Sun Apr 26 18:47:54 2026
+| Host         : DESKTOP-JH0OJSQ running 64-bit major release  (build 9200)
+| Command      : report_timing_summary -delay_type max -max_paths 10 -file D:/1012/project1/build/cnn_compare_booth_simd_top_timing_summary.rpt
+| Design       : cnn_compare_booth_simd_top
+| Device       : 7a200t-fbg676
+| Speed File   : -2  PRODUCTION 1.23 2018-06-13
+| Design State : Synthesized
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Summary Report
+
+------------------------------------------------------------------------------------------------
+| Timer Settings
+| --------------
+------------------------------------------------------------------------------------------------
+
+  Enable Multi Corner Analysis               :  Yes
+  Enable Pessimism Removal                   :  Yes
+  Pessimism Removal Resolution               :  Nearest Common Node
+  Enable Input Delay Default Clock           :  No
+  Enable Preset / Clear Arcs                 :  No
+  Disable Flight Delays                      :  No
+  Ignore I/O Paths                           :  No
+  Timing Early Launch at Borrowing Latches   :  No
+  Borrow Time for Max Delay Exceptions       :  Yes
+  Merge Timing Exceptions                    :  Yes
+  Inter-SLR Compensation                     :  Conservative
+
+  Corner  Analyze    Analyze    
+  Name    Max Paths  Min Paths  
+  ------  ---------  ---------  
+  Slow    Yes        Yes        
+  Fast    Yes        Yes        
+
+
+------------------------------------------------------------------------------------------------
+| Report Methodology
+| ------------------
+------------------------------------------------------------------------------------------------
+
+No report available as report_methodology has not been run prior. Run report_methodology on the current design for the summary of methodology violations.
+
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock (0)
+2. checking constant_clock (0)
+3. checking pulse_width_clock (0)
+4. checking unconstrained_internal_endpoints (0)
+5. checking no_input_delay (0)
+6. checking no_output_delay (0)
+7. checking multiple_clock (0)
+8. checking generated_clocks (0)
+9. checking loops (0)
+10. checking partial_input_delay (0)
+11. checking partial_output_delay (0)
+12. checking latch_loops (0)
+
+1. checking no_clock (0)
+------------------------
+ There are 0 register/latch pins with no clock.
+
+
+2. checking constant_clock (0)
+------------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock (0)
+---------------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints (0)
+------------------------------------------------
+ There are 0 pins that are not constrained for maximum delay.
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay (0)
+------------------------------
+ There are 0 input ports with no input delay specified.
+
+ There are 0 input ports with no input delay but user has a false path constraint.
+
+
+6. checking no_output_delay (0)
+-------------------------------
+ There are 0 ports with no output delay specified.
+
+ There are 0 ports with no output delay but user has a false path constraint
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock (0)
+------------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks (0)
+--------------------------------
+ There are 0 generated clocks that are not connected to a clock source.
+
+
+9. checking loops (0)
+---------------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay (0)
+------------------------------------
+ There are 0 input ports with partial input delay specified.
+
+
+11. checking partial_output_delay (0)
+-------------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops (0)
+----------------------------
+ There are 0 combinational latch loops in the design through latch input
+
+
+
+------------------------------------------------------------------------------------------------
+| Design Timing Summary
+| ---------------------
+------------------------------------------------------------------------------------------------
+
+    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+    -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+     -6.030     -208.245                     65                  131        2.000        0.000                       0                    34  
+
+
+Timing constraints are not met.
+
+
+------------------------------------------------------------------------------------------------
+| Clock Summary
+| -------------
+------------------------------------------------------------------------------------------------
+
+Clock  Waveform(ns)         Period(ns)      Frequency(MHz)
+-----  ------------         ----------      --------------
+clk    {0.000 2.500}        5.000           200.000         
+
+
+------------------------------------------------------------------------------------------------
+| Intra Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+-----             -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+clk                -6.030     -208.245                     65                   98        2.000        0.000                       0                    34  
+
+
+------------------------------------------------------------------------------------------------
+| Inter Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints  
+----------    --------          -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Other Path Groups Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group         From Clock         To Clock               WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints  
+----------         ----------         --------               -------      -------  ---------------------  -------------------  
+**async_default**  clk                clk                      4.163        0.000                      0                   33  
+
+
+------------------------------------------------------------------------------------------------
+| Timing Details
+| --------------
+------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  clk
+  To Clock:  clk
+
+Setup :           65  Failing Endpoints,  Worst Slack       -6.030ns,  Total Violation     -208.245ns
+Hold  :           NA  Failing Endpoints,  Worst Slack           NA  ,  Total Violation           NA
+PW    :            0  Failing Endpoints,  Worst Slack        2.000ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (VIOLATED) :        -6.030ns  (required time - arrival time)
+  Source:                 img_flat_u8x25[61]
+                            (input port clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            u_booth_simd/out_flat_u8x4_reg[14]/D
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            5.000ns  (clk rise@5.000ns - clk rise@0.000ns)
+  Data Path Delay:        12.948ns  (logic 6.097ns (47.090%)  route 6.851ns (52.910%))
+  Logic Levels:           20  (CARRY4=10 IBUF=1 LUT2=2 LUT3=4 LUT5=1 LUT6=2)
+  Input Delay:            0.000ns
+  Clock Path Skew:        1.881ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.881ns = ( 6.881 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  img_flat_u8x25[61] (IN)
+                         net (fo=0)                   0.000     0.000    img_flat_u8x25[61]
+                         IBUF (Prop_ibuf_I_O)         0.882     0.882 r  img_flat_u8x25_IBUF[61]_inst/O
+                         net (fo=50, unplaced)        0.646     1.528    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/img_flat_u8x25_IBUF[5]
+                         LUT6 (Prop_lut6_I5_O)        0.105     1.633 f  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/prod_ext_carry__0_i_28__68/O
+                         net (fo=62, unplaced)        0.435     2.068    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/img_flat_u8x25[60]
+                         LUT3 (Prop_lut3_I2_O)        0.105     2.173 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/prod_ext_carry__1_i_9__60/O
+                         net (fo=66, unplaced)        0.671     2.844    u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane2/data2_1[3]
+                         LUT6 (Prop_lut6_I1_O)        0.105     2.949 r  u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane2/prod_ext_carry__0_i_20__22/O
+                         net (fo=3, unplaced)         0.365     3.314    u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane2/ker_flat_s8x9[26][2]
+                         LUT5 (Prop_lut5_I3_O)        0.105     3.419 r  u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane2/prod_ext_carry__0_i_3__22/O
+                         net (fo=1, unplaced)         0.537     3.956    u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane2/csa2_sum__11[8]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.466     4.422 r  u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane2/prod_ext_carry__0/O[2]
+                         net (fo=4, unplaced)         0.608     5.030    u_booth_simd/u_conv/prod_blk0[3]_12[41]
+                         LUT3 (Prop_lut3_I0_O)        0.244     5.274 r  u_booth_simd/u_conv/i__carry_i_72__0/O
+                         net (fo=1, unplaced)         0.537     5.811    u_booth_simd/u_conv/i__carry_i_72__0_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430     6.241 r  u_booth_simd/u_conv/i__carry_i_31__0/CO[3]
+                         net (fo=1, unplaced)         0.000     6.241    u_booth_simd/u_conv/i__carry_i_31__0_n_0
+                         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.189     6.430 r  u_booth_simd/u_conv/i__carry_i_28__0/O[0]
+                         net (fo=3, unplaced)         0.617     7.047    u_booth_simd/u_conv/i__carry_i_28__0_n_7
+                         LUT3 (Prop_lut3_I0_O)        0.238     7.285 r  u_booth_simd/u_conv/i__carry_i_13__0/O
+                         net (fo=1, unplaced)         0.537     7.822    u_booth_simd/u_conv/i__carry_i_13__0_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430     8.252 r  u_booth_simd/u_conv/i__carry_i_9__0/CO[3]
+                         net (fo=1, unplaced)         0.000     8.252    u_booth_simd/u_conv/i__carry_i_9__0_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.277     8.529 f  u_booth_simd/u_conv/i__carry__0_i_5__0/O[3]
+                         net (fo=18, unplaced)        0.576     9.105    u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane2/conv2[0]
+                         LUT2 (Prop_lut2_I1_O)        0.251     9.356 r  u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane2/i__carry__0_i_1__4/O
+                         net (fo=1, unplaced)         0.000     9.356    u_booth_simd/u_relu_blk0/out_flat_u8x4[13]_i_11[1]
+                         CARRY4 (Prop_carry4_DI[1]_CO[1])
+                                                      0.416     9.772 r  u_booth_simd/u_relu_blk0/relu_clip_lane1_inferred__3/i__carry__0/CO[1]
+                         net (fo=16, unplaced)        0.294    10.066    u_booth_simd/u_relu_blk0/i__carry__0_i_4__0[0]
+                         LUT3 (Prop_lut3_I1_O)        0.277    10.343 r  u_booth_simd/u_relu_blk0/out_flat_u8x4[9]_i_9/O
+                         net (fo=1, unplaced)         0.537    10.880    u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane2/a_u8x4[1]
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430    11.310 r  u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane2/out_flat_u8x4_reg[9]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.008    11.318    u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane2/out_flat_u8x4_reg[9]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269    11.587 r  u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane2/out_flat_u8x4_reg[13]_i_2/O[1]
+                         net (fo=2, unplaced)         0.483    12.070    u_booth_simd/u_pool1/out_flat_u8x4_reg[13][1]
+                         LUT2 (Prop_lut2_I0_O)        0.245    12.315 r  u_booth_simd/u_pool1/out_flat_u8x4[13]_i_5/O
+                         net (fo=1, unplaced)         0.000    12.315    u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane2/out_flat_u8x4_reg[13]_0[1]
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.444    12.759 r  u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane2/out_flat_u8x4_reg[13]_i_1/CO[3]
+                         net (fo=1, unplaced)         0.000    12.759    u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane2/out_flat_u8x4_reg[13]_i_1_n_0
+                         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.189    12.948 r  u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane2/out_flat_u8x4_reg[15]_i_1/O[0]
+                         net (fo=1, unplaced)         0.000    12.948    u_booth_simd/u_conv_n_161
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[14]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        5.000     5.000 r  
+                                                      0.000     5.000 r  clk (IN)
+                         net (fo=0)                   0.000     5.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.751     5.751 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.613     6.365    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.077     6.442 r  clk_IBUF_BUFG_inst/O
+                         net (fo=33, unplaced)        0.439     6.881    u_booth_simd/CLK
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[14]/C
+                         clock pessimism              0.000     6.881    
+                         clock uncertainty           -0.035     6.845    
+                         FDCE (Setup_fdce_C_D)        0.072     6.917    u_booth_simd/out_flat_u8x4_reg[14]
+  -------------------------------------------------------------------
+                         required time                          6.917    
+                         arrival time                         -12.948    
+  -------------------------------------------------------------------
+                         slack                                 -6.030    
+
+Slack (VIOLATED) :        -6.029ns  (required time - arrival time)
+  Source:                 img_flat_u8x25[53]
+                            (input port clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            u_booth_simd/out_flat_u8x4_reg[6]/D
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            5.000ns  (clk rise@5.000ns - clk rise@0.000ns)
+  Data Path Delay:        12.947ns  (logic 6.097ns (47.094%)  route 6.850ns (52.906%))
+  Logic Levels:           20  (CARRY4=10 IBUF=1 LUT2=2 LUT3=4 LUT5=1 LUT6=2)
+  Input Delay:            0.000ns
+  Clock Path Skew:        1.881ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.881ns = ( 6.881 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  img_flat_u8x25[53] (IN)
+                         net (fo=0)                   0.000     0.000    img_flat_u8x25[53]
+                         IBUF (Prop_ibuf_I_O)         0.882     0.882 r  img_flat_u8x25_IBUF[53]_inst/O
+                         net (fo=34, unplaced)        0.646     1.528    u_booth_simd/u_conv/gen_blk0_mul[4].gen_blk0_booth.u_mul/u_lane0/img_flat_u8x25_IBUF[5]
+                         LUT6 (Prop_lut6_I5_O)        0.105     1.633 f  u_booth_simd/u_conv/gen_blk0_mul[4].gen_blk0_booth.u_mul/u_lane0/prod_ext_carry__0_i_28__71/O
+                         net (fo=42, unplaced)        0.425     2.058    u_booth_simd/u_conv/gen_blk0_mul[4].gen_blk0_booth.u_mul/u_lane0/img_flat_u8x25[52]
+                         LUT3 (Prop_lut3_I2_O)        0.105     2.163 r  u_booth_simd/u_conv/gen_blk0_mul[4].gen_blk0_booth.u_mul/u_lane0/prod_ext_carry__1_i_9__71/O
+                         net (fo=44, unplaced)        0.661     2.824    u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane1/data2_0[3]
+                         LUT6 (Prop_lut6_I1_O)        0.105     2.929 r  u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane1/prod_ext_carry__0_i_20__23/O
+                         net (fo=3, unplaced)         0.365     3.294    u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane1/ker_flat_s8x9[26][2]
+                         LUT5 (Prop_lut5_I3_O)        0.105     3.399 r  u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane1/prod_ext_carry__0_i_3__23/O
+                         net (fo=1, unplaced)         0.537     3.936    u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane1/csa2_sum__11[8]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.466     4.402 r  u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane1/prod_ext_carry__0/O[2]
+                         net (fo=4, unplaced)         0.608     5.010    u_booth_simd/u_conv/prod_blk0[3]_12[25]
+                         LUT3 (Prop_lut3_I0_O)        0.244     5.254 r  u_booth_simd/u_conv/i__carry_i_72/O
+                         net (fo=1, unplaced)         0.537     5.791    u_booth_simd/u_conv/i__carry_i_72_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430     6.221 r  u_booth_simd/u_conv/i__carry_i_31/CO[3]
+                         net (fo=1, unplaced)         0.000     6.221    u_booth_simd/u_conv/i__carry_i_31_n_0
+                         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.189     6.410 r  u_booth_simd/u_conv/i__carry_i_28/O[0]
+                         net (fo=3, unplaced)         0.617     7.027    u_booth_simd/u_conv/i__carry_i_28_n_7
+                         LUT3 (Prop_lut3_I0_O)        0.238     7.265 r  u_booth_simd/u_conv/i__carry_i_13/O
+                         net (fo=1, unplaced)         0.537     7.802    u_booth_simd/u_conv/i__carry_i_13_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430     8.232 r  u_booth_simd/u_conv/i__carry_i_9/CO[3]
+                         net (fo=1, unplaced)         0.000     8.232    u_booth_simd/u_conv/i__carry_i_9_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.277     8.509 f  u_booth_simd/u_conv/i__carry__0_i_5/O[3]
+                         net (fo=26, unplaced)        0.585     9.094    u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane1/conv1[8]
+                         LUT2 (Prop_lut2_I1_O)        0.251     9.345 r  u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane1/i__carry__0_i_1__3/O
+                         net (fo=1, unplaced)         0.000     9.345    u_booth_simd/u_relu_blk0/out_flat_u8x4[5]_i_11_0[1]
+                         CARRY4 (Prop_carry4_DI[1]_CO[1])
+                                                      0.416     9.761 r  u_booth_simd/u_relu_blk0/relu_clip_lane1_inferred__1/i__carry__0/CO[1]
+                         net (fo=24, unplaced)        0.304    10.065    u_booth_simd/u_relu_blk0/i__carry__0_i_4[0]
+                         LUT3 (Prop_lut3_I1_O)        0.277    10.342 r  u_booth_simd/u_relu_blk0/out_flat_u8x4[1]_i_9/O
+                         net (fo=1, unplaced)         0.537    10.879    u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane1/b_u8x4[1]
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430    11.309 r  u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane1/out_flat_u8x4_reg[1]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.008    11.317    u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane1/out_flat_u8x4_reg[1]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269    11.586 r  u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane1/out_flat_u8x4_reg[5]_i_2/O[1]
+                         net (fo=2, unplaced)         0.483    12.069    u_booth_simd/u_pool0/out_flat_u8x4_reg[5][1]
+                         LUT2 (Prop_lut2_I0_O)        0.245    12.314 r  u_booth_simd/u_pool0/out_flat_u8x4[5]_i_5/O
+                         net (fo=1, unplaced)         0.000    12.314    u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane1/out_flat_u8x4_reg[5]_0[1]
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.444    12.758 r  u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane1/out_flat_u8x4_reg[5]_i_1/CO[3]
+                         net (fo=1, unplaced)         0.000    12.758    u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane1/out_flat_u8x4_reg[5]_i_1_n_0
+                         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.189    12.947 r  u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane1/out_flat_u8x4_reg[7]_i_1/O[0]
+                         net (fo=1, unplaced)         0.000    12.947    u_booth_simd/u_conv_n_169
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[6]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        5.000     5.000 r  
+                                                      0.000     5.000 r  clk (IN)
+                         net (fo=0)                   0.000     5.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.751     5.751 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.613     6.365    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.077     6.442 r  clk_IBUF_BUFG_inst/O
+                         net (fo=33, unplaced)        0.439     6.881    u_booth_simd/CLK
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[6]/C
+                         clock pessimism              0.000     6.881    
+                         clock uncertainty           -0.035     6.845    
+                         FDCE (Setup_fdce_C_D)        0.072     6.917    u_booth_simd/out_flat_u8x4_reg[6]
+  -------------------------------------------------------------------
+                         required time                          6.917    
+                         arrival time                         -12.947    
+  -------------------------------------------------------------------
+                         slack                                 -6.029    
+
+Slack (VIOLATED) :        -6.003ns  (required time - arrival time)
+  Source:                 img_flat_u8x25[61]
+                            (input port clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            u_booth_simd/out_flat_u8x4_reg[15]/D
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            5.000ns  (clk rise@5.000ns - clk rise@0.000ns)
+  Data Path Delay:        12.909ns  (logic 6.058ns (46.931%)  route 6.851ns (53.069%))
+  Logic Levels:           20  (CARRY4=10 IBUF=1 LUT2=2 LUT3=4 LUT5=1 LUT6=2)
+  Input Delay:            0.000ns
+  Clock Path Skew:        1.881ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.881ns = ( 6.881 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  img_flat_u8x25[61] (IN)
+                         net (fo=0)                   0.000     0.000    img_flat_u8x25[61]
+                         IBUF (Prop_ibuf_I_O)         0.882     0.882 r  img_flat_u8x25_IBUF[61]_inst/O
+                         net (fo=50, unplaced)        0.646     1.528    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/img_flat_u8x25_IBUF[5]
+                         LUT6 (Prop_lut6_I5_O)        0.105     1.633 f  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/prod_ext_carry__0_i_28__68/O
+                         net (fo=62, unplaced)        0.435     2.068    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/img_flat_u8x25[60]
+                         LUT3 (Prop_lut3_I2_O)        0.105     2.173 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/prod_ext_carry__1_i_9__60/O
+                         net (fo=66, unplaced)        0.671     2.844    u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane2/data2_1[3]
+                         LUT6 (Prop_lut6_I1_O)        0.105     2.949 r  u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane2/prod_ext_carry__0_i_20__22/O
+                         net (fo=3, unplaced)         0.365     3.314    u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane2/ker_flat_s8x9[26][2]
+                         LUT5 (Prop_lut5_I3_O)        0.105     3.419 r  u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane2/prod_ext_carry__0_i_3__22/O
+                         net (fo=1, unplaced)         0.537     3.956    u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane2/csa2_sum__11[8]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.466     4.422 r  u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane2/prod_ext_carry__0/O[2]
+                         net (fo=4, unplaced)         0.608     5.030    u_booth_simd/u_conv/prod_blk0[3]_12[41]
+                         LUT3 (Prop_lut3_I0_O)        0.244     5.274 r  u_booth_simd/u_conv/i__carry_i_72__0/O
+                         net (fo=1, unplaced)         0.537     5.811    u_booth_simd/u_conv/i__carry_i_72__0_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430     6.241 r  u_booth_simd/u_conv/i__carry_i_31__0/CO[3]
+                         net (fo=1, unplaced)         0.000     6.241    u_booth_simd/u_conv/i__carry_i_31__0_n_0
+                         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.189     6.430 r  u_booth_simd/u_conv/i__carry_i_28__0/O[0]
+                         net (fo=3, unplaced)         0.617     7.047    u_booth_simd/u_conv/i__carry_i_28__0_n_7
+                         LUT3 (Prop_lut3_I0_O)        0.238     7.285 r  u_booth_simd/u_conv/i__carry_i_13__0/O
+                         net (fo=1, unplaced)         0.537     7.822    u_booth_simd/u_conv/i__carry_i_13__0_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430     8.252 r  u_booth_simd/u_conv/i__carry_i_9__0/CO[3]
+                         net (fo=1, unplaced)         0.000     8.252    u_booth_simd/u_conv/i__carry_i_9__0_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.277     8.529 f  u_booth_simd/u_conv/i__carry__0_i_5__0/O[3]
+                         net (fo=18, unplaced)        0.576     9.105    u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane2/conv2[0]
+                         LUT2 (Prop_lut2_I1_O)        0.251     9.356 r  u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane2/i__carry__0_i_1__4/O
+                         net (fo=1, unplaced)         0.000     9.356    u_booth_simd/u_relu_blk0/out_flat_u8x4[13]_i_11[1]
+                         CARRY4 (Prop_carry4_DI[1]_CO[1])
+                                                      0.416     9.772 r  u_booth_simd/u_relu_blk0/relu_clip_lane1_inferred__3/i__carry__0/CO[1]
+                         net (fo=16, unplaced)        0.294    10.066    u_booth_simd/u_relu_blk0/i__carry__0_i_4__0[0]
+                         LUT3 (Prop_lut3_I1_O)        0.277    10.343 r  u_booth_simd/u_relu_blk0/out_flat_u8x4[9]_i_9/O
+                         net (fo=1, unplaced)         0.537    10.880    u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane2/a_u8x4[1]
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430    11.310 r  u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane2/out_flat_u8x4_reg[9]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.008    11.318    u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane2/out_flat_u8x4_reg[9]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269    11.587 r  u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane2/out_flat_u8x4_reg[13]_i_2/O[1]
+                         net (fo=2, unplaced)         0.483    12.070    u_booth_simd/u_pool1/out_flat_u8x4_reg[13][1]
+                         LUT2 (Prop_lut2_I0_O)        0.245    12.315 r  u_booth_simd/u_pool1/out_flat_u8x4[13]_i_5/O
+                         net (fo=1, unplaced)         0.000    12.315    u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane2/out_flat_u8x4_reg[13]_0[1]
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.444    12.759 r  u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane2/out_flat_u8x4_reg[13]_i_1/CO[3]
+                         net (fo=1, unplaced)         0.000    12.759    u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane2/out_flat_u8x4_reg[13]_i_1_n_0
+                         CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.150    12.909 r  u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane2/out_flat_u8x4_reg[15]_i_1/CO[1]
+                         net (fo=1, unplaced)         0.000    12.909    u_booth_simd/u_conv_n_160
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[15]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        5.000     5.000 r  
+                                                      0.000     5.000 r  clk (IN)
+                         net (fo=0)                   0.000     5.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.751     5.751 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.613     6.365    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.077     6.442 r  clk_IBUF_BUFG_inst/O
+                         net (fo=33, unplaced)        0.439     6.881    u_booth_simd/CLK
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[15]/C
+                         clock pessimism              0.000     6.881    
+                         clock uncertainty           -0.035     6.845    
+                         FDCE (Setup_fdce_C_D)        0.060     6.905    u_booth_simd/out_flat_u8x4_reg[15]
+  -------------------------------------------------------------------
+                         required time                          6.905    
+                         arrival time                         -12.909    
+  -------------------------------------------------------------------
+                         slack                                 -6.003    
+
+Slack (VIOLATED) :        -6.002ns  (required time - arrival time)
+  Source:                 img_flat_u8x25[53]
+                            (input port clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            u_booth_simd/out_flat_u8x4_reg[7]/D
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            5.000ns  (clk rise@5.000ns - clk rise@0.000ns)
+  Data Path Delay:        12.908ns  (logic 6.058ns (46.934%)  route 6.850ns (53.066%))
+  Logic Levels:           20  (CARRY4=10 IBUF=1 LUT2=2 LUT3=4 LUT5=1 LUT6=2)
+  Input Delay:            0.000ns
+  Clock Path Skew:        1.881ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.881ns = ( 6.881 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  img_flat_u8x25[53] (IN)
+                         net (fo=0)                   0.000     0.000    img_flat_u8x25[53]
+                         IBUF (Prop_ibuf_I_O)         0.882     0.882 r  img_flat_u8x25_IBUF[53]_inst/O
+                         net (fo=34, unplaced)        0.646     1.528    u_booth_simd/u_conv/gen_blk0_mul[4].gen_blk0_booth.u_mul/u_lane0/img_flat_u8x25_IBUF[5]
+                         LUT6 (Prop_lut6_I5_O)        0.105     1.633 f  u_booth_simd/u_conv/gen_blk0_mul[4].gen_blk0_booth.u_mul/u_lane0/prod_ext_carry__0_i_28__71/O
+                         net (fo=42, unplaced)        0.425     2.058    u_booth_simd/u_conv/gen_blk0_mul[4].gen_blk0_booth.u_mul/u_lane0/img_flat_u8x25[52]
+                         LUT3 (Prop_lut3_I2_O)        0.105     2.163 r  u_booth_simd/u_conv/gen_blk0_mul[4].gen_blk0_booth.u_mul/u_lane0/prod_ext_carry__1_i_9__71/O
+                         net (fo=44, unplaced)        0.661     2.824    u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane1/data2_0[3]
+                         LUT6 (Prop_lut6_I1_O)        0.105     2.929 r  u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane1/prod_ext_carry__0_i_20__23/O
+                         net (fo=3, unplaced)         0.365     3.294    u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane1/ker_flat_s8x9[26][2]
+                         LUT5 (Prop_lut5_I3_O)        0.105     3.399 r  u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane1/prod_ext_carry__0_i_3__23/O
+                         net (fo=1, unplaced)         0.537     3.936    u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane1/csa2_sum__11[8]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.466     4.402 r  u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane1/prod_ext_carry__0/O[2]
+                         net (fo=4, unplaced)         0.608     5.010    u_booth_simd/u_conv/prod_blk0[3]_12[25]
+                         LUT3 (Prop_lut3_I0_O)        0.244     5.254 r  u_booth_simd/u_conv/i__carry_i_72/O
+                         net (fo=1, unplaced)         0.537     5.791    u_booth_simd/u_conv/i__carry_i_72_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430     6.221 r  u_booth_simd/u_conv/i__carry_i_31/CO[3]
+                         net (fo=1, unplaced)         0.000     6.221    u_booth_simd/u_conv/i__carry_i_31_n_0
+                         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.189     6.410 r  u_booth_simd/u_conv/i__carry_i_28/O[0]
+                         net (fo=3, unplaced)         0.617     7.027    u_booth_simd/u_conv/i__carry_i_28_n_7
+                         LUT3 (Prop_lut3_I0_O)        0.238     7.265 r  u_booth_simd/u_conv/i__carry_i_13/O
+                         net (fo=1, unplaced)         0.537     7.802    u_booth_simd/u_conv/i__carry_i_13_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430     8.232 r  u_booth_simd/u_conv/i__carry_i_9/CO[3]
+                         net (fo=1, unplaced)         0.000     8.232    u_booth_simd/u_conv/i__carry_i_9_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.277     8.509 f  u_booth_simd/u_conv/i__carry__0_i_5/O[3]
+                         net (fo=26, unplaced)        0.585     9.094    u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane1/conv1[8]
+                         LUT2 (Prop_lut2_I1_O)        0.251     9.345 r  u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane1/i__carry__0_i_1__3/O
+                         net (fo=1, unplaced)         0.000     9.345    u_booth_simd/u_relu_blk0/out_flat_u8x4[5]_i_11_0[1]
+                         CARRY4 (Prop_carry4_DI[1]_CO[1])
+                                                      0.416     9.761 r  u_booth_simd/u_relu_blk0/relu_clip_lane1_inferred__1/i__carry__0/CO[1]
+                         net (fo=24, unplaced)        0.304    10.065    u_booth_simd/u_relu_blk0/i__carry__0_i_4[0]
+                         LUT3 (Prop_lut3_I1_O)        0.277    10.342 r  u_booth_simd/u_relu_blk0/out_flat_u8x4[1]_i_9/O
+                         net (fo=1, unplaced)         0.537    10.879    u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane1/b_u8x4[1]
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430    11.309 r  u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane1/out_flat_u8x4_reg[1]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.008    11.317    u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane1/out_flat_u8x4_reg[1]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269    11.586 r  u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane1/out_flat_u8x4_reg[5]_i_2/O[1]
+                         net (fo=2, unplaced)         0.483    12.069    u_booth_simd/u_pool0/out_flat_u8x4_reg[5][1]
+                         LUT2 (Prop_lut2_I0_O)        0.245    12.314 r  u_booth_simd/u_pool0/out_flat_u8x4[5]_i_5/O
+                         net (fo=1, unplaced)         0.000    12.314    u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane1/out_flat_u8x4_reg[5]_0[1]
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.444    12.758 r  u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane1/out_flat_u8x4_reg[5]_i_1/CO[3]
+                         net (fo=1, unplaced)         0.000    12.758    u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane1/out_flat_u8x4_reg[5]_i_1_n_0
+                         CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.150    12.908 r  u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane1/out_flat_u8x4_reg[7]_i_1/CO[1]
+                         net (fo=1, unplaced)         0.000    12.908    u_booth_simd/u_conv_n_168
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[7]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        5.000     5.000 r  
+                                                      0.000     5.000 r  clk (IN)
+                         net (fo=0)                   0.000     5.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.751     5.751 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.613     6.365    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.077     6.442 r  clk_IBUF_BUFG_inst/O
+                         net (fo=33, unplaced)        0.439     6.881    u_booth_simd/CLK
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[7]/C
+                         clock pessimism              0.000     6.881    
+                         clock uncertainty           -0.035     6.845    
+                         FDCE (Setup_fdce_C_D)        0.060     6.905    u_booth_simd/out_flat_u8x4_reg[7]
+  -------------------------------------------------------------------
+                         required time                          6.905    
+                         arrival time                         -12.908    
+  -------------------------------------------------------------------
+                         slack                                 -6.002    
+
+Slack (VIOLATED) :        -5.987ns  (required time - arrival time)
+  Source:                 img_flat_u8x25[61]
+                            (input port clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            u_booth_simd/out_flat_u8x4_reg[22]/D
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            5.000ns  (clk rise@5.000ns - clk rise@0.000ns)
+  Data Path Delay:        12.905ns  (logic 6.143ns (47.604%)  route 6.762ns (52.396%))
+  Logic Levels:           20  (CARRY4=10 IBUF=1 LUT2=2 LUT3=4 LUT5=1 LUT6=2)
+  Input Delay:            0.000ns
+  Clock Path Skew:        1.881ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.881ns = ( 6.881 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  img_flat_u8x25[61] (IN)
+                         net (fo=0)                   0.000     0.000    img_flat_u8x25[61]
+                         IBUF (Prop_ibuf_I_O)         0.882     0.882 r  img_flat_u8x25_IBUF[61]_inst/O
+                         net (fo=50, unplaced)        0.646     1.528    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/img_flat_u8x25_IBUF[5]
+                         LUT6 (Prop_lut6_I5_O)        0.105     1.633 f  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/prod_ext_carry__0_i_28__68/O
+                         net (fo=62, unplaced)        0.435     2.068    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/img_flat_u8x25[60]
+                         LUT3 (Prop_lut3_I2_O)        0.105     2.173 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/prod_ext_carry__1_i_9__60/O
+                         net (fo=66, unplaced)        0.671     2.844    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/img_flat_u8x25[63]
+                         LUT6 (Prop_lut6_I1_O)        0.105     2.949 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/prod_ext_carry__0_i_20__72/O
+                         net (fo=3, unplaced)         0.365     3.314    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/ker_flat_s8x9[10][2]
+                         LUT5 (Prop_lut5_I3_O)        0.105     3.419 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/prod_ext_carry__0_i_3__72/O
+                         net (fo=1, unplaced)         0.537     3.956    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/csa2_sum__11[8]
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430     4.386 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/prod_ext_carry__0/CO[3]
+                         net (fo=1, unplaced)         0.000     4.386    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/prod_ext_carry__0_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269     4.655 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/prod_ext_carry__1/O[1]
+                         net (fo=3, unplaced)         0.493     5.148    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/prod_ext_carry__2_i_1__72[8]
+                         LUT3 (Prop_lut3_I0_O)        0.245     5.393 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/conv4__142_i_3/O
+                         net (fo=1, unplaced)         0.537     5.930    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul_n_89
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430     6.360 r  u_booth_simd/u_conv/conv4__142/CO[3]
+                         net (fo=1, unplaced)         0.000     6.360    u_booth_simd/u_conv/conv4__142_n_0
+                         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.189     6.549 r  u_booth_simd/u_conv/conv4__143/O[0]
+                         net (fo=3, unplaced)         0.617     7.166    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/O[0]
+                         LUT3 (Prop_lut3_I0_O)        0.238     7.404 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/conv4__148_i_2/O
+                         net (fo=1, unplaced)         0.537     7.941    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul_n_93
+                         CARRY4 (Prop_carry4_DI[1]_O[3])
+                                                      0.519     8.460 f  u_booth_simd/u_conv/conv4__148/O[3]
+                         net (fo=26, unplaced)        0.585     9.045    u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane0/out_flat_u8x4_reg[29]_i_2[0]
+                         LUT2 (Prop_lut2_I1_O)        0.251     9.296 r  u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane0/relu_clip_lane1_carry__0_i_1__0/O
+                         net (fo=1, unplaced)         0.000     9.296    u_booth_simd/u_relu_blk1/out_flat_u8x4[21]_i_11[1]
+                         CARRY4 (Prop_carry4_DI[1]_CO[1])
+                                                      0.416     9.712 r  u_booth_simd/u_relu_blk1/relu_clip_lane1_carry__0/CO[1]
+                         net (fo=24, unplaced)        0.304    10.016    u_booth_simd/u_relu_blk1/relu_clip_lane1_carry__0_i_4__0[0]
+                         LUT3 (Prop_lut3_I1_O)        0.277    10.293 r  u_booth_simd/u_relu_blk1/out_flat_u8x4[17]_i_9/O
+                         net (fo=1, unplaced)         0.537    10.830    u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane0/out_flat_u8x4_reg[17][1]
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430    11.260 r  u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane0/out_flat_u8x4_reg[17]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.008    11.268    u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane0/out_flat_u8x4_reg[17]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269    11.537 r  u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane0/out_flat_u8x4_reg[21]_i_2/O[1]
+                         net (fo=3, unplaced)         0.490    12.027    u_booth_simd/u_pool2/out_flat_u8x4_reg[21][1]
+                         LUT2 (Prop_lut2_I0_O)        0.245    12.272 r  u_booth_simd/u_pool2/out_flat_u8x4[21]_i_5/O
+                         net (fo=1, unplaced)         0.000    12.272    u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane0/out_flat_u8x4_reg[21]_1[1]
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.444    12.716 r  u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane0/out_flat_u8x4_reg[21]_i_1/CO[3]
+                         net (fo=1, unplaced)         0.000    12.716    u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane0/out_flat_u8x4_reg[21]_i_1_n_0
+                         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.189    12.905 r  u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane0/out_flat_u8x4_reg[23]_i_1/O[0]
+                         net (fo=1, unplaced)         0.000    12.905    u_booth_simd/u_conv_n_153
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[22]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        5.000     5.000 r  
+                                                      0.000     5.000 r  clk (IN)
+                         net (fo=0)                   0.000     5.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.751     5.751 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.613     6.365    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.077     6.442 r  clk_IBUF_BUFG_inst/O
+                         net (fo=33, unplaced)        0.439     6.881    u_booth_simd/CLK
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[22]/C
+                         clock pessimism              0.000     6.881    
+                         clock uncertainty           -0.035     6.845    
+                         FDCE (Setup_fdce_C_D)        0.072     6.917    u_booth_simd/out_flat_u8x4_reg[22]
+  -------------------------------------------------------------------
+                         required time                          6.917    
+                         arrival time                         -12.905    
+  -------------------------------------------------------------------
+                         slack                                 -5.987    
+
+Slack (VIOLATED) :        -5.960ns  (required time - arrival time)
+  Source:                 img_flat_u8x25[61]
+                            (input port clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            u_booth_simd/out_flat_u8x4_reg[23]/D
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            5.000ns  (clk rise@5.000ns - clk rise@0.000ns)
+  Data Path Delay:        12.866ns  (logic 6.104ns (47.445%)  route 6.762ns (52.555%))
+  Logic Levels:           20  (CARRY4=10 IBUF=1 LUT2=2 LUT3=4 LUT5=1 LUT6=2)
+  Input Delay:            0.000ns
+  Clock Path Skew:        1.881ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.881ns = ( 6.881 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  img_flat_u8x25[61] (IN)
+                         net (fo=0)                   0.000     0.000    img_flat_u8x25[61]
+                         IBUF (Prop_ibuf_I_O)         0.882     0.882 r  img_flat_u8x25_IBUF[61]_inst/O
+                         net (fo=50, unplaced)        0.646     1.528    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/img_flat_u8x25_IBUF[5]
+                         LUT6 (Prop_lut6_I5_O)        0.105     1.633 f  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/prod_ext_carry__0_i_28__68/O
+                         net (fo=62, unplaced)        0.435     2.068    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/img_flat_u8x25[60]
+                         LUT3 (Prop_lut3_I2_O)        0.105     2.173 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/prod_ext_carry__1_i_9__60/O
+                         net (fo=66, unplaced)        0.671     2.844    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/img_flat_u8x25[63]
+                         LUT6 (Prop_lut6_I1_O)        0.105     2.949 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/prod_ext_carry__0_i_20__72/O
+                         net (fo=3, unplaced)         0.365     3.314    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/ker_flat_s8x9[10][2]
+                         LUT5 (Prop_lut5_I3_O)        0.105     3.419 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/prod_ext_carry__0_i_3__72/O
+                         net (fo=1, unplaced)         0.537     3.956    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/csa2_sum__11[8]
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430     4.386 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/prod_ext_carry__0/CO[3]
+                         net (fo=1, unplaced)         0.000     4.386    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/prod_ext_carry__0_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269     4.655 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/prod_ext_carry__1/O[1]
+                         net (fo=3, unplaced)         0.493     5.148    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/prod_ext_carry__2_i_1__72[8]
+                         LUT3 (Prop_lut3_I0_O)        0.245     5.393 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/conv4__142_i_3/O
+                         net (fo=1, unplaced)         0.537     5.930    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul_n_89
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430     6.360 r  u_booth_simd/u_conv/conv4__142/CO[3]
+                         net (fo=1, unplaced)         0.000     6.360    u_booth_simd/u_conv/conv4__142_n_0
+                         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.189     6.549 r  u_booth_simd/u_conv/conv4__143/O[0]
+                         net (fo=3, unplaced)         0.617     7.166    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/O[0]
+                         LUT3 (Prop_lut3_I0_O)        0.238     7.404 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/conv4__148_i_2/O
+                         net (fo=1, unplaced)         0.537     7.941    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul_n_93
+                         CARRY4 (Prop_carry4_DI[1]_O[3])
+                                                      0.519     8.460 f  u_booth_simd/u_conv/conv4__148/O[3]
+                         net (fo=26, unplaced)        0.585     9.045    u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane0/out_flat_u8x4_reg[29]_i_2[0]
+                         LUT2 (Prop_lut2_I1_O)        0.251     9.296 r  u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane0/relu_clip_lane1_carry__0_i_1__0/O
+                         net (fo=1, unplaced)         0.000     9.296    u_booth_simd/u_relu_blk1/out_flat_u8x4[21]_i_11[1]
+                         CARRY4 (Prop_carry4_DI[1]_CO[1])
+                                                      0.416     9.712 r  u_booth_simd/u_relu_blk1/relu_clip_lane1_carry__0/CO[1]
+                         net (fo=24, unplaced)        0.304    10.016    u_booth_simd/u_relu_blk1/relu_clip_lane1_carry__0_i_4__0[0]
+                         LUT3 (Prop_lut3_I1_O)        0.277    10.293 r  u_booth_simd/u_relu_blk1/out_flat_u8x4[17]_i_9/O
+                         net (fo=1, unplaced)         0.537    10.830    u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane0/out_flat_u8x4_reg[17][1]
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430    11.260 r  u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane0/out_flat_u8x4_reg[17]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.008    11.268    u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane0/out_flat_u8x4_reg[17]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269    11.537 r  u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane0/out_flat_u8x4_reg[21]_i_2/O[1]
+                         net (fo=3, unplaced)         0.490    12.027    u_booth_simd/u_pool2/out_flat_u8x4_reg[21][1]
+                         LUT2 (Prop_lut2_I0_O)        0.245    12.272 r  u_booth_simd/u_pool2/out_flat_u8x4[21]_i_5/O
+                         net (fo=1, unplaced)         0.000    12.272    u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane0/out_flat_u8x4_reg[21]_1[1]
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.444    12.716 r  u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane0/out_flat_u8x4_reg[21]_i_1/CO[3]
+                         net (fo=1, unplaced)         0.000    12.716    u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane0/out_flat_u8x4_reg[21]_i_1_n_0
+                         CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.150    12.866 r  u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane0/out_flat_u8x4_reg[23]_i_1/CO[1]
+                         net (fo=1, unplaced)         0.000    12.866    u_booth_simd/u_conv_n_152
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[23]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        5.000     5.000 r  
+                                                      0.000     5.000 r  clk (IN)
+                         net (fo=0)                   0.000     5.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.751     5.751 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.613     6.365    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.077     6.442 r  clk_IBUF_BUFG_inst/O
+                         net (fo=33, unplaced)        0.439     6.881    u_booth_simd/CLK
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[23]/C
+                         clock pessimism              0.000     6.881    
+                         clock uncertainty           -0.035     6.845    
+                         FDCE (Setup_fdce_C_D)        0.060     6.905    u_booth_simd/out_flat_u8x4_reg[23]
+  -------------------------------------------------------------------
+                         required time                          6.905    
+                         arrival time                         -12.866    
+  -------------------------------------------------------------------
+                         slack                                 -5.960    
+
+Slack (VIOLATED) :        -5.948ns  (required time - arrival time)
+  Source:                 img_flat_u8x25[69]
+                            (input port clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            u_booth_simd/out_flat_u8x4_reg[30]/D
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            5.000ns  (clk rise@5.000ns - clk rise@0.000ns)
+  Data Path Delay:        12.866ns  (logic 6.143ns (47.748%)  route 6.723ns (52.252%))
+  Logic Levels:           20  (CARRY4=10 IBUF=1 LUT2=2 LUT3=4 LUT5=1 LUT6=2)
+  Input Delay:            0.000ns
+  Clock Path Skew:        1.881ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.881ns = ( 6.881 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  img_flat_u8x25[69] (IN)
+                         net (fo=0)                   0.000     0.000    img_flat_u8x25[69]
+                         IBUF (Prop_ibuf_I_O)         0.882     0.882 r  img_flat_u8x25_IBUF[69]_inst/O
+                         net (fo=34, unplaced)        0.646     1.528    u_booth_simd/u_conv/gen_blk1_mul[2].gen_blk1_booth.u_mul/u_lane0/img_flat_u8x25_IBUF[5]
+                         LUT6 (Prop_lut6_I5_O)        0.105     1.633 f  u_booth_simd/u_conv/gen_blk1_mul[2].gen_blk1_booth.u_mul/u_lane0/prod_ext_carry__0_i_28__65/O
+                         net (fo=42, unplaced)        0.425     2.058    u_booth_simd/u_conv/gen_blk1_mul[2].gen_blk1_booth.u_mul/u_lane0/img_flat_u8x25[68]
+                         LUT3 (Prop_lut3_I2_O)        0.105     2.163 r  u_booth_simd/u_conv/gen_blk1_mul[2].gen_blk1_booth.u_mul/u_lane0/prod_ext_carry__1_i_9__57/O
+                         net (fo=44, unplaced)        0.661     2.824    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane1/data2_2[3]
+                         LUT6 (Prop_lut6_I1_O)        0.105     2.929 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane1/prod_ext_carry__0_i_20__75/O
+                         net (fo=3, unplaced)         0.365     3.294    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane1/ker_flat_s8x9[10][2]
+                         LUT5 (Prop_lut5_I3_O)        0.105     3.399 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane1/prod_ext_carry__0_i_3__75/O
+                         net (fo=1, unplaced)         0.537     3.936    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane1/csa2_sum__11[8]
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430     4.366 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane1/prod_ext_carry__0/CO[3]
+                         net (fo=1, unplaced)         0.000     4.366    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane1/prod_ext_carry__0_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269     4.635 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane1/prod_ext_carry__1/O[1]
+                         net (fo=3, unplaced)         0.493     5.128    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane1/prod_ext_carry__2_i_1__73[8]
+                         LUT3 (Prop_lut3_I0_O)        0.245     5.373 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane1/conv5__142_i_3/O
+                         net (fo=1, unplaced)         0.537     5.910    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul_n_99
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430     6.340 r  u_booth_simd/u_conv/conv5__142/CO[3]
+                         net (fo=1, unplaced)         0.000     6.340    u_booth_simd/u_conv/conv5__142_n_0
+                         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.189     6.529 r  u_booth_simd/u_conv/conv5__143/O[0]
+                         net (fo=3, unplaced)         0.617     7.146    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane1/conv5__148[0]
+                         LUT3 (Prop_lut3_I0_O)        0.238     7.384 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane1/conv5__148_i_2/O
+                         net (fo=1, unplaced)         0.537     7.921    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul_n_103
+                         CARRY4 (Prop_carry4_DI[1]_O[3])
+                                                      0.519     8.440 f  u_booth_simd/u_conv/conv5__148/O[3]
+                         net (fo=18, unplaced)        0.576     9.016    u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane1/relu_clip_lane1_inferred__1/i__carry__0[0]
+                         LUT2 (Prop_lut2_I1_O)        0.251     9.267 r  u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane1/i__carry__0_i_1__0/O
+                         net (fo=1, unplaced)         0.000     9.267    u_booth_simd/u_relu_blk1/out_flat_u8x4[29]_i_11[1]
+                         CARRY4 (Prop_carry4_DI[1]_CO[1])
+                                                      0.416     9.683 r  u_booth_simd/u_relu_blk1/relu_clip_lane1_inferred__1/i__carry__0/CO[1]
+                         net (fo=16, unplaced)        0.294     9.977    u_booth_simd/u_relu_blk1/CO[0]
+                         LUT3 (Prop_lut3_I1_O)        0.277    10.254 r  u_booth_simd/u_relu_blk1/out_flat_u8x4[25]_i_9/O
+                         net (fo=1, unplaced)         0.537    10.791    u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane1/out_flat_u8x4_reg[25][1]
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430    11.221 r  u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane1/out_flat_u8x4_reg[25]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.008    11.229    u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane1/out_flat_u8x4_reg[25]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269    11.498 r  u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane1/out_flat_u8x4_reg[29]_i_2/O[1]
+                         net (fo=3, unplaced)         0.490    11.988    u_booth_simd/u_pool3/p_1_in[5]
+                         LUT2 (Prop_lut2_I0_O)        0.245    12.233 r  u_booth_simd/u_pool3/out_flat_u8x4[29]_i_5/O
+                         net (fo=1, unplaced)         0.000    12.233    u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane1/out_flat_u8x4_reg[29]_1[1]
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.444    12.677 r  u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane1/out_flat_u8x4_reg[29]_i_1/CO[3]
+                         net (fo=1, unplaced)         0.000    12.677    u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane1/out_flat_u8x4_reg[29]_i_1_n_0
+                         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.189    12.866 r  u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane1/out_flat_u8x4_reg[31]_i_1/O[0]
+                         net (fo=1, unplaced)         0.000    12.866    u_booth_simd/pool_sum_u10[8]
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[30]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        5.000     5.000 r  
+                                                      0.000     5.000 r  clk (IN)
+                         net (fo=0)                   0.000     5.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.751     5.751 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.613     6.365    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.077     6.442 r  clk_IBUF_BUFG_inst/O
+                         net (fo=33, unplaced)        0.439     6.881    u_booth_simd/CLK
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[30]/C
+                         clock pessimism              0.000     6.881    
+                         clock uncertainty           -0.035     6.845    
+                         FDCE (Setup_fdce_C_D)        0.072     6.917    u_booth_simd/out_flat_u8x4_reg[30]
+  -------------------------------------------------------------------
+                         required time                          6.917    
+                         arrival time                         -12.866    
+  -------------------------------------------------------------------
+                         slack                                 -5.948    
+
+Slack (VIOLATED) :        -5.931ns  (required time - arrival time)
+  Source:                 img_flat_u8x25[61]
+                            (input port clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            u_booth_simd/out_flat_u8x4_reg[13]/D
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            5.000ns  (clk rise@5.000ns - clk rise@0.000ns)
+  Data Path Delay:        12.849ns  (logic 5.998ns (46.683%)  route 6.851ns (53.317%))
+  Logic Levels:           19  (CARRY4=9 IBUF=1 LUT2=2 LUT3=4 LUT5=1 LUT6=2)
+  Input Delay:            0.000ns
+  Clock Path Skew:        1.881ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.881ns = ( 6.881 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  img_flat_u8x25[61] (IN)
+                         net (fo=0)                   0.000     0.000    img_flat_u8x25[61]
+                         IBUF (Prop_ibuf_I_O)         0.882     0.882 r  img_flat_u8x25_IBUF[61]_inst/O
+                         net (fo=50, unplaced)        0.646     1.528    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/img_flat_u8x25_IBUF[5]
+                         LUT6 (Prop_lut6_I5_O)        0.105     1.633 f  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/prod_ext_carry__0_i_28__68/O
+                         net (fo=62, unplaced)        0.435     2.068    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/img_flat_u8x25[60]
+                         LUT3 (Prop_lut3_I2_O)        0.105     2.173 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane0/prod_ext_carry__1_i_9__60/O
+                         net (fo=66, unplaced)        0.671     2.844    u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane2/data2_1[3]
+                         LUT6 (Prop_lut6_I1_O)        0.105     2.949 r  u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane2/prod_ext_carry__0_i_20__22/O
+                         net (fo=3, unplaced)         0.365     3.314    u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane2/ker_flat_s8x9[26][2]
+                         LUT5 (Prop_lut5_I3_O)        0.105     3.419 r  u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane2/prod_ext_carry__0_i_3__22/O
+                         net (fo=1, unplaced)         0.537     3.956    u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane2/csa2_sum__11[8]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.466     4.422 r  u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane2/prod_ext_carry__0/O[2]
+                         net (fo=4, unplaced)         0.608     5.030    u_booth_simd/u_conv/prod_blk0[3]_12[41]
+                         LUT3 (Prop_lut3_I0_O)        0.244     5.274 r  u_booth_simd/u_conv/i__carry_i_72__0/O
+                         net (fo=1, unplaced)         0.537     5.811    u_booth_simd/u_conv/i__carry_i_72__0_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430     6.241 r  u_booth_simd/u_conv/i__carry_i_31__0/CO[3]
+                         net (fo=1, unplaced)         0.000     6.241    u_booth_simd/u_conv/i__carry_i_31__0_n_0
+                         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.189     6.430 r  u_booth_simd/u_conv/i__carry_i_28__0/O[0]
+                         net (fo=3, unplaced)         0.617     7.047    u_booth_simd/u_conv/i__carry_i_28__0_n_7
+                         LUT3 (Prop_lut3_I0_O)        0.238     7.285 r  u_booth_simd/u_conv/i__carry_i_13__0/O
+                         net (fo=1, unplaced)         0.537     7.822    u_booth_simd/u_conv/i__carry_i_13__0_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430     8.252 r  u_booth_simd/u_conv/i__carry_i_9__0/CO[3]
+                         net (fo=1, unplaced)         0.000     8.252    u_booth_simd/u_conv/i__carry_i_9__0_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.277     8.529 f  u_booth_simd/u_conv/i__carry__0_i_5__0/O[3]
+                         net (fo=18, unplaced)        0.576     9.105    u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane2/conv2[0]
+                         LUT2 (Prop_lut2_I1_O)        0.251     9.356 r  u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane2/i__carry__0_i_1__4/O
+                         net (fo=1, unplaced)         0.000     9.356    u_booth_simd/u_relu_blk0/out_flat_u8x4[13]_i_11[1]
+                         CARRY4 (Prop_carry4_DI[1]_CO[1])
+                                                      0.416     9.772 r  u_booth_simd/u_relu_blk0/relu_clip_lane1_inferred__3/i__carry__0/CO[1]
+                         net (fo=16, unplaced)        0.294    10.066    u_booth_simd/u_relu_blk0/i__carry__0_i_4__0[0]
+                         LUT3 (Prop_lut3_I1_O)        0.277    10.343 r  u_booth_simd/u_relu_blk0/out_flat_u8x4[9]_i_9/O
+                         net (fo=1, unplaced)         0.537    10.880    u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane2/a_u8x4[1]
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430    11.310 r  u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane2/out_flat_u8x4_reg[9]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.008    11.318    u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane2/out_flat_u8x4_reg[9]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269    11.587 r  u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane2/out_flat_u8x4_reg[13]_i_2/O[1]
+                         net (fo=2, unplaced)         0.483    12.070    u_booth_simd/u_pool1/out_flat_u8x4_reg[13][1]
+                         LUT2 (Prop_lut2_I0_O)        0.245    12.315 r  u_booth_simd/u_pool1/out_flat_u8x4[13]_i_5/O
+                         net (fo=1, unplaced)         0.000    12.315    u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane2/out_flat_u8x4_reg[13]_0[1]
+                         CARRY4 (Prop_carry4_S[1]_O[3])
+                                                      0.534    12.849 r  u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane2/out_flat_u8x4_reg[13]_i_1/O[3]
+                         net (fo=1, unplaced)         0.000    12.849    u_booth_simd/u_conv_n_162
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[13]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        5.000     5.000 r  
+                                                      0.000     5.000 r  clk (IN)
+                         net (fo=0)                   0.000     5.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.751     5.751 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.613     6.365    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.077     6.442 r  clk_IBUF_BUFG_inst/O
+                         net (fo=33, unplaced)        0.439     6.881    u_booth_simd/CLK
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[13]/C
+                         clock pessimism              0.000     6.881    
+                         clock uncertainty           -0.035     6.845    
+                         FDCE (Setup_fdce_C_D)        0.072     6.917    u_booth_simd/out_flat_u8x4_reg[13]
+  -------------------------------------------------------------------
+                         required time                          6.917    
+                         arrival time                         -12.849    
+  -------------------------------------------------------------------
+                         slack                                 -5.931    
+
+Slack (VIOLATED) :        -5.930ns  (required time - arrival time)
+  Source:                 img_flat_u8x25[53]
+                            (input port clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            u_booth_simd/out_flat_u8x4_reg[5]/D
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            5.000ns  (clk rise@5.000ns - clk rise@0.000ns)
+  Data Path Delay:        12.848ns  (logic 5.998ns (46.686%)  route 6.850ns (53.314%))
+  Logic Levels:           19  (CARRY4=9 IBUF=1 LUT2=2 LUT3=4 LUT5=1 LUT6=2)
+  Input Delay:            0.000ns
+  Clock Path Skew:        1.881ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.881ns = ( 6.881 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  img_flat_u8x25[53] (IN)
+                         net (fo=0)                   0.000     0.000    img_flat_u8x25[53]
+                         IBUF (Prop_ibuf_I_O)         0.882     0.882 r  img_flat_u8x25_IBUF[53]_inst/O
+                         net (fo=34, unplaced)        0.646     1.528    u_booth_simd/u_conv/gen_blk0_mul[4].gen_blk0_booth.u_mul/u_lane0/img_flat_u8x25_IBUF[5]
+                         LUT6 (Prop_lut6_I5_O)        0.105     1.633 f  u_booth_simd/u_conv/gen_blk0_mul[4].gen_blk0_booth.u_mul/u_lane0/prod_ext_carry__0_i_28__71/O
+                         net (fo=42, unplaced)        0.425     2.058    u_booth_simd/u_conv/gen_blk0_mul[4].gen_blk0_booth.u_mul/u_lane0/img_flat_u8x25[52]
+                         LUT3 (Prop_lut3_I2_O)        0.105     2.163 r  u_booth_simd/u_conv/gen_blk0_mul[4].gen_blk0_booth.u_mul/u_lane0/prod_ext_carry__1_i_9__71/O
+                         net (fo=44, unplaced)        0.661     2.824    u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane1/data2_0[3]
+                         LUT6 (Prop_lut6_I1_O)        0.105     2.929 r  u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane1/prod_ext_carry__0_i_20__23/O
+                         net (fo=3, unplaced)         0.365     3.294    u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane1/ker_flat_s8x9[26][2]
+                         LUT5 (Prop_lut5_I3_O)        0.105     3.399 r  u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane1/prod_ext_carry__0_i_3__23/O
+                         net (fo=1, unplaced)         0.537     3.936    u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane1/csa2_sum__11[8]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.466     4.402 r  u_booth_simd/u_conv/gen_blk0_mul[3].gen_blk0_booth.u_mul/u_lane1/prod_ext_carry__0/O[2]
+                         net (fo=4, unplaced)         0.608     5.010    u_booth_simd/u_conv/prod_blk0[3]_12[25]
+                         LUT3 (Prop_lut3_I0_O)        0.244     5.254 r  u_booth_simd/u_conv/i__carry_i_72/O
+                         net (fo=1, unplaced)         0.537     5.791    u_booth_simd/u_conv/i__carry_i_72_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430     6.221 r  u_booth_simd/u_conv/i__carry_i_31/CO[3]
+                         net (fo=1, unplaced)         0.000     6.221    u_booth_simd/u_conv/i__carry_i_31_n_0
+                         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.189     6.410 r  u_booth_simd/u_conv/i__carry_i_28/O[0]
+                         net (fo=3, unplaced)         0.617     7.027    u_booth_simd/u_conv/i__carry_i_28_n_7
+                         LUT3 (Prop_lut3_I0_O)        0.238     7.265 r  u_booth_simd/u_conv/i__carry_i_13/O
+                         net (fo=1, unplaced)         0.537     7.802    u_booth_simd/u_conv/i__carry_i_13_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430     8.232 r  u_booth_simd/u_conv/i__carry_i_9/CO[3]
+                         net (fo=1, unplaced)         0.000     8.232    u_booth_simd/u_conv/i__carry_i_9_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.277     8.509 f  u_booth_simd/u_conv/i__carry__0_i_5/O[3]
+                         net (fo=26, unplaced)        0.585     9.094    u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane1/conv1[8]
+                         LUT2 (Prop_lut2_I1_O)        0.251     9.345 r  u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane1/i__carry__0_i_1__3/O
+                         net (fo=1, unplaced)         0.000     9.345    u_booth_simd/u_relu_blk0/out_flat_u8x4[5]_i_11_0[1]
+                         CARRY4 (Prop_carry4_DI[1]_CO[1])
+                                                      0.416     9.761 r  u_booth_simd/u_relu_blk0/relu_clip_lane1_inferred__1/i__carry__0/CO[1]
+                         net (fo=24, unplaced)        0.304    10.065    u_booth_simd/u_relu_blk0/i__carry__0_i_4[0]
+                         LUT3 (Prop_lut3_I1_O)        0.277    10.342 r  u_booth_simd/u_relu_blk0/out_flat_u8x4[1]_i_9/O
+                         net (fo=1, unplaced)         0.537    10.879    u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane1/b_u8x4[1]
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430    11.309 r  u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane1/out_flat_u8x4_reg[1]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.008    11.317    u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane1/out_flat_u8x4_reg[1]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269    11.586 r  u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane1/out_flat_u8x4_reg[5]_i_2/O[1]
+                         net (fo=2, unplaced)         0.483    12.069    u_booth_simd/u_pool0/out_flat_u8x4_reg[5][1]
+                         LUT2 (Prop_lut2_I0_O)        0.245    12.314 r  u_booth_simd/u_pool0/out_flat_u8x4[5]_i_5/O
+                         net (fo=1, unplaced)         0.000    12.314    u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane1/out_flat_u8x4_reg[5]_0[1]
+                         CARRY4 (Prop_carry4_S[1]_O[3])
+                                                      0.534    12.848 r  u_booth_simd/u_conv/gen_blk0_mul[7].gen_blk0_booth.u_mul/u_lane1/out_flat_u8x4_reg[5]_i_1/O[3]
+                         net (fo=1, unplaced)         0.000    12.848    u_booth_simd/u_conv_n_170
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[5]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        5.000     5.000 r  
+                                                      0.000     5.000 r  clk (IN)
+                         net (fo=0)                   0.000     5.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.751     5.751 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.613     6.365    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.077     6.442 r  clk_IBUF_BUFG_inst/O
+                         net (fo=33, unplaced)        0.439     6.881    u_booth_simd/CLK
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[5]/C
+                         clock pessimism              0.000     6.881    
+                         clock uncertainty           -0.035     6.845    
+                         FDCE (Setup_fdce_C_D)        0.072     6.917    u_booth_simd/out_flat_u8x4_reg[5]
+  -------------------------------------------------------------------
+                         required time                          6.917    
+                         arrival time                         -12.848    
+  -------------------------------------------------------------------
+                         slack                                 -5.930    
+
+Slack (VIOLATED) :        -5.921ns  (required time - arrival time)
+  Source:                 img_flat_u8x25[69]
+                            (input port clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            u_booth_simd/out_flat_u8x4_reg[31]/D
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            5.000ns  (clk rise@5.000ns - clk rise@0.000ns)
+  Data Path Delay:        12.827ns  (logic 6.104ns (47.589%)  route 6.723ns (52.411%))
+  Logic Levels:           20  (CARRY4=10 IBUF=1 LUT2=2 LUT3=4 LUT5=1 LUT6=2)
+  Input Delay:            0.000ns
+  Clock Path Skew:        1.881ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.881ns = ( 6.881 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  img_flat_u8x25[69] (IN)
+                         net (fo=0)                   0.000     0.000    img_flat_u8x25[69]
+                         IBUF (Prop_ibuf_I_O)         0.882     0.882 r  img_flat_u8x25_IBUF[69]_inst/O
+                         net (fo=34, unplaced)        0.646     1.528    u_booth_simd/u_conv/gen_blk1_mul[2].gen_blk1_booth.u_mul/u_lane0/img_flat_u8x25_IBUF[5]
+                         LUT6 (Prop_lut6_I5_O)        0.105     1.633 f  u_booth_simd/u_conv/gen_blk1_mul[2].gen_blk1_booth.u_mul/u_lane0/prod_ext_carry__0_i_28__65/O
+                         net (fo=42, unplaced)        0.425     2.058    u_booth_simd/u_conv/gen_blk1_mul[2].gen_blk1_booth.u_mul/u_lane0/img_flat_u8x25[68]
+                         LUT3 (Prop_lut3_I2_O)        0.105     2.163 r  u_booth_simd/u_conv/gen_blk1_mul[2].gen_blk1_booth.u_mul/u_lane0/prod_ext_carry__1_i_9__57/O
+                         net (fo=44, unplaced)        0.661     2.824    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane1/data2_2[3]
+                         LUT6 (Prop_lut6_I1_O)        0.105     2.929 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane1/prod_ext_carry__0_i_20__75/O
+                         net (fo=3, unplaced)         0.365     3.294    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane1/ker_flat_s8x9[10][2]
+                         LUT5 (Prop_lut5_I3_O)        0.105     3.399 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane1/prod_ext_carry__0_i_3__75/O
+                         net (fo=1, unplaced)         0.537     3.936    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane1/csa2_sum__11[8]
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430     4.366 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane1/prod_ext_carry__0/CO[3]
+                         net (fo=1, unplaced)         0.000     4.366    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane1/prod_ext_carry__0_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269     4.635 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane1/prod_ext_carry__1/O[1]
+                         net (fo=3, unplaced)         0.493     5.128    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane1/prod_ext_carry__2_i_1__73[8]
+                         LUT3 (Prop_lut3_I0_O)        0.245     5.373 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane1/conv5__142_i_3/O
+                         net (fo=1, unplaced)         0.537     5.910    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul_n_99
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430     6.340 r  u_booth_simd/u_conv/conv5__142/CO[3]
+                         net (fo=1, unplaced)         0.000     6.340    u_booth_simd/u_conv/conv5__142_n_0
+                         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.189     6.529 r  u_booth_simd/u_conv/conv5__143/O[0]
+                         net (fo=3, unplaced)         0.617     7.146    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane1/conv5__148[0]
+                         LUT3 (Prop_lut3_I0_O)        0.238     7.384 r  u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul/u_lane1/conv5__148_i_2/O
+                         net (fo=1, unplaced)         0.537     7.921    u_booth_simd/u_conv/gen_blk1_mul[1].gen_blk1_booth.u_mul_n_103
+                         CARRY4 (Prop_carry4_DI[1]_O[3])
+                                                      0.519     8.440 f  u_booth_simd/u_conv/conv5__148/O[3]
+                         net (fo=18, unplaced)        0.576     9.016    u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane1/relu_clip_lane1_inferred__1/i__carry__0[0]
+                         LUT2 (Prop_lut2_I1_O)        0.251     9.267 r  u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane1/i__carry__0_i_1__0/O
+                         net (fo=1, unplaced)         0.000     9.267    u_booth_simd/u_relu_blk1/out_flat_u8x4[29]_i_11[1]
+                         CARRY4 (Prop_carry4_DI[1]_CO[1])
+                                                      0.416     9.683 r  u_booth_simd/u_relu_blk1/relu_clip_lane1_inferred__1/i__carry__0/CO[1]
+                         net (fo=16, unplaced)        0.294     9.977    u_booth_simd/u_relu_blk1/CO[0]
+                         LUT3 (Prop_lut3_I1_O)        0.277    10.254 r  u_booth_simd/u_relu_blk1/out_flat_u8x4[25]_i_9/O
+                         net (fo=1, unplaced)         0.537    10.791    u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane1/out_flat_u8x4_reg[25][1]
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430    11.221 r  u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane1/out_flat_u8x4_reg[25]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.008    11.229    u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane1/out_flat_u8x4_reg[25]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269    11.498 r  u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane1/out_flat_u8x4_reg[29]_i_2/O[1]
+                         net (fo=3, unplaced)         0.490    11.988    u_booth_simd/u_pool3/p_1_in[5]
+                         LUT2 (Prop_lut2_I0_O)        0.245    12.233 r  u_booth_simd/u_pool3/out_flat_u8x4[29]_i_5/O
+                         net (fo=1, unplaced)         0.000    12.233    u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane1/out_flat_u8x4_reg[29]_1[1]
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.444    12.677 r  u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane1/out_flat_u8x4_reg[29]_i_1/CO[3]
+                         net (fo=1, unplaced)         0.000    12.677    u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane1/out_flat_u8x4_reg[29]_i_1_n_0
+                         CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.150    12.827 r  u_booth_simd/u_conv/gen_blk1_mul[4].gen_blk1_booth.u_mul/u_lane1/out_flat_u8x4_reg[31]_i_1/CO[1]
+                         net (fo=1, unplaced)         0.000    12.827    u_booth_simd/pool_sum_u10[9]
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[31]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        5.000     5.000 r  
+                                                      0.000     5.000 r  clk (IN)
+                         net (fo=0)                   0.000     5.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.751     5.751 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.613     6.365    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.077     6.442 r  clk_IBUF_BUFG_inst/O
+                         net (fo=33, unplaced)        0.439     6.881    u_booth_simd/CLK
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[31]/C
+                         clock pessimism              0.000     6.881    
+                         clock uncertainty           -0.035     6.845    
+                         FDCE (Setup_fdce_C_D)        0.060     6.905    u_booth_simd/out_flat_u8x4_reg[31]
+  -------------------------------------------------------------------
+                         required time                          6.905    
+                         arrival time                         -12.827    
+  -------------------------------------------------------------------
+                         slack                                 -5.921    
+
+
+
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         clk
+Waveform(ns):       { 0.000 2.500 }
+Period(ns):         5.000
+Sources:            { clk }
+
+Check Type        Corner  Lib Pin  Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location  Pin
+Min Period        n/a     BUFG/I   n/a            1.592         5.000       3.408                clk_IBUF_BUFG_inst/I
+Min Period        n/a     FDCE/C   n/a            1.000         5.000       4.000                u_booth_simd/done_reg/C
+Min Period        n/a     FDCE/C   n/a            1.000         5.000       4.000                u_booth_simd/out_flat_u8x4_reg[0]/C
+Min Period        n/a     FDCE/C   n/a            1.000         5.000       4.000                u_booth_simd/out_flat_u8x4_reg[10]/C
+Min Period        n/a     FDCE/C   n/a            1.000         5.000       4.000                u_booth_simd/out_flat_u8x4_reg[11]/C
+Min Period        n/a     FDCE/C   n/a            1.000         5.000       4.000                u_booth_simd/out_flat_u8x4_reg[12]/C
+Min Period        n/a     FDCE/C   n/a            1.000         5.000       4.000                u_booth_simd/out_flat_u8x4_reg[13]/C
+Min Period        n/a     FDCE/C   n/a            1.000         5.000       4.000                u_booth_simd/out_flat_u8x4_reg[14]/C
+Min Period        n/a     FDCE/C   n/a            1.000         5.000       4.000                u_booth_simd/out_flat_u8x4_reg[15]/C
+Min Period        n/a     FDCE/C   n/a            1.000         5.000       4.000                u_booth_simd/out_flat_u8x4_reg[16]/C
+Low Pulse Width   Slow    FDCE/C   n/a            0.500         2.500       2.000                u_booth_simd/done_reg/C
+Low Pulse Width   Fast    FDCE/C   n/a            0.500         2.500       2.000                u_booth_simd/done_reg/C
+Low Pulse Width   Slow    FDCE/C   n/a            0.500         2.500       2.000                u_booth_simd/out_flat_u8x4_reg[0]/C
+Low Pulse Width   Fast    FDCE/C   n/a            0.500         2.500       2.000                u_booth_simd/out_flat_u8x4_reg[0]/C
+Low Pulse Width   Slow    FDCE/C   n/a            0.500         2.500       2.000                u_booth_simd/out_flat_u8x4_reg[10]/C
+Low Pulse Width   Fast    FDCE/C   n/a            0.500         2.500       2.000                u_booth_simd/out_flat_u8x4_reg[10]/C
+Low Pulse Width   Slow    FDCE/C   n/a            0.500         2.500       2.000                u_booth_simd/out_flat_u8x4_reg[11]/C
+Low Pulse Width   Fast    FDCE/C   n/a            0.500         2.500       2.000                u_booth_simd/out_flat_u8x4_reg[11]/C
+Low Pulse Width   Slow    FDCE/C   n/a            0.500         2.500       2.000                u_booth_simd/out_flat_u8x4_reg[12]/C
+Low Pulse Width   Fast    FDCE/C   n/a            0.500         2.500       2.000                u_booth_simd/out_flat_u8x4_reg[12]/C
+High Pulse Width  Slow    FDCE/C   n/a            0.500         2.500       2.000                u_booth_simd/done_reg/C
+High Pulse Width  Fast    FDCE/C   n/a            0.500         2.500       2.000                u_booth_simd/done_reg/C
+High Pulse Width  Slow    FDCE/C   n/a            0.500         2.500       2.000                u_booth_simd/out_flat_u8x4_reg[0]/C
+High Pulse Width  Fast    FDCE/C   n/a            0.500         2.500       2.000                u_booth_simd/out_flat_u8x4_reg[0]/C
+High Pulse Width  Slow    FDCE/C   n/a            0.500         2.500       2.000                u_booth_simd/out_flat_u8x4_reg[10]/C
+High Pulse Width  Fast    FDCE/C   n/a            0.500         2.500       2.000                u_booth_simd/out_flat_u8x4_reg[10]/C
+High Pulse Width  Slow    FDCE/C   n/a            0.500         2.500       2.000                u_booth_simd/out_flat_u8x4_reg[11]/C
+High Pulse Width  Fast    FDCE/C   n/a            0.500         2.500       2.000                u_booth_simd/out_flat_u8x4_reg[11]/C
+High Pulse Width  Slow    FDCE/C   n/a            0.500         2.500       2.000                u_booth_simd/out_flat_u8x4_reg[12]/C
+High Pulse Width  Fast    FDCE/C   n/a            0.500         2.500       2.000                u_booth_simd/out_flat_u8x4_reg[12]/C
+
+
+
+---------------------------------------------------------------------------------------------------
+Path Group:  **async_default**
+From Clock:  clk
+  To Clock:  clk
+
+Setup :            0  Failing Endpoints,  Worst Slack        4.163ns,  Total Violation        0.000ns
+Hold  :           NA  Failing Endpoints,  Worst Slack           NA  ,  Total Violation           NA
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             4.163ns  (required time - arrival time)
+  Source:                 rst_n
+                            (input port clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            u_booth_simd/done_reg/CLR
+                            (recovery check against rising-edge clock clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             **async_default**
+  Path Type:              Recovery (Max at Slow Process Corner)
+  Requirement:            5.000ns  (clk rise@5.000ns - clk rise@0.000ns)
+  Data Path Delay:        2.349ns  (logic 0.987ns (42.029%)  route 1.362ns (57.971%))
+  Logic Levels:           2  (IBUF=1 LUT1=1)
+  Input Delay:            0.000ns
+  Clock Path Skew:        1.881ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.881ns = ( 6.881 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  rst_n (IN)
+                         net (fo=0)                   0.000     0.000    rst_n
+                         IBUF (Prop_ibuf_I_O)         0.882     0.882 r  rst_n_IBUF_inst/O
+                         net (fo=1, unplaced)         0.646     1.528    u_booth_simd/rst_n_IBUF
+                         LUT1 (Prop_lut1_I0_O)        0.105     1.633 f  u_booth_simd/done_i_1/O
+                         net (fo=33, unplaced)        0.716     2.349    u_booth_simd/done_i_1_n_0
+                         FDCE                                         f  u_booth_simd/done_reg/CLR
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        5.000     5.000 r  
+                                                      0.000     5.000 r  clk (IN)
+                         net (fo=0)                   0.000     5.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.751     5.751 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.613     6.365    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.077     6.442 r  clk_IBUF_BUFG_inst/O
+                         net (fo=33, unplaced)        0.439     6.881    u_booth_simd/CLK
+                         FDCE                                         r  u_booth_simd/done_reg/C
+                         clock pessimism              0.000     6.881    
+                         clock uncertainty           -0.035     6.845    
+                         FDCE (Recov_fdce_C_CLR)     -0.334     6.511    u_booth_simd/done_reg
+  -------------------------------------------------------------------
+                         required time                          6.511    
+                         arrival time                          -2.349    
+  -------------------------------------------------------------------
+                         slack                                  4.163    
+
+Slack (MET) :             4.210ns  (required time - arrival time)
+  Source:                 rst_n
+                            (input port clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            u_booth_simd/out_flat_u8x4_reg[0]/CLR
+                            (recovery check against rising-edge clock clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             **async_default**
+  Path Type:              Recovery (Max at Slow Process Corner)
+  Requirement:            5.000ns  (clk rise@5.000ns - clk rise@0.000ns)
+  Data Path Delay:        2.349ns  (logic 0.987ns (42.029%)  route 1.362ns (57.971%))
+  Logic Levels:           2  (IBUF=1 LUT1=1)
+  Input Delay:            0.000ns
+  Clock Path Skew:        1.881ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.881ns = ( 6.881 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  rst_n (IN)
+                         net (fo=0)                   0.000     0.000    rst_n
+                         IBUF (Prop_ibuf_I_O)         0.882     0.882 r  rst_n_IBUF_inst/O
+                         net (fo=1, unplaced)         0.646     1.528    u_booth_simd/rst_n_IBUF
+                         LUT1 (Prop_lut1_I0_O)        0.105     1.633 f  u_booth_simd/done_i_1/O
+                         net (fo=33, unplaced)        0.716     2.349    u_booth_simd/done_i_1_n_0
+                         FDCE                                         f  u_booth_simd/out_flat_u8x4_reg[0]/CLR
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        5.000     5.000 r  
+                                                      0.000     5.000 r  clk (IN)
+                         net (fo=0)                   0.000     5.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.751     5.751 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.613     6.365    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.077     6.442 r  clk_IBUF_BUFG_inst/O
+                         net (fo=33, unplaced)        0.439     6.881    u_booth_simd/CLK
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[0]/C
+                         clock pessimism              0.000     6.881    
+                         clock uncertainty           -0.035     6.845    
+                         FDCE (Recov_fdce_C_CLR)     -0.287     6.558    u_booth_simd/out_flat_u8x4_reg[0]
+  -------------------------------------------------------------------
+                         required time                          6.558    
+                         arrival time                          -2.349    
+  -------------------------------------------------------------------
+                         slack                                  4.210    
+
+Slack (MET) :             4.210ns  (required time - arrival time)
+  Source:                 rst_n
+                            (input port clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            u_booth_simd/out_flat_u8x4_reg[10]/CLR
+                            (recovery check against rising-edge clock clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             **async_default**
+  Path Type:              Recovery (Max at Slow Process Corner)
+  Requirement:            5.000ns  (clk rise@5.000ns - clk rise@0.000ns)
+  Data Path Delay:        2.349ns  (logic 0.987ns (42.029%)  route 1.362ns (57.971%))
+  Logic Levels:           2  (IBUF=1 LUT1=1)
+  Input Delay:            0.000ns
+  Clock Path Skew:        1.881ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.881ns = ( 6.881 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  rst_n (IN)
+                         net (fo=0)                   0.000     0.000    rst_n
+                         IBUF (Prop_ibuf_I_O)         0.882     0.882 r  rst_n_IBUF_inst/O
+                         net (fo=1, unplaced)         0.646     1.528    u_booth_simd/rst_n_IBUF
+                         LUT1 (Prop_lut1_I0_O)        0.105     1.633 f  u_booth_simd/done_i_1/O
+                         net (fo=33, unplaced)        0.716     2.349    u_booth_simd/done_i_1_n_0
+                         FDCE                                         f  u_booth_simd/out_flat_u8x4_reg[10]/CLR
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        5.000     5.000 r  
+                                                      0.000     5.000 r  clk (IN)
+                         net (fo=0)                   0.000     5.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.751     5.751 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.613     6.365    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.077     6.442 r  clk_IBUF_BUFG_inst/O
+                         net (fo=33, unplaced)        0.439     6.881    u_booth_simd/CLK
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[10]/C
+                         clock pessimism              0.000     6.881    
+                         clock uncertainty           -0.035     6.845    
+                         FDCE (Recov_fdce_C_CLR)     -0.287     6.558    u_booth_simd/out_flat_u8x4_reg[10]
+  -------------------------------------------------------------------
+                         required time                          6.558    
+                         arrival time                          -2.349    
+  -------------------------------------------------------------------
+                         slack                                  4.210    
+
+Slack (MET) :             4.210ns  (required time - arrival time)
+  Source:                 rst_n
+                            (input port clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            u_booth_simd/out_flat_u8x4_reg[11]/CLR
+                            (recovery check against rising-edge clock clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             **async_default**
+  Path Type:              Recovery (Max at Slow Process Corner)
+  Requirement:            5.000ns  (clk rise@5.000ns - clk rise@0.000ns)
+  Data Path Delay:        2.349ns  (logic 0.987ns (42.029%)  route 1.362ns (57.971%))
+  Logic Levels:           2  (IBUF=1 LUT1=1)
+  Input Delay:            0.000ns
+  Clock Path Skew:        1.881ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.881ns = ( 6.881 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  rst_n (IN)
+                         net (fo=0)                   0.000     0.000    rst_n
+                         IBUF (Prop_ibuf_I_O)         0.882     0.882 r  rst_n_IBUF_inst/O
+                         net (fo=1, unplaced)         0.646     1.528    u_booth_simd/rst_n_IBUF
+                         LUT1 (Prop_lut1_I0_O)        0.105     1.633 f  u_booth_simd/done_i_1/O
+                         net (fo=33, unplaced)        0.716     2.349    u_booth_simd/done_i_1_n_0
+                         FDCE                                         f  u_booth_simd/out_flat_u8x4_reg[11]/CLR
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        5.000     5.000 r  
+                                                      0.000     5.000 r  clk (IN)
+                         net (fo=0)                   0.000     5.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.751     5.751 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.613     6.365    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.077     6.442 r  clk_IBUF_BUFG_inst/O
+                         net (fo=33, unplaced)        0.439     6.881    u_booth_simd/CLK
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[11]/C
+                         clock pessimism              0.000     6.881    
+                         clock uncertainty           -0.035     6.845    
+                         FDCE (Recov_fdce_C_CLR)     -0.287     6.558    u_booth_simd/out_flat_u8x4_reg[11]
+  -------------------------------------------------------------------
+                         required time                          6.558    
+                         arrival time                          -2.349    
+  -------------------------------------------------------------------
+                         slack                                  4.210    
+
+Slack (MET) :             4.210ns  (required time - arrival time)
+  Source:                 rst_n
+                            (input port clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            u_booth_simd/out_flat_u8x4_reg[12]/CLR
+                            (recovery check against rising-edge clock clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             **async_default**
+  Path Type:              Recovery (Max at Slow Process Corner)
+  Requirement:            5.000ns  (clk rise@5.000ns - clk rise@0.000ns)
+  Data Path Delay:        2.349ns  (logic 0.987ns (42.029%)  route 1.362ns (57.971%))
+  Logic Levels:           2  (IBUF=1 LUT1=1)
+  Input Delay:            0.000ns
+  Clock Path Skew:        1.881ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.881ns = ( 6.881 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  rst_n (IN)
+                         net (fo=0)                   0.000     0.000    rst_n
+                         IBUF (Prop_ibuf_I_O)         0.882     0.882 r  rst_n_IBUF_inst/O
+                         net (fo=1, unplaced)         0.646     1.528    u_booth_simd/rst_n_IBUF
+                         LUT1 (Prop_lut1_I0_O)        0.105     1.633 f  u_booth_simd/done_i_1/O
+                         net (fo=33, unplaced)        0.716     2.349    u_booth_simd/done_i_1_n_0
+                         FDCE                                         f  u_booth_simd/out_flat_u8x4_reg[12]/CLR
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        5.000     5.000 r  
+                                                      0.000     5.000 r  clk (IN)
+                         net (fo=0)                   0.000     5.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.751     5.751 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.613     6.365    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.077     6.442 r  clk_IBUF_BUFG_inst/O
+                         net (fo=33, unplaced)        0.439     6.881    u_booth_simd/CLK
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[12]/C
+                         clock pessimism              0.000     6.881    
+                         clock uncertainty           -0.035     6.845    
+                         FDCE (Recov_fdce_C_CLR)     -0.287     6.558    u_booth_simd/out_flat_u8x4_reg[12]
+  -------------------------------------------------------------------
+                         required time                          6.558    
+                         arrival time                          -2.349    
+  -------------------------------------------------------------------
+                         slack                                  4.210    
+
+Slack (MET) :             4.210ns  (required time - arrival time)
+  Source:                 rst_n
+                            (input port clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            u_booth_simd/out_flat_u8x4_reg[13]/CLR
+                            (recovery check against rising-edge clock clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             **async_default**
+  Path Type:              Recovery (Max at Slow Process Corner)
+  Requirement:            5.000ns  (clk rise@5.000ns - clk rise@0.000ns)
+  Data Path Delay:        2.349ns  (logic 0.987ns (42.029%)  route 1.362ns (57.971%))
+  Logic Levels:           2  (IBUF=1 LUT1=1)
+  Input Delay:            0.000ns
+  Clock Path Skew:        1.881ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.881ns = ( 6.881 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  rst_n (IN)
+                         net (fo=0)                   0.000     0.000    rst_n
+                         IBUF (Prop_ibuf_I_O)         0.882     0.882 r  rst_n_IBUF_inst/O
+                         net (fo=1, unplaced)         0.646     1.528    u_booth_simd/rst_n_IBUF
+                         LUT1 (Prop_lut1_I0_O)        0.105     1.633 f  u_booth_simd/done_i_1/O
+                         net (fo=33, unplaced)        0.716     2.349    u_booth_simd/done_i_1_n_0
+                         FDCE                                         f  u_booth_simd/out_flat_u8x4_reg[13]/CLR
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        5.000     5.000 r  
+                                                      0.000     5.000 r  clk (IN)
+                         net (fo=0)                   0.000     5.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.751     5.751 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.613     6.365    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.077     6.442 r  clk_IBUF_BUFG_inst/O
+                         net (fo=33, unplaced)        0.439     6.881    u_booth_simd/CLK
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[13]/C
+                         clock pessimism              0.000     6.881    
+                         clock uncertainty           -0.035     6.845    
+                         FDCE (Recov_fdce_C_CLR)     -0.287     6.558    u_booth_simd/out_flat_u8x4_reg[13]
+  -------------------------------------------------------------------
+                         required time                          6.558    
+                         arrival time                          -2.349    
+  -------------------------------------------------------------------
+                         slack                                  4.210    
+
+Slack (MET) :             4.210ns  (required time - arrival time)
+  Source:                 rst_n
+                            (input port clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            u_booth_simd/out_flat_u8x4_reg[14]/CLR
+                            (recovery check against rising-edge clock clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             **async_default**
+  Path Type:              Recovery (Max at Slow Process Corner)
+  Requirement:            5.000ns  (clk rise@5.000ns - clk rise@0.000ns)
+  Data Path Delay:        2.349ns  (logic 0.987ns (42.029%)  route 1.362ns (57.971%))
+  Logic Levels:           2  (IBUF=1 LUT1=1)
+  Input Delay:            0.000ns
+  Clock Path Skew:        1.881ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.881ns = ( 6.881 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  rst_n (IN)
+                         net (fo=0)                   0.000     0.000    rst_n
+                         IBUF (Prop_ibuf_I_O)         0.882     0.882 r  rst_n_IBUF_inst/O
+                         net (fo=1, unplaced)         0.646     1.528    u_booth_simd/rst_n_IBUF
+                         LUT1 (Prop_lut1_I0_O)        0.105     1.633 f  u_booth_simd/done_i_1/O
+                         net (fo=33, unplaced)        0.716     2.349    u_booth_simd/done_i_1_n_0
+                         FDCE                                         f  u_booth_simd/out_flat_u8x4_reg[14]/CLR
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        5.000     5.000 r  
+                                                      0.000     5.000 r  clk (IN)
+                         net (fo=0)                   0.000     5.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.751     5.751 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.613     6.365    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.077     6.442 r  clk_IBUF_BUFG_inst/O
+                         net (fo=33, unplaced)        0.439     6.881    u_booth_simd/CLK
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[14]/C
+                         clock pessimism              0.000     6.881    
+                         clock uncertainty           -0.035     6.845    
+                         FDCE (Recov_fdce_C_CLR)     -0.287     6.558    u_booth_simd/out_flat_u8x4_reg[14]
+  -------------------------------------------------------------------
+                         required time                          6.558    
+                         arrival time                          -2.349    
+  -------------------------------------------------------------------
+                         slack                                  4.210    
+
+Slack (MET) :             4.210ns  (required time - arrival time)
+  Source:                 rst_n
+                            (input port clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            u_booth_simd/out_flat_u8x4_reg[15]/CLR
+                            (recovery check against rising-edge clock clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             **async_default**
+  Path Type:              Recovery (Max at Slow Process Corner)
+  Requirement:            5.000ns  (clk rise@5.000ns - clk rise@0.000ns)
+  Data Path Delay:        2.349ns  (logic 0.987ns (42.029%)  route 1.362ns (57.971%))
+  Logic Levels:           2  (IBUF=1 LUT1=1)
+  Input Delay:            0.000ns
+  Clock Path Skew:        1.881ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.881ns = ( 6.881 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  rst_n (IN)
+                         net (fo=0)                   0.000     0.000    rst_n
+                         IBUF (Prop_ibuf_I_O)         0.882     0.882 r  rst_n_IBUF_inst/O
+                         net (fo=1, unplaced)         0.646     1.528    u_booth_simd/rst_n_IBUF
+                         LUT1 (Prop_lut1_I0_O)        0.105     1.633 f  u_booth_simd/done_i_1/O
+                         net (fo=33, unplaced)        0.716     2.349    u_booth_simd/done_i_1_n_0
+                         FDCE                                         f  u_booth_simd/out_flat_u8x4_reg[15]/CLR
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        5.000     5.000 r  
+                                                      0.000     5.000 r  clk (IN)
+                         net (fo=0)                   0.000     5.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.751     5.751 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.613     6.365    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.077     6.442 r  clk_IBUF_BUFG_inst/O
+                         net (fo=33, unplaced)        0.439     6.881    u_booth_simd/CLK
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[15]/C
+                         clock pessimism              0.000     6.881    
+                         clock uncertainty           -0.035     6.845    
+                         FDCE (Recov_fdce_C_CLR)     -0.287     6.558    u_booth_simd/out_flat_u8x4_reg[15]
+  -------------------------------------------------------------------
+                         required time                          6.558    
+                         arrival time                          -2.349    
+  -------------------------------------------------------------------
+                         slack                                  4.210    
+
+Slack (MET) :             4.210ns  (required time - arrival time)
+  Source:                 rst_n
+                            (input port clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            u_booth_simd/out_flat_u8x4_reg[16]/CLR
+                            (recovery check against rising-edge clock clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             **async_default**
+  Path Type:              Recovery (Max at Slow Process Corner)
+  Requirement:            5.000ns  (clk rise@5.000ns - clk rise@0.000ns)
+  Data Path Delay:        2.349ns  (logic 0.987ns (42.029%)  route 1.362ns (57.971%))
+  Logic Levels:           2  (IBUF=1 LUT1=1)
+  Input Delay:            0.000ns
+  Clock Path Skew:        1.881ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.881ns = ( 6.881 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  rst_n (IN)
+                         net (fo=0)                   0.000     0.000    rst_n
+                         IBUF (Prop_ibuf_I_O)         0.882     0.882 r  rst_n_IBUF_inst/O
+                         net (fo=1, unplaced)         0.646     1.528    u_booth_simd/rst_n_IBUF
+                         LUT1 (Prop_lut1_I0_O)        0.105     1.633 f  u_booth_simd/done_i_1/O
+                         net (fo=33, unplaced)        0.716     2.349    u_booth_simd/done_i_1_n_0
+                         FDCE                                         f  u_booth_simd/out_flat_u8x4_reg[16]/CLR
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        5.000     5.000 r  
+                                                      0.000     5.000 r  clk (IN)
+                         net (fo=0)                   0.000     5.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.751     5.751 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.613     6.365    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.077     6.442 r  clk_IBUF_BUFG_inst/O
+                         net (fo=33, unplaced)        0.439     6.881    u_booth_simd/CLK
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[16]/C
+                         clock pessimism              0.000     6.881    
+                         clock uncertainty           -0.035     6.845    
+                         FDCE (Recov_fdce_C_CLR)     -0.287     6.558    u_booth_simd/out_flat_u8x4_reg[16]
+  -------------------------------------------------------------------
+                         required time                          6.558    
+                         arrival time                          -2.349    
+  -------------------------------------------------------------------
+                         slack                                  4.210    
+
+Slack (MET) :             4.210ns  (required time - arrival time)
+  Source:                 rst_n
+                            (input port clocked by clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            u_booth_simd/out_flat_u8x4_reg[17]/CLR
+                            (recovery check against rising-edge clock clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             **async_default**
+  Path Type:              Recovery (Max at Slow Process Corner)
+  Requirement:            5.000ns  (clk rise@5.000ns - clk rise@0.000ns)
+  Data Path Delay:        2.349ns  (logic 0.987ns (42.029%)  route 1.362ns (57.971%))
+  Logic Levels:           2  (IBUF=1 LUT1=1)
+  Input Delay:            0.000ns
+  Clock Path Skew:        1.881ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.881ns = ( 6.881 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  rst_n (IN)
+                         net (fo=0)                   0.000     0.000    rst_n
+                         IBUF (Prop_ibuf_I_O)         0.882     0.882 r  rst_n_IBUF_inst/O
+                         net (fo=1, unplaced)         0.646     1.528    u_booth_simd/rst_n_IBUF
+                         LUT1 (Prop_lut1_I0_O)        0.105     1.633 f  u_booth_simd/done_i_1/O
+                         net (fo=33, unplaced)        0.716     2.349    u_booth_simd/done_i_1_n_0
+                         FDCE                                         f  u_booth_simd/out_flat_u8x4_reg[17]/CLR
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        5.000     5.000 r  
+                                                      0.000     5.000 r  clk (IN)
+                         net (fo=0)                   0.000     5.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.751     5.751 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.613     6.365    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.077     6.442 r  clk_IBUF_BUFG_inst/O
+                         net (fo=33, unplaced)        0.439     6.881    u_booth_simd/CLK
+                         FDCE                                         r  u_booth_simd/out_flat_u8x4_reg[17]/C
+                         clock pessimism              0.000     6.881    
+                         clock uncertainty           -0.035     6.845    
+                         FDCE (Recov_fdce_C_CLR)     -0.287     6.558    u_booth_simd/out_flat_u8x4_reg[17]
+  -------------------------------------------------------------------
+                         required time                          6.558    
+                         arrival time                          -2.349    
+  -------------------------------------------------------------------
+                         slack                                  4.210    
+
+
+
+
+
