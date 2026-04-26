@@ -41,7 +41,7 @@
         \vspace{0.9cm}
         {\heiti\zihao{2}缩放点积注意力中的 Query-Key 点积：\par}
         \vspace{0.35cm}
-        {\heiti\zihao{2}ARM（ARMv9-A / AArch64）vs RISC-V 指令集对比实验\par}
+        {\heiti\zihao{2}ARMv9-A 与 RISC-V 指令集对比实验\par}
 
         \vfill
 
@@ -61,22 +61,27 @@
 \end{titlepage}
 
 \section{实验目的}
-本实验以缩放点积注意力中的 Query-Key 点积为对象，设计一份面向同学的指令集对比实验指导。与只做长度为 $8$ 的最小正确性样例不同，本次实验进一步扩大测试数据量，并在保持同一算法内核的前提下，同时观察两个层面：
-
-\begin{enumerate}
-    \item \textbf{核心循环的代码密度}：比较 ARMv9-A（AArch64）与 RISC-V 在点积循环中的静态指令条数和循环体字节数。
-    \item \textbf{更大工作负载下的模拟运行时间}：在 WSL + QEMU User 环境中，测量不同向量长度下向量内积的平均执行用时。
-\end{enumerate}
-
 通过本实验，读者应完成以下目标：
 \begin{enumerate}
     \item 理解 Query-Key 点积在缩放点积注意力中的作用，并明确本实验只研究点积内核，不扩展到 softmax、多头或 Value 加权。
     \item 掌握如何分别用 ARMv9-A / AArch64 与 RV64IM 汇编实现同一个点积循环，并在相同输入下验证功能一致性。
+    \item 掌握 ARMv9-A 在“不使用 SVE2（标量）”与“使用 SVE2（向量）”两种实现路径下的实验对比方法。
     \item 学会在 WSL + QEMU User 环境下完成编译、运行、反汇编和批量计时。
-    \item 理解“静态指令数更少”和“当前模拟平台上测得更快”并不一定是同一件事。
+    \item 明确本实验只聚焦\textbf{单一代表性差异}：核心循环的代码密度（每轮静态指令数与循环体字节数）。
+    \item 理解“静态指令数更少”、“当前模拟平台上测得更快”、“真实平台上运行更快”并不是等同的概念。
+\end{enumerate}
+
+\subsection{面向授课对象的实验结论设定}
+本实验以“给其他同学上一次可复现实验课”为目标，预设希望读者最终独立得到以下结论：
+\begin{enumerate}
+    \item ARMv9-A（AArch64）与 RV64IM 在实现同一乘加循环时，代码组织方式不同；
+    \item 在本实验工作负载中，ARMv9-A 核心循环的代码密度更高（循环更短）；
+    \item ARMv9-A 在当前 QEMU User 6.2.0 环境中，“使用 SVE2”不一定比“标量实现”更快；
+    \item 时间测量结果可作为补充观察，但不替代“单一差异点”的核心结论。
 \end{enumerate}
 
 \section{问题描述与应用场景}
+\subsection{Q-K点积}
 Transformer 中最常见的注意力打分步骤可以抽象为 Query 向量与 Key 向量的点积。若只保留最核心的一步，则可以写成：
 \[
     score = \sum_{i=0}^{N-1} q_i \times k_i
@@ -86,6 +91,19 @@ Transformer 中最常见的注意力打分步骤可以抽象为 Query 向量与 
 本实验选取 Query-Key 点积作为实验对象，有三点原因。第一，它保留了注意力机制中最核心的乘加循环，具有明确的实际应用背景。第二，它同时包含顺序访存、乘法和累加，足够体现 ISA 在循环表达上的差异。第三，它可以被压缩为一个很小的汇编内核，便于使用反汇编工具准确锁定核心循环位置，并在扩大数据量后继续保持分析目标清晰。
 
 因此，本实验关注的是同一个点积内核在 ARMv9-A 与 RISC-V 上的实现方式，以及在统一输入、统一 QEMU 环境下观察到的代码密度与运行时间结果。
+
+\subsection{ARMv9-A}
+ARM（Advanced RISC Machine）是一种基于精简指令集（RISC）的高效能、低功耗处理器架构，
+广泛应用于移动设备、嵌入式系统和服务器领域。ARMv8开始引入64位处理能力，苹果的A7芯片率先采用了该版本。
+而ARMv9-A 是 ARM 最新的应用处理器架构，被很多人们所熟悉的移动SoC采用，
+引入了很多新的关键特性，如可伸缩向量扩展 (SVE2)、可伸缩矩阵扩展 2 (SME2)、分支记录缓冲区扩展 (BRBE)等。
+
+\subsection{RISC-V}
+RISC-V 是一种基于 RISC 架构的指令集架构，支持多种指令集扩展。
+RISC-V最早只是为给UCB并行计算课程做一个教学工具而开发的，然而今天已经成为
+横跨汽车、数据中心、航天、AI的全球计算基石。
+RISC-V架构的不同部分可以以模块化的方式组织在一起，用户能够灵活选择不同的模块组合，来实现自己定制化设备的需要。
+
 
 \section{实验环境准备}
 \subsection{软件环境}
@@ -99,7 +117,7 @@ Transformer 中最常见的注意力打分步骤可以抽象为 Query 向量与 
         主机环境 & Windows + WSL2 \\
         Linux 发行版 & Ubuntu 22.04.5 LTS \\
         模拟器 & \texttt{qemu-aarch64}、\texttt{qemu-riscv64} \\
-        已确认版本 & QEMU User 6.2.0 \\
+        版本 & QEMU User 6.2.0 \\
         ARM 目标 & ARMv9-A，AArch64 state，源码中使用 \texttt{.arch armv9-a} \\
         RISC-V 目标 & RV64IM，显式关闭压缩指令扩展 C（\texttt{.option norvc}） \\
         编译工具 & \texttt{gcc-aarch64-linux-gnu}、\texttt{gcc-riscv64-linux-gnu} \\
@@ -121,6 +139,8 @@ apt-get install -y \
 
 \subsection{工具链兼容性说明}
 Ubuntu 22.04 默认提供的 \texttt{gcc-11} 对命令行参数 \texttt{-march=armv9-a} 的支持并不完整，但本实验的 ARM 源码中已经直接写入 \texttt{.arch armv9-a}，因此可以在不额外添加该命令行参数的情况下正确汇编和链接。由于实验内核只使用了 \texttt{ldr}、\texttt{madd}、\texttt{subs} 等基础 AArch64 指令，这样的处理不会影响本实验的代码密度和循环分析结论。
+
+另外，作业说明中常写 \texttt{qemu-arm} 作为 ARM 运行示例；本实验代码为 AArch64（64 位）汇编，因此实际应使用 \texttt{qemu-aarch64}。两者并不冲突，本质上是目标 ISA 位宽不同导致的运行器选择差异。
 
 \section{算法设计与实验对象说明}
 \subsection{统一输入模式}
@@ -181,9 +201,9 @@ else:
 \subsection{步骤一：运行一键基准脚本}
 目录中提供了 \texttt{benchmark\_dot.py}，它会自动完成以下工作：
 \begin{enumerate}
-    \item 按三组 \texttt{LEN} 和 \texttt{REPEAT} 参数分别编译 ARMv9-A 与 RISC-V 程序；
+    \item 按三组 \texttt{LEN} 和 \texttt{REPEAT} 参数分别编译 ARMv9-A 标量、ARMv9-A SVE2 与 RISC-V 程序；
     \item 在 QEMU User 中执行 1 次热身与 7 次正式计时；
-    \item 使用 \texttt{objdump -d} 提取 \texttt{dot\_loop}；
+    \item 使用 \texttt{objdump -d} 提取 ARM 标量与 RISC-V 的 \texttt{dot\_loop}；
     \item 输出 \texttt{benchmark\_results.json} 与 \texttt{benchmark\_results.md}。
 \end{enumerate}
 
@@ -191,6 +211,14 @@ else:
 \begin{Verbatim}[frame=single]
 python3 benchmark_dot.py
 \end{Verbatim}
+
+\subsection{读者在实验中应重点观察的指标}
+为了保证“单一代表性差异”不被其他因素干扰，建议读者按优先级观察：
+\begin{enumerate}
+    \item \textbf{核心指标（必看）}：\texttt{dot\_loop} 的每轮静态指令条数、循环体字节数；
+    \item \textbf{辅助指标（选看）}：同一工作负载下三程序（ARM 标量 / ARM SVE2 / RISC-V）在 QEMU User 的平均运行时间；
+    \item \textbf{有效性指标（必看）}：程序退出码是否为 0（功能正确）。
+\end{enumerate}
 
 \subsection{步骤二：手动编译与运行示例}
 若只想手动验证其中一组，例如 \texttt{LEN=1024}、\texttt{REPEAT=20000}，可执行：
@@ -202,6 +230,11 @@ aarch64-linux-gnu-gcc -nostdlib -static -x assembler-with-cpp \
 riscv64-linux-gnu-gcc -nostdlib -static -x assembler-with-cpp \
     -DLEN=1024 -DREPEAT=20000 -march=rv64im -mabi=lp64 \
     -o riscv_dot "1012-2414015-鲁昕宁-riscv.s"
+
+aarch64-linux-gnu-gcc -static -O3 \
+    -march=armv8.6-a+sve2 \
+    -DLEN=1024 -DREPEAT=20000 \
+    -o armv9_sve2_dot armv9_sve2_benchmark.c
 \end{Verbatim}
 
 \begin{Verbatim}[frame=single]
@@ -210,9 +243,12 @@ echo $?
 
 qemu-riscv64 ./riscv_dot
 echo $?
+
+qemu-aarch64 -cpu max ./armv9_sve2_dot
+echo $?
 \end{Verbatim}
 
-若程序实现正确，两次 \texttt{echo \$?} 的输出都应为 \texttt{0}。这说明 ARM 与 RISC-V 版本都正确算出了总校验值。
+若程序实现正确，三次 \texttt{echo \$?} 的输出都应为 \texttt{0}。这说明 ARM 标量、ARM SVE2 与 RISC-V 版本都正确算出了总校验值。
 
 \subsection{步骤三：反汇编并定位核心循环}
 \begin{Verbatim}[frame=single]
@@ -228,13 +264,22 @@ riscv64-linux-gnu-objdump -d riscv_dot > riscv_dot.dump
 \end{itemize}
 
 \subsection{步骤四：记录代码密度与时间结果}
-本实验的预期观察结果有两层：
+本实验的预期观察结果有三层：
 \begin{enumerate}
     \item ARMv9-A 版本的内层循环更短，静态指令数更少；
-    \item 在本机 WSL + QEMU User 6.2.0 的测量结果中，RISC-V 版本的平均模拟运行时间更短。
+    \item 在本机 WSL + QEMU User 6.2.0 的测量结果中，RISC-V 版本的平均模拟运行时间更短；
+    \item 在同样环境下，本次测量中 ARMv9 SVE2 版本平均时间高于 ARMv9 标量版本。
 \end{enumerate}
 
 这两个结果并不矛盾。前者反映的是 ISA 在表达同一循环时的静态代码密度，后者反映的是当前模拟器实现与当前测试平台组合下的 wall-clock 时间。
+
+\subsection{预期发现对应的指令集原理}
+若读者按步骤完成实验，应能够将观察结果追溯到以下指令集层面的设计差异：
+\begin{itemize}
+    \item ARMv9-A（AArch64）可使用后索引访存（如 \texttt{ldr w4, [x0], \#4}），在取数同时完成地址更新；
+    \item ARMv9-A（AArch64）可使用融合乘加指令 \texttt{madd}，将乘法与累加压缩到一条指令；
+    \item RV64IM 在本实验约束下采用更细粒度的“访存/运算/更新”分解式指令序列，因此循环体更长。
+\end{itemize}
 
 \section{核心代码片段与指令集差异分析}
 \subsection{ARMv9-A（AArch64）核心循环}
@@ -269,7 +314,7 @@ dot_loop:
         架构 & 每轮循环指令数 & 循环体字节数 & 主要原因 \\
         \midrule
         ARMv9-A（AArch64） & 5 & 20 B & 使用了后索引寻址的 \texttt{ldr}，并用 \texttt{madd} 把乘法与累加融合为一条指令 \\
-        RV64IM（禁用 C） & 8 & 32 B & 访存、乘法、累加、地址更新和循环计数分别由独立指令完成 \\
+        RV64IM & 8 & 32 B & 访存、乘法、累加、地址更新和循环计数分别由独立指令完成 \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -277,14 +322,14 @@ dot_loop:
 \subsection{更大数据量下的时间测量结果}
 \begin{table}[H]
     \centering
-    \caption{QEMU User 下的向量内积平均用时}
-    \begin{tabular}{p{0.13\textwidth} p{0.14\textwidth} p{0.18\textwidth} p{0.16\textwidth} p{0.16\textwidth} p{0.12\textwidth}}
+    \caption{QEMU User 下的向量内积平均用时（三路对比）}
+    \begin{tabular}{p{0.10\textwidth} p{0.11\textwidth} p{0.16\textwidth} p{0.13\textwidth} p{0.13\textwidth} p{0.13\textwidth} p{0.10\textwidth} p{0.10\textwidth}}
         \toprule
-        LEN & REPEAT & MAC 总次数 & ARMv9 平均用时 & RISC-V 平均用时 & RISC-V / ARM \\
+        LEN & REPEAT & MAC 总次数 & ARM标量 & ARM SVE2 & RISC-V & SVE2/标量 & RISC-V/标量 \\
         \midrule
-        256 & 20000 & 5,120,000 & 31.08 ms & 24.03 ms & 0.77 \\
-        1024 & 20000 & 20,480,000 & 78.78 ms & 61.94 ms & 0.79 \\
-        4096 & 20000 & 81,920,000 & 288.16 ms & 203.98 ms & 0.71 \\
+        256 & 20000 & 5,120,000 & 154.281 ms & 170.006 ms & 125.276 ms & 1.102 & 0.812 \\
+        1024 & 20000 & 20,480,000 & 199.683 ms & 291.633 ms & 167.765 ms & 1.460 & 0.840 \\
+        4096 & 20000 & 81,920,000 & 388.482 ms & 830.929 ms & 295.108 ms & 2.139 & 0.760 \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -292,12 +337,15 @@ dot_loop:
 \subsection{结果解释}
 从静态循环可见，ARMv9-A（AArch64）通过后索引寻址与 \texttt{madd} 指令，把“取数并更新地址”以及“乘法并累加”压缩到更少的指令中，因此在 \textbf{代码密度} 这一指标上明显优于 RISC-V。
 
-但在本实验的 WSL + QEMU User 6.2.0 环境中，三组更大工作负载下测得的 wall-clock 时间却表现为 RISC-V 更短。这说明：\textbf{静态指令数更少，并不自动等价于当前模拟器中运行更快。} QEMU User 的翻译策略、不同后端的 helper 实现、宿主机执行路径以及系统噪声都会影响最终时间结果。
+进一步观察 ARM 标量与 ARM SVE2 对比可见，在当前 WSL + QEMU User 6.2.0 环境下，SVE2 版本并未体现更短的 wall-clock 时间，且在更大数据量时差距扩大。这提示读者：\textbf{向量指令优势是否可见，强依赖于运行平台是否真实支持并高效实现对应扩展。} 在模拟器环境中，SVE2 可能受到翻译与仿真开销影响。
+
+同时，三组工作负载下测得的 wall-clock 时间仍表现为 RISC-V 更短。这说明：\textbf{静态指令数更少，并不自动等价于当前模拟器中运行更快。} QEMU User 的翻译策略、不同后端的 helper 实现、宿主机执行路径以及系统噪声都会影响最终时间结果。
 
 因此，本实验得到两个可以同时成立的结论：
 \begin{enumerate}
     \item 若评价标准是核心循环的静态指令条数与循环体大小，则 ARMv9-A 的代码密度更高；
-    \item 若评价标准是本机 QEMU User 6.2.0 中的平均模拟执行时间，则本次测量中 RISC-V 更快。
+    \item 若评价标准是本机 QEMU User 6.2.0 中的平均模拟执行时间，则本次测量中 RISC-V 更快；
+    \item 在当前模拟环境中，ARMv9 SVE2 版本不比 ARM 标量版本更快。
 \end{enumerate}
 
 需要特别说明的是，第二个结论仅适用于当前模拟环境，不能直接外推为“真实 ARMv9 硬件一定慢于真实 RISC-V 硬件”。它更适合作为“代码密度结果和模拟运行时间结果可能分离”的一个实验观察。
@@ -359,31 +407,19 @@ dot_loop:
 若读者只能“跑出时间”却不能说明 ARMv9 为什么循环更短，则说明实验操作完成了，但对 ISA 表达能力的理解仍不充分。反之，若读者既能分析循环体，又能说明为什么在 QEMU 中出现了与代码密度不同的时间结果，则说明实验目标已经达到。
 
 \section{附：源码目录与运行命令}
-\subsection{建议提交文件}
 \begin{Verbatim}[frame=single]
 1012-2414015-鲁昕宁-指令集实验设计.pdf
 1012-2414015-鲁昕宁-arm.s
 1012-2414015-鲁昕宁-riscv.s
+armv9_sve2_benchmark.c
+armv9_sve2_demo.c
+armv9_sve2_demo.s
 benchmark_dot.py
-1012-2414015-鲁昕宁-指令集作业.zip
 \end{Verbatim}
 
-\subsection{当前目录建议结构}
-\begin{Verbatim}[frame=single]
-assign2/
-|-- assign2.tex
-|-- 1012-2414015-鲁昕宁-arm.s
-|-- 1012-2414015-鲁昕宁-riscv.s
-|-- benchmark_dot.py
-|-- benchmark_results.json
-|-- benchmark_results.md
-|-- 1012-2414015-鲁昕宁-指令集实验设计.pdf
-`-- 1012-2414015-鲁昕宁-指令集作业.zip
-\end{Verbatim}
 
 \subsection{完整运行命令汇总}
 \begin{Verbatim}[frame=single]
-cd /mnt/d/1012/assign2
 
 # 一键编译 + 运行 + 反汇编 + 计时
 python3 benchmark_dot.py
@@ -403,8 +439,13 @@ qemu-riscv64 ./riscv_dot
 echo $?
 riscv64-linux-gnu-objdump -d riscv_dot > riscv_dot.dump
 
-# 生成 PDF
-latexmk -xelatex assign2.tex
+# ARMv9 SVE2 版本（C + SVE2 intrinsic）
+aarch64-linux-gnu-gcc -static -O3 \
+    -march=armv8.6-a+sve2 \
+    -DLEN=1024 -DREPEAT=20000 \
+    -o armv9_sve2_dot armv9_sve2_benchmark.c
+qemu-aarch64 -cpu max ./armv9_sve2_dot
+echo $?
 \end{Verbatim}
 
 \end{document}

@@ -5,17 +5,17 @@
     "mac_operations": 5120000,
     "armv9": {
       "binary": "armv9_len256_rep20000",
-      "avg_ms": 31.076,
-      "min_ms": 28.008,
-      "max_ms": 40.135,
+      "avg_ms": 154.281,
+      "min_ms": 130.597,
+      "max_ms": 201.286,
       "runs_ms": [
-        30.957,
-        29.197,
-        28.853,
-        30.243,
-        30.141,
-        40.135,
-        28.008
+        139.478,
+        141.664,
+        174.934,
+        201.286,
+        132.618,
+        130.597,
+        159.386
       ],
       "loop_instruction_count": 5,
       "loop_bytes": 20,
@@ -27,19 +27,34 @@
         "400110:\t54ffff81 \tb.ne\t400100 <dot_loop>  // b.any"
       ]
     },
+    "armv9_sve2": {
+      "binary": "armv9_sve2_len256_rep20000",
+      "avg_ms": 170.006,
+      "min_ms": 163.128,
+      "max_ms": 174.38,
+      "runs_ms": [
+        163.128,
+        171.99,
+        170.429,
+        168.656,
+        169.027,
+        174.38,
+        172.436
+      ]
+    },
     "riscv": {
       "binary": "riscv_len256_rep20000",
-      "avg_ms": 24.029,
-      "min_ms": 20.925,
-      "max_ms": 27.461,
+      "avg_ms": 125.276,
+      "min_ms": 118.592,
+      "max_ms": 135.504,
       "runs_ms": [
-        23.265,
-        26.604,
-        26.585,
-        21.997,
-        21.364,
-        27.461,
-        20.925
+        135.504,
+        123.51,
+        123.275,
+        124.488,
+        122.311,
+        129.255,
+        118.592
       ],
       "loop_instruction_count": 8,
       "loop_bytes": 32,
@@ -54,7 +69,8 @@
         "1018c:\tfe0292e3          \tbnez\tt0,10170 <dot_loop>"
       ]
     },
-    "speed_ratio_riscv_over_arm": 0.773
+    "speed_ratio_sve2_over_arm": 1.102,
+    "speed_ratio_riscv_over_arm": 0.812
   },
   {
     "length": 1024,
@@ -62,17 +78,17 @@
     "mac_operations": 20480000,
     "armv9": {
       "binary": "armv9_len1024_rep20000",
-      "avg_ms": 78.783,
-      "min_ms": 74.494,
-      "max_ms": 84.839,
+      "avg_ms": 199.683,
+      "min_ms": 178.286,
+      "max_ms": 252.804,
       "runs_ms": [
-        78.684,
-        76.512,
-        77.2,
-        84.839,
-        74.494,
-        79.049,
-        80.702
+        196.119,
+        198.975,
+        193.294,
+        185.605,
+        192.702,
+        252.804,
+        178.286
       ],
       "loop_instruction_count": 5,
       "loop_bytes": 20,
@@ -84,19 +100,34 @@
         "400110:\t54ffff81 \tb.ne\t400100 <dot_loop>  // b.any"
       ]
     },
+    "armv9_sve2": {
+      "binary": "armv9_sve2_len1024_rep20000",
+      "avg_ms": 291.633,
+      "min_ms": 287.717,
+      "max_ms": 297.329,
+      "runs_ms": [
+        290.634,
+        287.717,
+        290.251,
+        290.774,
+        295.899,
+        288.827,
+        297.329
+      ]
+    },
     "riscv": {
       "binary": "riscv_len1024_rep20000",
-      "avg_ms": 61.942,
-      "min_ms": 54.537,
-      "max_ms": 68.599,
+      "avg_ms": 167.765,
+      "min_ms": 157.114,
+      "max_ms": 191.889,
       "runs_ms": [
-        63.219,
-        54.537,
-        67.659,
-        58.548,
-        66.486,
-        54.547,
-        68.599
+        157.114,
+        191.889,
+        163.388,
+        165.13,
+        167.673,
+        163.424,
+        165.738
       ],
       "loop_instruction_count": 8,
       "loop_bytes": 32,
@@ -111,7 +142,8 @@
         "1018c:\tfe0292e3          \tbnez\tt0,10170 <dot_loop>"
       ]
     },
-    "speed_ratio_riscv_over_arm": 0.786
+    "speed_ratio_sve2_over_arm": 1.46,
+    "speed_ratio_riscv_over_arm": 0.84
   },
   {
     "length": 4096,
@@ -119,17 +151,17 @@
     "mac_operations": 81920000,
     "armv9": {
       "binary": "armv9_len4096_rep20000",
-      "avg_ms": 288.155,
-      "min_ms": 269.251,
-      "max_ms": 309.283,
+      "avg_ms": 388.482,
+      "min_ms": 367.092,
+      "max_ms": 421.88,
       "runs_ms": [
-        269.251,
-        272.056,
-        295.822,
-        309.283,
-        294.068,
-        306.459,
-        270.143
+        381.021,
+        376.645,
+        421.88,
+        395.683,
+        392.085,
+        367.092,
+        384.971
       ],
       "loop_instruction_count": 5,
       "loop_bytes": 20,
@@ -141,19 +173,34 @@
         "400110:\t54ffff81 \tb.ne\t400100 <dot_loop>  // b.any"
       ]
     },
+    "armv9_sve2": {
+      "binary": "armv9_sve2_len4096_rep20000",
+      "avg_ms": 830.929,
+      "min_ms": 818.531,
+      "max_ms": 851.336,
+      "runs_ms": [
+        851.336,
+        831.728,
+        821.121,
+        834.717,
+        818.531,
+        831.07,
+        828.003
+      ]
+    },
     "riscv": {
       "binary": "riscv_len4096_rep20000",
-      "avg_ms": 203.98,
-      "min_ms": 182.947,
-      "max_ms": 236.298,
+      "avg_ms": 295.108,
+      "min_ms": 273.679,
+      "max_ms": 319.02,
       "runs_ms": [
-        193.016,
-        201.349,
-        212.917,
-        182.947,
-        201.661,
-        199.674,
-        236.298
+        287.757,
+        294.917,
+        298.651,
+        294.057,
+        297.673,
+        273.679,
+        319.02
       ],
       "loop_instruction_count": 8,
       "loop_bytes": 32,
@@ -168,6 +215,7 @@
         "1018c:\tfe0292e3          \tbnez\tt0,10170 <dot_loop>"
       ]
     },
-    "speed_ratio_riscv_over_arm": 0.708
+    "speed_ratio_sve2_over_arm": 2.139,
+    "speed_ratio_riscv_over_arm": 0.76
   }
 ]
