@@ -1,0 +1,24 @@
+Time resolution is 1 ps
+[PASS] ADD basic result=0x00000003
+[PASS] ADD wrap result=0x00000000
+[PASS] SUB basic result=0xfffffffe
+[PASS] SLT -1<1 result=0x00000001
+[PASS] SLT 5<-3 result=0x00000000
+[PASS] SLTU 1<2 result=0x00000001
+[PASS] SLTU FFFF<1 result=0x00000000
+[PASS] AND result=0x050a0f00
+[PASS] NOR result=0xa05000f0
+[PASS] OR result=0x5fafff0f
+[PASS] XOR result=0x5aa5f00f
+[PASS] SLL by 4 result=0x00000110
+[PASS] SRL by 4 result=0x0f000000
+[PASS] SRA by 4 result=0xff000000
+[PASS] LUI result=0x56780000
+[PASS] SEQ equal result=0x00000001
+[PASS] SEQ not equal result=0x00000000
+[PASS] XNOR result=0xa55a0ff0
+[PASS] LLI result=0x00005678
+[PASS] RESERVED->0 result=0x00000000
+
+=== ALU TEST PASS ===
+$finish called at time : 25 ns : File "D:/1012/lab4/lab4.srcs/sim_1/imports/new/tb_alu.v" Line 102
