@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2025.1 (64-bit)
+# SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
+# IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+# SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+# Start of session at: Sun Apr 26 21:24:02 2026
+# Process ID         : 46124
+# Current directory  : D:/1012/project1/project1.runs/impl_1
+# Command line       : vivado.exe -log cnn_compare_booth_simd_pipe_dsp_top.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source cnn_compare_booth_simd_pipe_dsp_top.tcl -notrace
+# Log file           : D:/1012/project1/project1.runs/impl_1/cnn_compare_booth_simd_pipe_dsp_top.vdi
+# Journal file       : D:/1012/project1/project1.runs/impl_1\vivado.jou
+# Running On         : DESKTOP-JH0OJSQ
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : AMD Ryzen 7 4800HS with Radeon Graphics         
+# CPU Frequency      : 2895 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 16556 MB
+# Swap memory        : 24732 MB
+# Total Virtual      : 41288 MB
+# Available Virtual  : 3886 MB
+#-----------------------------------------------------------
+source cnn_compare_booth_simd_pipe_dsp_top.tcl -notrace

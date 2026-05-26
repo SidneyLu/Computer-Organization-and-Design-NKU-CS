@@ -1,0 +1,23 @@
++====================+===================+===============================================+
+| Launch Setup Clock | Launch Hold Clock | Pin                                           |
++====================+===================+===============================================+
+| clk                | clk               | u_booth_simd_pipe_dsp/conv_blk1_reg_reg[36]/D |
+| clk                | clk               | u_booth_simd_pipe_dsp/conv_blk1_reg_reg[35]/D |
+| clk                | clk               | u_booth_simd_pipe_dsp/conv_blk1_reg_reg[33]/D |
+| clk                | clk               | u_booth_simd_pipe_dsp/conv_blk1_reg_reg[37]/D |
+| clk                | clk               | u_booth_simd_pipe_dsp/conv_blk1_reg_reg[32]/D |
+| clk                | clk               | u_booth_simd_pipe_dsp/conv_blk1_reg_reg[31]/D |
+| clk                | clk               | u_booth_simd_pipe_dsp/conv_blk1_reg_reg[29]/D |
+| clk                | clk               | u_booth_simd_pipe_dsp/conv_blk1_reg_reg[34]/D |
+| clk                | clk               | u_booth_simd_pipe_dsp/conv_blk1_reg_reg[28]/D |
+| clk                | clk               | u_booth_simd_pipe_dsp/conv_blk1_reg_reg[30]/D |
+| clk                | clk               | u_booth_simd_pipe_dsp/conv_blk1_reg_reg[27]/D |
+| clk                | clk               | u_booth_simd_pipe_dsp/conv_blk1_reg_reg[26]/D |
+| clk                | clk               | u_booth_simd_pipe_dsp/conv_blk1_reg_reg[75]/D |
+| clk                | clk               | u_booth_simd_pipe_dsp/conv_blk1_reg_reg[25]/D |
+| clk                | clk               | u_booth_simd_pipe_dsp/conv_blk1_reg_reg[24]/D |
+| clk                | clk               | u_booth_simd_pipe_dsp/conv_blk1_reg_reg[71]/D |
+| clk                | clk               | u_booth_simd_pipe_dsp/conv_blk1_reg_reg[23]/D |
+| clk                | clk               | u_booth_simd_pipe_dsp/conv_blk1_reg_reg[22]/D |
+| clk                | clk               | u_booth_simd_pipe_dsp/conv_blk1_reg_reg[21]/D |
++--------------------+-------------------+-----------------------------------------------+

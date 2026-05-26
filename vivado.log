@@ -1,0 +1,592 @@
+#-----------------------------------------------------------
+# Vivado v2025.1 (64-bit)
+# SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
+# IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+# SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+# Start of session at: Sun Apr 26 17:17:43 2026
+# Process ID         : 41384
+# Current directory  : D:/1012
+# Command line       : vivado.exe -mode batch -source D:\1012\project1\build\check_fastpath_timing.tcl
+# Log file           : D:/1012/vivado.log
+# Journal file       : D:/1012\vivado.jou
+# Running On         : DESKTOP-JH0OJSQ
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : AMD Ryzen 7 4800HS with Radeon Graphics         
+# CPU Frequency      : 2895 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 16556 MB
+# Swap memory        : 11595 MB
+# Total Virtual      : 28151 MB
+# Available Virtual  : 3694 MB
+#-----------------------------------------------------------
+source {D:\1012\project1\build\check_fastpath_timing.tcl}
+# open_checkpoint D:/1012/project1/build/cnn_compare_booth_simd_pipe_top_synth.dcp
+Command: open_checkpoint D:/1012/project1/build/cnn_compare_booth_simd_pipe_top_synth.dcp
+
+Starting open_checkpoint Task
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.054 . Memory (MB): peak = 301.387 ; gain = 5.383
+INFO: [Device 21-403] Loading part xc7a200tfbg484-2
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.067 . Memory (MB): peak = 752.980 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1453 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+WARNING: [Netlist 29-101] Netlist 'cnn_compare_booth_simd_pipe_top' is not ideal for floorplanning, since the cellview 'cnn_chain_core_opt' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
+INFO: [Project 1-479] Netlist was created with Vivado 2025.1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Read ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.044 . Memory (MB): peak = 860.289 ; gain = 3.242
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1504.297 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Project 1-604] Checkpoint was created with Vivado v2025.1 (64-bit) build 6140274
+open_checkpoint: Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1504.297 ; gain = 1219.312
+# puts "=== INPUT->OUTPUT timing to out_flat_u8x4 ==="
+=== INPUT->OUTPUT timing to out_flat_u8x4 ===
+# report_timing -from [get_ports {img_flat_u8x25[*] ker_flat_s8x9[*]}] -to [get_ports {out_flat_u8x4[*]}] -max_paths 5 -nworst 1
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -2, Delay Type: max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+INFO: [Timing 38-78] ReportTimingParams: -from_pins  -to_pins  -max_paths 5 -nworst 1 -delay_type max -sort_by slack.
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+----------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
+| Date         : Sun Apr 26 17:18:07 2026
+| Host         : DESKTOP-JH0OJSQ running 64-bit major release  (build 9200)
+| Command      : report_timing -from [get_ports {{img_flat_u8x25[*]} {ker_flat_s8x9[*]}}] -to [get_ports {out_flat_u8x4[*]}] -max_paths 5 -nworst 1
+| Design       : cnn_compare_booth_simd_pipe_top
+| Device       : 7a200t-fbg484
+| Speed File   : -2  PRODUCTION 1.23 2018-06-13
+| Design State : Synthesized
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack:                    inf
+  Source:                 img_flat_u8x25[147]
+                            (input port)
+  Destination:            out_flat_u8x4[6]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        20.407ns  (logic 11.236ns (55.060%)  route 9.171ns (44.940%))
+  Logic Levels:           33  (CARRY4=16 IBUF=1 LUT2=10 LUT3=2 LUT5=2 LUT6=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 f  img_flat_u8x25[147] (IN)
+                         net (fo=0)                   0.000     0.000    img_flat_u8x25[147]
+                         IBUF (Prop_ibuf_I_O)         0.876     0.876 f  img_flat_u8x25_IBUF[147]_inst/O
+                         net (fo=77, unplaced)        0.646     1.522    u_booth_simd_pipe/img_flat_u8x25_IBUF[147]
+                         LUT2 (Prop_lut2_I0_O)        0.125     1.647 r  u_booth_simd_pipe/i___32_carry_i_8__10/O
+                         net (fo=1, unplaced)         0.347     1.994    u_booth_simd_pipe/i___32_carry_i_8__10_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.105     2.099 r  u_booth_simd_pipe/i___32_carry_i_4__10/O
+                         net (fo=1, unplaced)         0.000     2.099    u_booth_simd_pipe/i___32_carry_i_4__10_n_0
+                         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.314     2.413 r  u_booth_simd_pipe/relu_map3_inferred__1/i___32_carry/CO[3]
+                         net (fo=1, unplaced)         0.008     2.421    u_booth_simd_pipe/relu_map3_inferred__1/i___32_carry_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269     2.690 r  u_booth_simd_pipe/relu_map3_inferred__1/i___32_carry__0/O[1]
+                         net (fo=2, unplaced)         0.483     3.173    u_booth_simd_pipe/relu_map3_inferred__1/i___32_carry__0_n_6
+                         LUT3 (Prop_lut3_I1_O)        0.245     3.418 r  u_booth_simd_pipe/i___90_carry__0_i_3__8/O
+                         net (fo=2, unplaced)         0.548     3.966    u_booth_simd_pipe/i___90_carry__0_i_3__8_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430     4.396 r  u_booth_simd_pipe/relu_map3_inferred__1/i___90_carry__0/CO[3]
+                         net (fo=1, unplaced)         0.000     4.396    u_booth_simd_pipe/relu_map3_inferred__1/i___90_carry__0_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269     4.665 r  u_booth_simd_pipe/relu_map3_inferred__1/i___90_carry__1/O[1]
+                         net (fo=2, unplaced)         0.483     5.148    u_booth_simd_pipe/relu_map3[13]
+                         LUT2 (Prop_lut2_I0_O)        0.245     5.393 r  u_booth_simd_pipe/i__carry__2_i_3__0/O
+                         net (fo=1, unplaced)         0.000     5.393    u_booth_simd_pipe/i__carry__2_i_3__0_n_0
+                         CARRY4 (Prop_carry4_S[1]_O[3])
+                                                      0.534     5.927 r  u_booth_simd_pipe/relu_map2_inferred__1/i__carry__2/O[3]
+                         net (fo=1, unplaced)         0.519     6.446    u_booth_simd_pipe/relu_map2_inferred__1/i__carry__2_n_4
+                         LUT2 (Prop_lut2_I1_O)        0.250     6.696 r  u_booth_simd_pipe/i___50_carry__2_i_1__0/O
+                         net (fo=1, unplaced)         0.000     6.696    u_booth_simd_pipe/i___50_carry__2_i_1__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.314     7.010 r  u_booth_simd_pipe/relu_map2_inferred__1/i___50_carry__2/CO[3]
+                         net (fo=1, unplaced)         0.000     7.010    u_booth_simd_pipe/relu_map2_inferred__1/i___50_carry__2_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269     7.279 r  u_booth_simd_pipe/relu_map2_inferred__1/i___50_carry__3/O[1]
+                         net (fo=3, unplaced)         0.490     7.769    u_booth_simd_pipe/relu_map2_inferred__1/i___50_carry__3_n_6
+                         LUT2 (Prop_lut2_I0_O)        0.245     8.014 r  u_booth_simd_pipe/i___104_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000     8.014    u_booth_simd_pipe/i___104_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.316     8.330 r  u_booth_simd_pipe/relu_map2_inferred__1/i___104_carry__3/CO[3]
+                         net (fo=1, unplaced)         0.770     9.100    u_booth_simd_pipe/relu_map2_inferred__1/i___104_carry__3_n_0
+                         LUT2 (Prop_lut2_I1_O)        0.105     9.205 r  u_booth_simd_pipe/i___161_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000     9.205    u_booth_simd_pipe/i___161_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.211     9.416 r  u_booth_simd_pipe/relu_map2_inferred__1/i___161_carry__3/O[3]
+                         net (fo=1, unplaced)         0.519     9.935    u_booth_simd_pipe/relu_map2_inferred__1/i___161_carry__3_n_4
+                         LUT2 (Prop_lut2_I1_O)        0.250    10.185 r  u_booth_simd_pipe/i___219_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000    10.185    u_booth_simd_pipe/i___219_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.211    10.396 r  u_booth_simd_pipe/relu_map2_inferred__1/i___219_carry__3/O[3]
+                         net (fo=1, unplaced)         0.519    10.915    u_booth_simd_pipe/relu_map2_inferred__1/i___219_carry__3_n_4
+                         LUT2 (Prop_lut2_I1_O)        0.250    11.165 r  u_booth_simd_pipe/i___277_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000    11.165    u_booth_simd_pipe/i___277_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.211    11.376 r  u_booth_simd_pipe/relu_map2_inferred__1/i___277_carry__3/O[3]
+                         net (fo=1, unplaced)         0.519    11.895    u_booth_simd_pipe/relu_map2_inferred__1/i___277_carry__3_n_4
+                         LUT2 (Prop_lut2_I1_O)        0.250    12.145 r  u_booth_simd_pipe/i___335_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000    12.145    u_booth_simd_pipe/i___335_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.211    12.356 r  u_booth_simd_pipe/relu_map2_inferred__1/i___335_carry__3/O[3]
+                         net (fo=1, unplaced)         0.519    12.875    u_booth_simd_pipe/C__1[19]
+                         LUT2 (Prop_lut2_I1_O)        0.250    13.125 r  u_booth_simd_pipe/i___393_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000    13.125    u_booth_simd_pipe/i___393_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.211    13.336 f  u_booth_simd_pipe/relu_map2_inferred__1/i___393_carry__3/O[3]
+                         net (fo=17, unplaced)        0.575    13.911    u_booth_simd_pipe/relu_map2[19]
+                         LUT2 (Prop_lut2_I1_O)        0.251    14.162 r  u_booth_simd_pipe/i__carry__0_i_1__10/O
+                         net (fo=1, unplaced)         0.000    14.162    u_booth_simd_pipe/i__carry__0_i_1__10_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[1])
+                                                      0.416    14.578 r  u_booth_simd_pipe/relu_map1_inferred__3/i__carry__0/CO[1]
+                         net (fo=15, unplaced)        0.293    14.871    u_booth_simd_pipe/relu_map1
+                         LUT3 (Prop_lut3_I1_O)        0.277    15.148 r  u_booth_simd_pipe/i___2_carry_i_12__1/O
+                         net (fo=7, unplaced)         0.382    15.530    u_booth_simd_pipe/p_0_in1_in__0[3]
+                         LUT5 (Prop_lut5_I4_O)        0.105    15.635 r  u_booth_simd_pipe/out_flat_u8x40__2_carry__0_i_14/O
+                         net (fo=2, unplaced)         0.358    15.993    u_booth_simd_pipe/out_flat_u8x40__2_carry__0_i_14_n_0
+                         LUT5 (Prop_lut5_I4_O)        0.105    16.098 r  u_booth_simd_pipe/out_flat_u8x40__2_carry__0_i_3/O
+                         net (fo=2, unplaced)         0.548    16.646    u_booth_simd_pipe/out_flat_u8x40__2_carry__0_i_3_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430    17.076 r  u_booth_simd_pipe/out_flat_u8x40__2_carry__0/CO[3]
+                         net (fo=1, unplaced)         0.000    17.076    u_booth_simd_pipe/out_flat_u8x40__2_carry__0_n_0
+                         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.189    17.265 r  u_booth_simd_pipe/out_flat_u8x40__2_carry__1/O[0]
+                         net (fo=1, unplaced)         0.646    17.910    out_flat_u8x4_OBUF[6]
+                         OBUF (Prop_obuf_I_O)         2.497    20.407 r  out_flat_u8x4_OBUF[6]_inst/O
+                         net (fo=0)                   0.000    20.407    out_flat_u8x4[6]
+                                                                      r  out_flat_u8x4[6] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 img_flat_u8x25[147]
+                            (input port)
+  Destination:            out_flat_u8x4[7]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        20.394ns  (logic 11.223ns (55.031%)  route 9.171ns (44.969%))
+  Logic Levels:           33  (CARRY4=16 IBUF=1 LUT2=10 LUT3=2 LUT5=2 LUT6=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 f  img_flat_u8x25[147] (IN)
+                         net (fo=0)                   0.000     0.000    img_flat_u8x25[147]
+                         IBUF (Prop_ibuf_I_O)         0.876     0.876 f  img_flat_u8x25_IBUF[147]_inst/O
+                         net (fo=77, unplaced)        0.646     1.522    u_booth_simd_pipe/img_flat_u8x25_IBUF[147]
+                         LUT2 (Prop_lut2_I0_O)        0.125     1.647 r  u_booth_simd_pipe/i___32_carry_i_8__10/O
+                         net (fo=1, unplaced)         0.347     1.994    u_booth_simd_pipe/i___32_carry_i_8__10_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.105     2.099 r  u_booth_simd_pipe/i___32_carry_i_4__10/O
+                         net (fo=1, unplaced)         0.000     2.099    u_booth_simd_pipe/i___32_carry_i_4__10_n_0
+                         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.314     2.413 r  u_booth_simd_pipe/relu_map3_inferred__1/i___32_carry/CO[3]
+                         net (fo=1, unplaced)         0.008     2.421    u_booth_simd_pipe/relu_map3_inferred__1/i___32_carry_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269     2.690 r  u_booth_simd_pipe/relu_map3_inferred__1/i___32_carry__0/O[1]
+                         net (fo=2, unplaced)         0.483     3.173    u_booth_simd_pipe/relu_map3_inferred__1/i___32_carry__0_n_6
+                         LUT3 (Prop_lut3_I1_O)        0.245     3.418 r  u_booth_simd_pipe/i___90_carry__0_i_3__8/O
+                         net (fo=2, unplaced)         0.548     3.966    u_booth_simd_pipe/i___90_carry__0_i_3__8_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430     4.396 r  u_booth_simd_pipe/relu_map3_inferred__1/i___90_carry__0/CO[3]
+                         net (fo=1, unplaced)         0.000     4.396    u_booth_simd_pipe/relu_map3_inferred__1/i___90_carry__0_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269     4.665 r  u_booth_simd_pipe/relu_map3_inferred__1/i___90_carry__1/O[1]
+                         net (fo=2, unplaced)         0.483     5.148    u_booth_simd_pipe/relu_map3[13]
+                         LUT2 (Prop_lut2_I0_O)        0.245     5.393 r  u_booth_simd_pipe/i__carry__2_i_3__0/O
+                         net (fo=1, unplaced)         0.000     5.393    u_booth_simd_pipe/i__carry__2_i_3__0_n_0
+                         CARRY4 (Prop_carry4_S[1]_O[3])
+                                                      0.534     5.927 r  u_booth_simd_pipe/relu_map2_inferred__1/i__carry__2/O[3]
+                         net (fo=1, unplaced)         0.519     6.446    u_booth_simd_pipe/relu_map2_inferred__1/i__carry__2_n_4
+                         LUT2 (Prop_lut2_I1_O)        0.250     6.696 r  u_booth_simd_pipe/i___50_carry__2_i_1__0/O
+                         net (fo=1, unplaced)         0.000     6.696    u_booth_simd_pipe/i___50_carry__2_i_1__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.314     7.010 r  u_booth_simd_pipe/relu_map2_inferred__1/i___50_carry__2/CO[3]
+                         net (fo=1, unplaced)         0.000     7.010    u_booth_simd_pipe/relu_map2_inferred__1/i___50_carry__2_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269     7.279 r  u_booth_simd_pipe/relu_map2_inferred__1/i___50_carry__3/O[1]
+                         net (fo=3, unplaced)         0.490     7.769    u_booth_simd_pipe/relu_map2_inferred__1/i___50_carry__3_n_6
+                         LUT2 (Prop_lut2_I0_O)        0.245     8.014 r  u_booth_simd_pipe/i___104_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000     8.014    u_booth_simd_pipe/i___104_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.316     8.330 r  u_booth_simd_pipe/relu_map2_inferred__1/i___104_carry__3/CO[3]
+                         net (fo=1, unplaced)         0.770     9.100    u_booth_simd_pipe/relu_map2_inferred__1/i___104_carry__3_n_0
+                         LUT2 (Prop_lut2_I1_O)        0.105     9.205 r  u_booth_simd_pipe/i___161_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000     9.205    u_booth_simd_pipe/i___161_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.211     9.416 r  u_booth_simd_pipe/relu_map2_inferred__1/i___161_carry__3/O[3]
+                         net (fo=1, unplaced)         0.519     9.935    u_booth_simd_pipe/relu_map2_inferred__1/i___161_carry__3_n_4
+                         LUT2 (Prop_lut2_I1_O)        0.250    10.185 r  u_booth_simd_pipe/i___219_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000    10.185    u_booth_simd_pipe/i___219_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.211    10.396 r  u_booth_simd_pipe/relu_map2_inferred__1/i___219_carry__3/O[3]
+                         net (fo=1, unplaced)         0.519    10.915    u_booth_simd_pipe/relu_map2_inferred__1/i___219_carry__3_n_4
+                         LUT2 (Prop_lut2_I1_O)        0.250    11.165 r  u_booth_simd_pipe/i___277_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000    11.165    u_booth_simd_pipe/i___277_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.211    11.376 r  u_booth_simd_pipe/relu_map2_inferred__1/i___277_carry__3/O[3]
+                         net (fo=1, unplaced)         0.519    11.895    u_booth_simd_pipe/relu_map2_inferred__1/i___277_carry__3_n_4
+                         LUT2 (Prop_lut2_I1_O)        0.250    12.145 r  u_booth_simd_pipe/i___335_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000    12.145    u_booth_simd_pipe/i___335_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.211    12.356 r  u_booth_simd_pipe/relu_map2_inferred__1/i___335_carry__3/O[3]
+                         net (fo=1, unplaced)         0.519    12.875    u_booth_simd_pipe/C__1[19]
+                         LUT2 (Prop_lut2_I1_O)        0.250    13.125 r  u_booth_simd_pipe/i___393_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000    13.125    u_booth_simd_pipe/i___393_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.211    13.336 f  u_booth_simd_pipe/relu_map2_inferred__1/i___393_carry__3/O[3]
+                         net (fo=17, unplaced)        0.575    13.911    u_booth_simd_pipe/relu_map2[19]
+                         LUT2 (Prop_lut2_I1_O)        0.251    14.162 r  u_booth_simd_pipe/i__carry__0_i_1__10/O
+                         net (fo=1, unplaced)         0.000    14.162    u_booth_simd_pipe/i__carry__0_i_1__10_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[1])
+                                                      0.416    14.578 r  u_booth_simd_pipe/relu_map1_inferred__3/i__carry__0/CO[1]
+                         net (fo=15, unplaced)        0.293    14.871    u_booth_simd_pipe/relu_map1
+                         LUT3 (Prop_lut3_I1_O)        0.277    15.148 r  u_booth_simd_pipe/i___2_carry_i_12__1/O
+                         net (fo=7, unplaced)         0.382    15.530    u_booth_simd_pipe/p_0_in1_in__0[3]
+                         LUT5 (Prop_lut5_I4_O)        0.105    15.635 r  u_booth_simd_pipe/out_flat_u8x40__2_carry__0_i_14/O
+                         net (fo=2, unplaced)         0.358    15.993    u_booth_simd_pipe/out_flat_u8x40__2_carry__0_i_14_n_0
+                         LUT5 (Prop_lut5_I4_O)        0.105    16.098 r  u_booth_simd_pipe/out_flat_u8x40__2_carry__0_i_3/O
+                         net (fo=2, unplaced)         0.548    16.646    u_booth_simd_pipe/out_flat_u8x40__2_carry__0_i_3_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430    17.076 r  u_booth_simd_pipe/out_flat_u8x40__2_carry__0/CO[3]
+                         net (fo=1, unplaced)         0.000    17.076    u_booth_simd_pipe/out_flat_u8x40__2_carry__0_n_0
+                         CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.150    17.226 r  u_booth_simd_pipe/out_flat_u8x40__2_carry__1/CO[1]
+                         net (fo=1, unplaced)         0.646    17.871    out_flat_u8x4_OBUF[7]
+                         OBUF (Prop_obuf_I_O)         2.523    20.394 r  out_flat_u8x4_OBUF[7]_inst/O
+                         net (fo=0)                   0.000    20.394    out_flat_u8x4[7]
+                                                                      r  out_flat_u8x4[7] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 img_flat_u8x25[147]
+                            (input port)
+  Destination:            out_flat_u8x4[14]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        20.388ns  (logic 11.236ns (55.111%)  route 9.152ns (44.889%))
+  Logic Levels:           33  (CARRY4=16 IBUF=1 LUT2=10 LUT3=2 LUT5=2 LUT6=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 f  img_flat_u8x25[147] (IN)
+                         net (fo=0)                   0.000     0.000    img_flat_u8x25[147]
+                         IBUF (Prop_ibuf_I_O)         0.876     0.876 f  img_flat_u8x25_IBUF[147]_inst/O
+                         net (fo=77, unplaced)        0.646     1.522    u_booth_simd_pipe/img_flat_u8x25_IBUF[147]
+                         LUT2 (Prop_lut2_I0_O)        0.125     1.647 r  u_booth_simd_pipe/i___32_carry_i_8__10/O
+                         net (fo=1, unplaced)         0.347     1.994    u_booth_simd_pipe/i___32_carry_i_8__10_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.105     2.099 r  u_booth_simd_pipe/i___32_carry_i_4__10/O
+                         net (fo=1, unplaced)         0.000     2.099    u_booth_simd_pipe/i___32_carry_i_4__10_n_0
+                         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.314     2.413 r  u_booth_simd_pipe/relu_map3_inferred__1/i___32_carry/CO[3]
+                         net (fo=1, unplaced)         0.008     2.421    u_booth_simd_pipe/relu_map3_inferred__1/i___32_carry_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269     2.690 r  u_booth_simd_pipe/relu_map3_inferred__1/i___32_carry__0/O[1]
+                         net (fo=2, unplaced)         0.483     3.173    u_booth_simd_pipe/relu_map3_inferred__1/i___32_carry__0_n_6
+                         LUT3 (Prop_lut3_I1_O)        0.245     3.418 r  u_booth_simd_pipe/i___90_carry__0_i_3__8/O
+                         net (fo=2, unplaced)         0.548     3.966    u_booth_simd_pipe/i___90_carry__0_i_3__8_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430     4.396 r  u_booth_simd_pipe/relu_map3_inferred__1/i___90_carry__0/CO[3]
+                         net (fo=1, unplaced)         0.000     4.396    u_booth_simd_pipe/relu_map3_inferred__1/i___90_carry__0_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269     4.665 r  u_booth_simd_pipe/relu_map3_inferred__1/i___90_carry__1/O[1]
+                         net (fo=2, unplaced)         0.483     5.148    u_booth_simd_pipe/relu_map3[13]
+                         LUT2 (Prop_lut2_I0_O)        0.245     5.393 r  u_booth_simd_pipe/i__carry__2_i_3__0/O
+                         net (fo=1, unplaced)         0.000     5.393    u_booth_simd_pipe/i__carry__2_i_3__0_n_0
+                         CARRY4 (Prop_carry4_S[1]_O[3])
+                                                      0.534     5.927 r  u_booth_simd_pipe/relu_map2_inferred__1/i__carry__2/O[3]
+                         net (fo=1, unplaced)         0.519     6.446    u_booth_simd_pipe/relu_map2_inferred__1/i__carry__2_n_4
+                         LUT2 (Prop_lut2_I1_O)        0.250     6.696 r  u_booth_simd_pipe/i___50_carry__2_i_1__0/O
+                         net (fo=1, unplaced)         0.000     6.696    u_booth_simd_pipe/i___50_carry__2_i_1__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.314     7.010 r  u_booth_simd_pipe/relu_map2_inferred__1/i___50_carry__2/CO[3]
+                         net (fo=1, unplaced)         0.000     7.010    u_booth_simd_pipe/relu_map2_inferred__1/i___50_carry__2_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269     7.279 r  u_booth_simd_pipe/relu_map2_inferred__1/i___50_carry__3/O[1]
+                         net (fo=3, unplaced)         0.490     7.769    u_booth_simd_pipe/relu_map2_inferred__1/i___50_carry__3_n_6
+                         LUT2 (Prop_lut2_I0_O)        0.245     8.014 r  u_booth_simd_pipe/i___104_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000     8.014    u_booth_simd_pipe/i___104_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.316     8.330 r  u_booth_simd_pipe/relu_map2_inferred__1/i___104_carry__3/CO[3]
+                         net (fo=1, unplaced)         0.770     9.100    u_booth_simd_pipe/relu_map2_inferred__1/i___104_carry__3_n_0
+                         LUT2 (Prop_lut2_I1_O)        0.105     9.205 r  u_booth_simd_pipe/i___161_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000     9.205    u_booth_simd_pipe/i___161_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.211     9.416 r  u_booth_simd_pipe/relu_map2_inferred__1/i___161_carry__3/O[3]
+                         net (fo=1, unplaced)         0.519     9.935    u_booth_simd_pipe/relu_map2_inferred__1/i___161_carry__3_n_4
+                         LUT2 (Prop_lut2_I1_O)        0.250    10.185 r  u_booth_simd_pipe/i___219_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000    10.185    u_booth_simd_pipe/i___219_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.211    10.396 r  u_booth_simd_pipe/relu_map2_inferred__1/i___219_carry__3/O[3]
+                         net (fo=1, unplaced)         0.519    10.915    u_booth_simd_pipe/relu_map2_inferred__1/i___219_carry__3_n_4
+                         LUT2 (Prop_lut2_I1_O)        0.250    11.165 r  u_booth_simd_pipe/i___277_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000    11.165    u_booth_simd_pipe/i___277_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.211    11.376 r  u_booth_simd_pipe/relu_map2_inferred__1/i___277_carry__3/O[3]
+                         net (fo=1, unplaced)         0.519    11.895    u_booth_simd_pipe/relu_map2_inferred__1/i___277_carry__3_n_4
+                         LUT2 (Prop_lut2_I1_O)        0.250    12.145 r  u_booth_simd_pipe/i___335_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000    12.145    u_booth_simd_pipe/i___335_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.211    12.356 r  u_booth_simd_pipe/relu_map2_inferred__1/i___335_carry__3/O[3]
+                         net (fo=1, unplaced)         0.519    12.875    u_booth_simd_pipe/C__1[19]
+                         LUT2 (Prop_lut2_I1_O)        0.250    13.125 r  u_booth_simd_pipe/i___393_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000    13.125    u_booth_simd_pipe/i___393_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.211    13.336 f  u_booth_simd_pipe/relu_map2_inferred__1/i___393_carry__3/O[3]
+                         net (fo=17, unplaced)        0.575    13.911    u_booth_simd_pipe/relu_map2[19]
+                         LUT2 (Prop_lut2_I1_O)        0.251    14.162 r  u_booth_simd_pipe/i__carry__0_i_1__10/O
+                         net (fo=1, unplaced)         0.000    14.162    u_booth_simd_pipe/i__carry__0_i_1__10_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[1])
+                                                      0.416    14.578 r  u_booth_simd_pipe/relu_map1_inferred__3/i__carry__0/CO[1]
+                         net (fo=15, unplaced)        0.293    14.871    u_booth_simd_pipe/relu_map1
+                         LUT3 (Prop_lut3_I1_O)        0.277    15.148 r  u_booth_simd_pipe/i___2_carry_i_12__1/O
+                         net (fo=7, unplaced)         0.363    15.511    u_booth_simd_pipe/p_0_in1_in__0[3]
+                         LUT5 (Prop_lut5_I3_O)        0.105    15.616 r  u_booth_simd_pipe/i___2_carry__0_i_14__1/O
+                         net (fo=2, unplaced)         0.358    15.974    u_booth_simd_pipe/i___2_carry__0_i_14__1_n_0
+                         LUT5 (Prop_lut5_I4_O)        0.105    16.079 r  u_booth_simd_pipe/i___2_carry__0_i_3__1/O
+                         net (fo=2, unplaced)         0.548    16.627    u_booth_simd_pipe/i___2_carry__0_i_3__1_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430    17.057 r  u_booth_simd_pipe/out_flat_u8x40_inferred__0/i___2_carry__0/CO[3]
+                         net (fo=1, unplaced)         0.000    17.057    u_booth_simd_pipe/out_flat_u8x40_inferred__0/i___2_carry__0_n_0
+                         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.189    17.246 r  u_booth_simd_pipe/out_flat_u8x40_inferred__0/i___2_carry__1/O[0]
+                         net (fo=1, unplaced)         0.646    17.891    out_flat_u8x4_OBUF[14]
+                         OBUF (Prop_obuf_I_O)         2.497    20.388 r  out_flat_u8x4_OBUF[14]_inst/O
+                         net (fo=0)                   0.000    20.388    out_flat_u8x4[14]
+                                                                      r  out_flat_u8x4[14] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 img_flat_u8x25[147]
+                            (input port)
+  Destination:            out_flat_u8x4[22]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        20.388ns  (logic 11.236ns (55.111%)  route 9.152ns (44.889%))
+  Logic Levels:           33  (CARRY4=16 IBUF=1 LUT2=10 LUT3=2 LUT5=2 LUT6=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 f  img_flat_u8x25[147] (IN)
+                         net (fo=0)                   0.000     0.000    img_flat_u8x25[147]
+                         IBUF (Prop_ibuf_I_O)         0.876     0.876 f  img_flat_u8x25_IBUF[147]_inst/O
+                         net (fo=77, unplaced)        0.646     1.522    u_booth_simd_pipe/img_flat_u8x25_IBUF[147]
+                         LUT2 (Prop_lut2_I0_O)        0.125     1.647 r  u_booth_simd_pipe/i___32_carry_i_8__10/O
+                         net (fo=1, unplaced)         0.347     1.994    u_booth_simd_pipe/i___32_carry_i_8__10_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.105     2.099 r  u_booth_simd_pipe/i___32_carry_i_4__10/O
+                         net (fo=1, unplaced)         0.000     2.099    u_booth_simd_pipe/i___32_carry_i_4__10_n_0
+                         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.314     2.413 r  u_booth_simd_pipe/relu_map3_inferred__1/i___32_carry/CO[3]
+                         net (fo=1, unplaced)         0.008     2.421    u_booth_simd_pipe/relu_map3_inferred__1/i___32_carry_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269     2.690 r  u_booth_simd_pipe/relu_map3_inferred__1/i___32_carry__0/O[1]
+                         net (fo=2, unplaced)         0.483     3.173    u_booth_simd_pipe/relu_map3_inferred__1/i___32_carry__0_n_6
+                         LUT3 (Prop_lut3_I1_O)        0.245     3.418 r  u_booth_simd_pipe/i___90_carry__0_i_3__8/O
+                         net (fo=2, unplaced)         0.548     3.966    u_booth_simd_pipe/i___90_carry__0_i_3__8_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430     4.396 r  u_booth_simd_pipe/relu_map3_inferred__1/i___90_carry__0/CO[3]
+                         net (fo=1, unplaced)         0.000     4.396    u_booth_simd_pipe/relu_map3_inferred__1/i___90_carry__0_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269     4.665 r  u_booth_simd_pipe/relu_map3_inferred__1/i___90_carry__1/O[1]
+                         net (fo=2, unplaced)         0.483     5.148    u_booth_simd_pipe/relu_map3[13]
+                         LUT2 (Prop_lut2_I0_O)        0.245     5.393 r  u_booth_simd_pipe/i__carry__2_i_3__0/O
+                         net (fo=1, unplaced)         0.000     5.393    u_booth_simd_pipe/i__carry__2_i_3__0_n_0
+                         CARRY4 (Prop_carry4_S[1]_O[3])
+                                                      0.534     5.927 r  u_booth_simd_pipe/relu_map2_inferred__1/i__carry__2/O[3]
+                         net (fo=1, unplaced)         0.519     6.446    u_booth_simd_pipe/relu_map2_inferred__1/i__carry__2_n_4
+                         LUT2 (Prop_lut2_I1_O)        0.250     6.696 r  u_booth_simd_pipe/i___50_carry__2_i_1__0/O
+                         net (fo=1, unplaced)         0.000     6.696    u_booth_simd_pipe/i___50_carry__2_i_1__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.314     7.010 r  u_booth_simd_pipe/relu_map2_inferred__1/i___50_carry__2/CO[3]
+                         net (fo=1, unplaced)         0.000     7.010    u_booth_simd_pipe/relu_map2_inferred__1/i___50_carry__2_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269     7.279 r  u_booth_simd_pipe/relu_map2_inferred__1/i___50_carry__3/O[1]
+                         net (fo=3, unplaced)         0.490     7.769    u_booth_simd_pipe/relu_map2_inferred__1/i___50_carry__3_n_6
+                         LUT2 (Prop_lut2_I0_O)        0.245     8.014 r  u_booth_simd_pipe/i___104_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000     8.014    u_booth_simd_pipe/i___104_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.316     8.330 r  u_booth_simd_pipe/relu_map2_inferred__1/i___104_carry__3/CO[3]
+                         net (fo=1, unplaced)         0.770     9.100    u_booth_simd_pipe/relu_map2_inferred__1/i___104_carry__3_n_0
+                         LUT2 (Prop_lut2_I1_O)        0.105     9.205 r  u_booth_simd_pipe/i___161_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000     9.205    u_booth_simd_pipe/i___161_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.211     9.416 r  u_booth_simd_pipe/relu_map2_inferred__1/i___161_carry__3/O[3]
+                         net (fo=1, unplaced)         0.519     9.935    u_booth_simd_pipe/relu_map2_inferred__1/i___161_carry__3_n_4
+                         LUT2 (Prop_lut2_I1_O)        0.250    10.185 r  u_booth_simd_pipe/i___219_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000    10.185    u_booth_simd_pipe/i___219_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.211    10.396 r  u_booth_simd_pipe/relu_map2_inferred__1/i___219_carry__3/O[3]
+                         net (fo=1, unplaced)         0.519    10.915    u_booth_simd_pipe/relu_map2_inferred__1/i___219_carry__3_n_4
+                         LUT2 (Prop_lut2_I1_O)        0.250    11.165 r  u_booth_simd_pipe/i___277_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000    11.165    u_booth_simd_pipe/i___277_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.211    11.376 r  u_booth_simd_pipe/relu_map2_inferred__1/i___277_carry__3/O[3]
+                         net (fo=1, unplaced)         0.519    11.895    u_booth_simd_pipe/relu_map2_inferred__1/i___277_carry__3_n_4
+                         LUT2 (Prop_lut2_I1_O)        0.250    12.145 r  u_booth_simd_pipe/i___335_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000    12.145    u_booth_simd_pipe/i___335_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.211    12.356 r  u_booth_simd_pipe/relu_map2_inferred__1/i___335_carry__3/O[3]
+                         net (fo=1, unplaced)         0.519    12.875    u_booth_simd_pipe/C__1[19]
+                         LUT2 (Prop_lut2_I1_O)        0.250    13.125 r  u_booth_simd_pipe/i___393_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000    13.125    u_booth_simd_pipe/i___393_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.211    13.336 f  u_booth_simd_pipe/relu_map2_inferred__1/i___393_carry__3/O[3]
+                         net (fo=17, unplaced)        0.575    13.911    u_booth_simd_pipe/relu_map2[19]
+                         LUT2 (Prop_lut2_I1_O)        0.251    14.162 r  u_booth_simd_pipe/i__carry__0_i_1__10/O
+                         net (fo=1, unplaced)         0.000    14.162    u_booth_simd_pipe/i__carry__0_i_1__10_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[1])
+                                                      0.416    14.578 r  u_booth_simd_pipe/relu_map1_inferred__3/i__carry__0/CO[1]
+                         net (fo=15, unplaced)        0.293    14.871    u_booth_simd_pipe/relu_map1
+                         LUT3 (Prop_lut3_I1_O)        0.277    15.148 r  u_booth_simd_pipe/i___2_carry_i_12__1/O
+                         net (fo=7, unplaced)         0.363    15.511    u_booth_simd_pipe/p_0_in1_in__0[3]
+                         LUT5 (Prop_lut5_I0_O)        0.105    15.616 r  u_booth_simd_pipe/i___2_carry__0_i_14__0/O
+                         net (fo=2, unplaced)         0.358    15.974    u_booth_simd_pipe/i___2_carry__0_i_14__0_n_0
+                         LUT5 (Prop_lut5_I4_O)        0.105    16.079 r  u_booth_simd_pipe/i___2_carry__0_i_3__0/O
+                         net (fo=2, unplaced)         0.548    16.627    u_booth_simd_pipe/i___2_carry__0_i_3__0_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430    17.057 r  u_booth_simd_pipe/out_flat_u8x40_inferred__1/i___2_carry__0/CO[3]
+                         net (fo=1, unplaced)         0.000    17.057    u_booth_simd_pipe/out_flat_u8x40_inferred__1/i___2_carry__0_n_0
+                         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.189    17.246 r  u_booth_simd_pipe/out_flat_u8x40_inferred__1/i___2_carry__1/O[0]
+                         net (fo=1, unplaced)         0.646    17.891    out_flat_u8x4_OBUF[22]
+                         OBUF (Prop_obuf_I_O)         2.497    20.388 r  out_flat_u8x4_OBUF[22]_inst/O
+                         net (fo=0)                   0.000    20.388    out_flat_u8x4[22]
+                                                                      r  out_flat_u8x4[22] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 img_flat_u8x25[147]
+                            (input port)
+  Destination:            out_flat_u8x4[15]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        20.375ns  (logic 11.223ns (55.082%)  route 9.152ns (44.918%))
+  Logic Levels:           33  (CARRY4=16 IBUF=1 LUT2=10 LUT3=2 LUT5=2 LUT6=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 f  img_flat_u8x25[147] (IN)
+                         net (fo=0)                   0.000     0.000    img_flat_u8x25[147]
+                         IBUF (Prop_ibuf_I_O)         0.876     0.876 f  img_flat_u8x25_IBUF[147]_inst/O
+                         net (fo=77, unplaced)        0.646     1.522    u_booth_simd_pipe/img_flat_u8x25_IBUF[147]
+                         LUT2 (Prop_lut2_I0_O)        0.125     1.647 r  u_booth_simd_pipe/i___32_carry_i_8__10/O
+                         net (fo=1, unplaced)         0.347     1.994    u_booth_simd_pipe/i___32_carry_i_8__10_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.105     2.099 r  u_booth_simd_pipe/i___32_carry_i_4__10/O
+                         net (fo=1, unplaced)         0.000     2.099    u_booth_simd_pipe/i___32_carry_i_4__10_n_0
+                         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.314     2.413 r  u_booth_simd_pipe/relu_map3_inferred__1/i___32_carry/CO[3]
+                         net (fo=1, unplaced)         0.008     2.421    u_booth_simd_pipe/relu_map3_inferred__1/i___32_carry_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269     2.690 r  u_booth_simd_pipe/relu_map3_inferred__1/i___32_carry__0/O[1]
+                         net (fo=2, unplaced)         0.483     3.173    u_booth_simd_pipe/relu_map3_inferred__1/i___32_carry__0_n_6
+                         LUT3 (Prop_lut3_I1_O)        0.245     3.418 r  u_booth_simd_pipe/i___90_carry__0_i_3__8/O
+                         net (fo=2, unplaced)         0.548     3.966    u_booth_simd_pipe/i___90_carry__0_i_3__8_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430     4.396 r  u_booth_simd_pipe/relu_map3_inferred__1/i___90_carry__0/CO[3]
+                         net (fo=1, unplaced)         0.000     4.396    u_booth_simd_pipe/relu_map3_inferred__1/i___90_carry__0_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269     4.665 r  u_booth_simd_pipe/relu_map3_inferred__1/i___90_carry__1/O[1]
+                         net (fo=2, unplaced)         0.483     5.148    u_booth_simd_pipe/relu_map3[13]
+                         LUT2 (Prop_lut2_I0_O)        0.245     5.393 r  u_booth_simd_pipe/i__carry__2_i_3__0/O
+                         net (fo=1, unplaced)         0.000     5.393    u_booth_simd_pipe/i__carry__2_i_3__0_n_0
+                         CARRY4 (Prop_carry4_S[1]_O[3])
+                                                      0.534     5.927 r  u_booth_simd_pipe/relu_map2_inferred__1/i__carry__2/O[3]
+                         net (fo=1, unplaced)         0.519     6.446    u_booth_simd_pipe/relu_map2_inferred__1/i__carry__2_n_4
+                         LUT2 (Prop_lut2_I1_O)        0.250     6.696 r  u_booth_simd_pipe/i___50_carry__2_i_1__0/O
+                         net (fo=1, unplaced)         0.000     6.696    u_booth_simd_pipe/i___50_carry__2_i_1__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.314     7.010 r  u_booth_simd_pipe/relu_map2_inferred__1/i___50_carry__2/CO[3]
+                         net (fo=1, unplaced)         0.000     7.010    u_booth_simd_pipe/relu_map2_inferred__1/i___50_carry__2_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.269     7.279 r  u_booth_simd_pipe/relu_map2_inferred__1/i___50_carry__3/O[1]
+                         net (fo=3, unplaced)         0.490     7.769    u_booth_simd_pipe/relu_map2_inferred__1/i___50_carry__3_n_6
+                         LUT2 (Prop_lut2_I0_O)        0.245     8.014 r  u_booth_simd_pipe/i___104_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000     8.014    u_booth_simd_pipe/i___104_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.316     8.330 r  u_booth_simd_pipe/relu_map2_inferred__1/i___104_carry__3/CO[3]
+                         net (fo=1, unplaced)         0.770     9.100    u_booth_simd_pipe/relu_map2_inferred__1/i___104_carry__3_n_0
+                         LUT2 (Prop_lut2_I1_O)        0.105     9.205 r  u_booth_simd_pipe/i___161_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000     9.205    u_booth_simd_pipe/i___161_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.211     9.416 r  u_booth_simd_pipe/relu_map2_inferred__1/i___161_carry__3/O[3]
+                         net (fo=1, unplaced)         0.519     9.935    u_booth_simd_pipe/relu_map2_inferred__1/i___161_carry__3_n_4
+                         LUT2 (Prop_lut2_I1_O)        0.250    10.185 r  u_booth_simd_pipe/i___219_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000    10.185    u_booth_simd_pipe/i___219_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.211    10.396 r  u_booth_simd_pipe/relu_map2_inferred__1/i___219_carry__3/O[3]
+                         net (fo=1, unplaced)         0.519    10.915    u_booth_simd_pipe/relu_map2_inferred__1/i___219_carry__3_n_4
+                         LUT2 (Prop_lut2_I1_O)        0.250    11.165 r  u_booth_simd_pipe/i___277_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000    11.165    u_booth_simd_pipe/i___277_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.211    11.376 r  u_booth_simd_pipe/relu_map2_inferred__1/i___277_carry__3/O[3]
+                         net (fo=1, unplaced)         0.519    11.895    u_booth_simd_pipe/relu_map2_inferred__1/i___277_carry__3_n_4
+                         LUT2 (Prop_lut2_I1_O)        0.250    12.145 r  u_booth_simd_pipe/i___335_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000    12.145    u_booth_simd_pipe/i___335_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.211    12.356 r  u_booth_simd_pipe/relu_map2_inferred__1/i___335_carry__3/O[3]
+                         net (fo=1, unplaced)         0.519    12.875    u_booth_simd_pipe/C__1[19]
+                         LUT2 (Prop_lut2_I1_O)        0.250    13.125 r  u_booth_simd_pipe/i___393_carry__3_i_2__0/O
+                         net (fo=1, unplaced)         0.000    13.125    u_booth_simd_pipe/i___393_carry__3_i_2__0_n_0
+                         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.211    13.336 f  u_booth_simd_pipe/relu_map2_inferred__1/i___393_carry__3/O[3]
+                         net (fo=17, unplaced)        0.575    13.911    u_booth_simd_pipe/relu_map2[19]
+                         LUT2 (Prop_lut2_I1_O)        0.251    14.162 r  u_booth_simd_pipe/i__carry__0_i_1__10/O
+                         net (fo=1, unplaced)         0.000    14.162    u_booth_simd_pipe/i__carry__0_i_1__10_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[1])
+                                                      0.416    14.578 r  u_booth_simd_pipe/relu_map1_inferred__3/i__carry__0/CO[1]
+                         net (fo=15, unplaced)        0.293    14.871    u_booth_simd_pipe/relu_map1
+                         LUT3 (Prop_lut3_I1_O)        0.277    15.148 r  u_booth_simd_pipe/i___2_carry_i_12__1/O
+                         net (fo=7, unplaced)         0.363    15.511    u_booth_simd_pipe/p_0_in1_in__0[3]
+                         LUT5 (Prop_lut5_I3_O)        0.105    15.616 r  u_booth_simd_pipe/i___2_carry__0_i_14__1/O
+                         net (fo=2, unplaced)         0.358    15.974    u_booth_simd_pipe/i___2_carry__0_i_14__1_n_0
+                         LUT5 (Prop_lut5_I4_O)        0.105    16.079 r  u_booth_simd_pipe/i___2_carry__0_i_3__1/O
+                         net (fo=2, unplaced)         0.548    16.627    u_booth_simd_pipe/i___2_carry__0_i_3__1_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.430    17.057 r  u_booth_simd_pipe/out_flat_u8x40_inferred__0/i___2_carry__0/CO[3]
+                         net (fo=1, unplaced)         0.000    17.057    u_booth_simd_pipe/out_flat_u8x40_inferred__0/i___2_carry__0_n_0
+                         CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.150    17.207 r  u_booth_simd_pipe/out_flat_u8x40_inferred__0/i___2_carry__1/CO[1]
+                         net (fo=1, unplaced)         0.646    17.852    out_flat_u8x4_OBUF[15]
+                         OBUF (Prop_obuf_I_O)         2.523    20.375 r  out_flat_u8x4_OBUF[15]_inst/O
+                         net (fo=0)                   0.000    20.375    out_flat_u8x4[15]
+                                                                      r  out_flat_u8x4[15] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+# puts "=== START->DONE timing ==="
+=== START->DONE timing ===
+# report_timing -from [get_ports start] -to [get_ports done] -max_paths 3 -nworst 1
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -2, Delay Type: max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+INFO: [Timing 38-78] ReportTimingParams: -from_pins  -to_pins  -max_paths 3 -nworst 1 -delay_type max -sort_by slack.
+INFO: [Timing 38-72] No paths found.
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
+| Date         : Sun Apr 26 17:18:07 2026
+| Host         : DESKTOP-JH0OJSQ running 64-bit major release  (build 9200)
+| Command      : report_timing -from [get_ports start] -to [get_ports done] -max_paths 3 -nworst 1
+| Design       : cnn_compare_booth_simd_pipe_top
+| Device       : 7a200t-fbg484
+| Speed File   : -2  PRODUCTION 1.23 2018-06-13
+| Design State : Synthesized
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+No timing paths found.
+
+
+# exit
+INFO: [Common 17-206] Exiting Vivado at Sun Apr 26 17:18:07 2026...

@@ -1,0 +1,383 @@
+#-----------------------------------------------------------
+# Vivado v2025.1 (64-bit)
+# SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
+# IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+# SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+# Start of session at: Sun Apr 26 21:22:53 2026
+# Process ID         : 42120
+# Current directory  : D:/1012/project1/project1.runs/synth_1
+# Command line       : vivado.exe -log cnn_compare_booth_simd_pipe_dsp_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source cnn_compare_booth_simd_pipe_dsp_top.tcl
+# Log file           : D:/1012/project1/project1.runs/synth_1/cnn_compare_booth_simd_pipe_dsp_top.vds
+# Journal file       : D:/1012/project1/project1.runs/synth_1\vivado.jou
+# Running On         : DESKTOP-JH0OJSQ
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : AMD Ryzen 7 4800HS with Radeon Graphics         
+# CPU Frequency      : 2895 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 16556 MB
+# Swap memory        : 24732 MB
+# Total Virtual      : 41288 MB
+# Available Virtual  : 3855 MB
+#-----------------------------------------------------------
+source cnn_compare_booth_simd_pipe_dsp_top.tcl -notrace
+Command: read_checkpoint -auto_incremental -incremental D:/1012/project1/project1.srcs/utils_1/imports/synth_1/cnn_compare_booth_simd_pipe_top.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from D:/1012/project1/project1.srcs/utils_1/imports/synth_1/cnn_compare_booth_simd_pipe_top.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top cnn_compare_booth_simd_pipe_dsp_top -part xc7a200tfbg676-2
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a200t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a200t'
+INFO: [Device 21-403] Loading part xc7a200tfbg676-2
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 42588
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1231.738 ; gain = 493.363
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'cnn_compare_booth_simd_pipe_dsp_top' [D:/1012/project1/src/optimized/cnn_compare_booth_simd_pipe_dsp_top.v:1]
+INFO: [Synth 8-6157] synthesizing module 'cnn_chain_core_booth_simd_pipe_dsp' [D:/1012/project1/src/optimized/cnn_chain_core_booth_simd_pipe_dsp.v:1]
+INFO: [Synth 8-6157] synthesizing module 'cnn_conv3x3_simd_core' [D:/1012/project1/src/optimized/cnn_conv3x3_simd_core.v:1]
+	Parameter use_dsp bound to: 1'b1 
+INFO: [Synth 8-6157] synthesizing module 'simd_mul8x4_dsp' [D:/1012/project1/src/optimized/simd_mul8x4_dsp.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mul8_dsp48e1' [D:/1012/project1/src/optimized/mul8_dsp48e1.v:1]
+INFO: [Synth 8-6157] synthesizing module 'DSP48E1' [C:/Xilinx/2025.1/Vivado/scripts/rt/data/unisim_comp.v:42971]
+	Parameter ACASCREG bound to: 0 - type: integer 
+	Parameter ADREG bound to: 0 - type: integer 
+	Parameter ALUMODEREG bound to: 0 - type: integer 
+	Parameter AREG bound to: 0 - type: integer 
+	Parameter A_INPUT bound to: DIRECT - type: string 
+	Parameter BCASCREG bound to: 0 - type: integer 
+	Parameter BREG bound to: 0 - type: integer 
+	Parameter B_INPUT bound to: DIRECT - type: string 
+	Parameter CARRYINREG bound to: 0 - type: integer 
+	Parameter CARRYINSELREG bound to: 0 - type: integer 
+	Parameter CREG bound to: 0 - type: integer 
+	Parameter DREG bound to: 0 - type: integer 
+	Parameter INMODEREG bound to: 0 - type: integer 
+	Parameter MREG bound to: 0 - type: integer 
+	Parameter OPMODEREG bound to: 0 - type: integer 
+	Parameter PREG bound to: 0 - type: integer 
+	Parameter USE_DPORT bound to: FALSE - type: string 
+	Parameter USE_MULT bound to: MULTIPLY - type: string 
+	Parameter USE_SIMD bound to: ONE48 - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'DSP48E1' (0#1) [C:/Xilinx/2025.1/Vivado/scripts/rt/data/unisim_comp.v:42971]
+INFO: [Synth 8-6155] done synthesizing module 'mul8_dsp48e1' (0#1) [D:/1012/project1/src/optimized/mul8_dsp48e1.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'simd_mul8x4_dsp' (0#1) [D:/1012/project1/src/optimized/simd_mul8x4_dsp.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'cnn_conv3x3_simd_core' (0#1) [D:/1012/project1/src/optimized/cnn_conv3x3_simd_core.v:1]
+INFO: [Synth 8-6157] synthesizing module 'simd_relu8x4' [D:/1012/project1/src/optimized/simd_relu8x4.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'simd_relu8x4' (0#1) [D:/1012/project1/src/optimized/simd_relu8x4.v:1]
+INFO: [Synth 8-6157] synthesizing module 'simd_avgpool2x2_8bit' [D:/1012/project1/src/optimized/simd_avgpool2x2_8bit.v:1]
+INFO: [Synth 8-6157] synthesizing module 'simd_add8x4' [D:/1012/project1/src/optimized/simd_add8x4.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'simd_add8x4' (0#1) [D:/1012/project1/src/optimized/simd_add8x4.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'simd_avgpool2x2_8bit' (0#1) [D:/1012/project1/src/optimized/simd_avgpool2x2_8bit.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'cnn_chain_core_booth_simd_pipe_dsp' (0#1) [D:/1012/project1/src/optimized/cnn_chain_core_booth_simd_pipe_dsp.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'cnn_compare_booth_simd_pipe_dsp_top' (0#1) [D:/1012/project1/src/optimized/cnn_compare_booth_simd_pipe_dsp_top.v:1]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1341.367 ; gain = 602.992
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1341.367 ; gain = 602.992
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1341.367 ; gain = 602.992
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.049 . Memory (MB): peak = 1341.367 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 108 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [D:/1012/project1/constraints/project1.xdc]
+Finished Parsing XDC File [D:/1012/project1/constraints/project1.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1424.770 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 1424.770 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1424.770 ; gain = 686.395
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a200tfbg676-2
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1424.770 ; gain = 686.395
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1424.770 ; gain = 686.395
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Preparing Guide Design
+---------------------------------------------------------------------------------
+CRITICAL WARNING: [Synth 8-6895] The reference checkpoint D:/1012/project1/project1.srcs/utils_1/imports/synth_1/cnn_compare_booth_simd_pipe_top.dcp is not suitable for use with incremental synthesis for this design. Please regenerate the checkpoint for this design with -incremental_synth switch in the same Vivado session that synth_design has been run. Synthesis will continue with the default flow
+---------------------------------------------------------------------------------
+Finished Doing Graph Differ : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1424.770 ; gain = 686.395
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Preparing Guide Design : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1424.770 ; gain = 686.395
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1424.770 ; gain = 686.395
+---------------------------------------------------------------------------------
+
+
+Incremental Synthesis Report Summary:
+
+1. Incremental synthesis run: no
+
+   Reason for not running incremental synthesis : 
+
+
+INFO: [Synth 8-7130] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   9 Input   20 Bit       Adders := 9     
+	   2 Input   10 Bit       Adders := 4     
+	   2 Input    9 Bit       Adders := 16    
++---Registers : 
+	               80 Bit    Registers := 3     
+	               32 Bit    Registers := 4     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input    8 Bit        Muxes := 24    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 740 (col length:100)
+BRAMs: 730 (col length: RAMB18 100 RAMB36 50)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1424.770 ; gain = 686.395
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1593.797 ; gain = 855.422
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 1623.312 ; gain = 884.938
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 1650.391 ; gain = 912.016
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:42 ; elapsed = 00:00:43 . Memory (MB): peak = 1864.422 ; gain = 1126.047
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:42 ; elapsed = 00:00:43 . Memory (MB): peak = 1864.422 ; gain = 1126.047
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:44 ; elapsed = 00:00:45 . Memory (MB): peak = 1864.422 ; gain = 1126.047
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:44 ; elapsed = 00:00:45 . Memory (MB): peak = 1864.422 ; gain = 1126.047
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:44 ; elapsed = 00:00:45 . Memory (MB): peak = 1864.422 ; gain = 1126.047
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:44 ; elapsed = 00:00:45 . Memory (MB): peak = 1864.422 ; gain = 1126.047
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+DSP Final Report (the ' indicates corresponding REG is set)
++-----------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name      | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++-----------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|mul8_dsp48e1_108 | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_109 | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_110 | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_111 | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_104 | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_105 | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_106 | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_107 | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_100 | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_101 | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_102 | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_103 | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_96  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_97  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_98  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_99  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_92  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_93  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_94  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_95  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_88  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_89  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_90  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_91  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_84  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_85  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_86  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_87  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_80  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_81  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_82  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_83  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_76  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_77  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_78  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_79  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_72  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_73  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_74  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_75  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_68  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_69  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_70  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_71  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_64  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_65  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_66  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_67  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_60  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_61  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_62  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_63  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_56  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_57  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_58  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_59  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_52  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_53  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_54  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_55  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_48  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_49  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_50  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_51  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_44  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_45  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_46  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_47  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_40  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_41  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_42  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_43  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_39  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_38  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_37  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_36  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_35  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_34  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_33  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1_32  | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mul8_dsp48e1     | A*B         | 8      | 18     | -      | -      | 16     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++-----------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |BUFG    |     1|
+|2     |CARRY4  |   228|
+|3     |DSP48E1 |    81|
+|4     |LUT1    |     1|
+|5     |LUT2    |   192|
+|6     |LUT3    |   729|
+|7     |LUT4    |     9|
+|8     |LUT6    |   567|
+|9     |FDCE    |   287|
+|10    |IBUF    |   275|
+|11    |OBUF    |    33|
++------+--------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:44 ; elapsed = 00:00:45 . Memory (MB): peak = 1864.422 ; gain = 1126.047
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 1 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:33 ; elapsed = 00:00:42 . Memory (MB): peak = 1864.422 ; gain = 1042.645
+Synthesis Optimization Complete : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 1864.422 ; gain = 1126.047
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.046 . Memory (MB): peak = 1864.422 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 309 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1879.199 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 3eaacb9a
+INFO: [Common 17-83] Releasing license: Synthesis
+37 Infos, 1 Warnings, 1 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:50 ; elapsed = 00:00:53 . Memory (MB): peak = 1879.199 ; gain = 1374.730
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 1879.199 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'D:/1012/project1/project1.runs/synth_1/cnn_compare_booth_simd_pipe_dsp_top.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file cnn_compare_booth_simd_pipe_dsp_top_utilization_synth.rpt -pb cnn_compare_booth_simd_pipe_dsp_top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sun Apr 26 21:23:54 2026...

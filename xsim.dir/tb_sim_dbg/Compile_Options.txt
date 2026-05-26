@@ -1,0 +1,1 @@
+"tb" --debug "typical" -s "tb_sim_dbg" 
