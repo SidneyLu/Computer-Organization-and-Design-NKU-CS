@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2025.1 (64-bit)
+# SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
+# IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+# SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+# Start of session at: Sun Jun  7 17:12:14 2026
+# Process ID         : 31364
+# Current directory  : D:/1012/final_project/lab8/lab8.runs/data_ram_synth_1
+# Command line       : vivado.exe -log data_ram.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source data_ram.tcl
+# Log file           : D:/1012/final_project/lab8/lab8.runs/data_ram_synth_1/data_ram.vds
+# Journal file       : D:/1012/final_project/lab8/lab8.runs/data_ram_synth_1\vivado.jou
+# Running On         : DESKTOP-JH0OJSQ
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : AMD Ryzen 7 4800HS with Radeon Graphics         
+# CPU Frequency      : 2895 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 16556 MB
+# Swap memory        : 15198 MB
+# Total Virtual      : 31754 MB
+# Available Virtual  : 11552 MB
+#-----------------------------------------------------------
+source data_ram.tcl -notrace

@@ -1,0 +1,2 @@
+inst_rom.v,verilog,xil_defaultlib,../../../../lab8.gen/sources_1/ip/inst_rom/sim/inst_rom.v,incdir="C:/Xilinx/2025.1/Vivado/data/rsb/busdef"
+glbl.v,Verilog,xil_defaultlib,glbl.v
