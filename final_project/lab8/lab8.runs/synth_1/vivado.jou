@@ -3,11 +3,11 @@
 # SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
 # IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
 # SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
-# Start of session at: Sun Jun  7 21:40:52 2026
-# Process ID         : 25728
+# Start of session at: Mon Jun  8 15:38:10 2026
+# Process ID         : 20644
 # Current directory  : D:/1012/final_project/lab8/lab8.runs/synth_1
-# Command line       : vivado.exe -log pipeline_cpu_display.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source pipeline_cpu_display.tcl
-# Log file           : D:/1012/final_project/lab8/lab8.runs/synth_1/pipeline_cpu_display.vds
+# Command line       : vivado.exe -log pipeline_cpu.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source pipeline_cpu.tcl
+# Log file           : D:/1012/final_project/lab8/lab8.runs/synth_1/pipeline_cpu.vds
 # Journal file       : D:/1012/final_project/lab8/lab8.runs/synth_1\vivado.jou
 # Running On         : DESKTOP-JH0OJSQ
 # Platform           : Windows Server 2016 or Windows 10
@@ -17,8 +17,8 @@
 # CPU Physical cores : 8
 # CPU Logical cores  : 16
 # Host memory        : 16556 MB
-# Swap memory        : 15198 MB
-# Total Virtual      : 31754 MB
-# Available Virtual  : 8553 MB
+# Swap memory        : 14776 MB
+# Total Virtual      : 31332 MB
+# Available Virtual  : 10717 MB
 #-----------------------------------------------------------
-source pipeline_cpu_display.tcl -notrace
+source pipeline_cpu.tcl -notrace

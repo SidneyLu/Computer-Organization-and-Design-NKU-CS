@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.16)  8 JUN 2026 02:09
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.16)  8 JUN 2026 21:40
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -727,57 +727,96 @@ File: ram_ip2.png Graphic file (type bmp)
 <ram_ip2.png>
 File: ram_ip3.png Graphic file (type bmp)
 <ram_ip3.png>
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[4] [5]
-Overfull \hbox (9.05498pt too wide) in paragraph at lines 176--178
-\TU/SimSun(0)/m/n/10.53937 下，|  由 \TU/lmr/m/n/10.53937 MIPS \TU/SimSun(0)/m/n/10.53937 分 支 跳 转 指 令 的 定 义，|  可 知 目 标 地 址 变 成 了 \TU/lmr/m/n/10.53937 (30+4)+(2$\OMS/cmsy/m/n/10.53937 ^^B$\TU/lmr/m/n/10.53937 4)=3C(Hex)\TU/SimSun(0)/m/n/10.53937 ，|
+ [4]
+Overfull \hbox (104.76852pt too wide) in paragraph at lines 166--169
+\TU/SimSun(0)/m/n/10.53937 此 处 跳 转 条 件 为 真 的 情 况 下，|  跳 转 目 标 地 址 应 为 \TU/lmr/m/n/10.53937 14+4=18(Hex)=24(Dec), +(16$\OMS/cmsy/m/n/10.53937 ^^B$\TU/lmr/m/n/10.53937 4)=88(Dec)=58(Hex)
  []
 
-[6]
-Overfull \hbox (8.69975pt too wide) in paragraph at lines 212--223
-[]\TU/SimSun(0)/m/n/10.53937 前 递 相 关 的 元 信 息 主 要 在 \TU/lmtt/m/n/10.53937 pipeline_cpu.v \TU/SimSun(0)/m/n/10.53937 中 整 理。|  设 计 中 从 \TU/lmtt/m/n/10.53937 ID_EXE_bus_r
- []
-
-
-Overfull \hbox (1.13284pt too wide) in paragraph at lines 243--244
-[]\TU/SimSun(0)/m/n/10.53937 仍 需 停 顿 的 场 景 包 括：| \TU/lmtt/m/n/10.53937 load-use\TU/SimSun(0)/m/n/10.53937 、| \TU/lmr/m/n/10.53937 ID \TU/SimSun(0)/m/n/10.53937 级 分 支\TU/lmr/m/n/10.53937 /\TU/lmtt/m/n/10.53937 jr\TU/lmr/m/n/10.53937 /\TU/lmtt/m/n/10.53937 jalr \TU/SimSun(0)/m/n/10.53937 相 关、| \TU/lmtt/m/n/10.53937 mfhi/mflo/mfc0
- []
-
-[7]
+[5]
+File: error_location2.png Graphic file (type bmp)
+<error_location2.png>
+ [6] [7]
+File: true_pipeline.png Graphic file (type bmp)
+<true_pipeline.png>
 File: multi_re.jpg Graphic file (type bmp)
 <multi_re.jpg>
-File: pipeline_re.jpg Graphic file (type bmp)
-<pipeline_re.jpg>
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+File: error_location.png Graphic file (type bmp)
+<error_location.png>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Overfull \hbox (65.56958pt too wide) detected at line 303
+[][][]\OT1/cmr/m/n/10.53937 84\OML/cmm/m/it/10.53937 H \OMS/cmsy/m/n/10.53937 ! \OT1/cmr/m/n/10.53937 88\OML/cmm/m/it/10.53937 H \OMS/cmsy/m/n/10.53937 ! \OT1/cmr/m/n/10.53937 8\OML/cmm/m/it/10.53937 CH \OMS/cmsy/m/n/10.53937 ! \OT1/cmr/m/n/10.53937 90\OML/cmm/m/it/10.53937 H \OMS/cmsy/m/n/10.53937 ! \OT1/cmr/m/n/10.53937 94\OML/cmm/m/it/10.53937 H\OT1/cmr/m/n/10.53937 ([]) \OMS/cmsy/m/n/10.53937 ! \OT1/cmr/m/n/10.53937 50\OML/cmm/m/it/10.53937 H \OMS/cmsy/m/n/10.53937 ! [] ! \OT1/cmr/m/n/10.53937 7\OML/cmm/m/it/10.53937 CH \OMS/cmsy/m/n/10.53937 ! \OT1/cmr/m/n/10.53937 80\OML/cmm/m/it/10.53937 H\OT1/cmr/m/n/10.53937 ([]) \OMS/cmsy/m/n/10.53937 ! \OT1/cmr/m/n/10.53937 98\OML/cmm/m/it/10.53937 H
+ []
+
 [8] [9]
-Overfull \hbox (3.8487pt too wide) in paragraph at lines 330--334
+Overfull \hbox (84.14206pt too wide) in paragraph at lines 311--317
+[]\TU/SimSun(0)/m/n/10.53937 最 初 曾 怀 疑 异 常 与 \TU/lmtt/m/n/10.53937 data_ram \TU/SimSun(0)/m/n/10.53937 的 双 端 口 配 置 有 关，|  尤 其 是 端 口 \TU/lmr/m/n/10.53937 B \TU/SimSun(0)/m/n/10.53937 的 \TU/lmtt/m/n/10.53937 READ_FIRST/WRITE_FIRST
+ []
+
+Missing character: There is no 未 (U+672A) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 正 (U+6B63) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 确 (U+786E) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 跳 (U+8DF3) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 到 (U+5230) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 尚 (U+5C1A) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 未 (U+672A) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 真 (U+771F) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 正 (U+6B63) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 执 (U+6267) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 行 (U+884C) in font [lmroman10-regular]:mapping=tex-text;!
+
+Overfull \hbox (46.83879pt too wide) detected at line 336
+[][][]\OMS/cmsy/m/n/10.53937 ) [] [] \OML/cmm/m/it/10.53937 X \OMS/cmsy/m/n/10.53937 ) [] [] ) \OML/cmm/m/it/10.53937 PC [] X
+ []
+
+[10]
+Overfull \hbox (17.67336pt too wide) in paragraph at lines 368--378
+\TU/SimSun(0)/m/n/10.53937 优 先 前 递，|  只 有 确 实 无 法 前 递 时 再 停 顿” 。|  前 递 相 关 的 元 信 息 主 要 在 \TU/lmtt/m/n/10.53937 pipeline_cpu.v
+ []
+
+
+Overfull \hbox (3.47682pt too wide) in paragraph at lines 396--400
+[]\TU/SimSun(0)/m/n/10.53937 仅 有 第 一 阶 段 仍 不 足 以 彻 底 解 决 问 题。|  前 文 的 分 析 发 现，|  原 实 现 的 \TU/lmtt/m/n/10.53937 inst_rom
+ []
+
+[11]
+Overfull \hbox (18.1539pt too wide) in paragraph at lines 423--424
+[]\TU/SimSun(0)/m/n/10.53937 仍 需 停 顿 的 场 景 包 括：| \TU/lmtt/m/n/10.53937 load-use\TU/SimSun(0)/m/n/10.53937 、| \TU/lmr/m/n/10.53937 EXE \TU/SimSun(0)/m/n/10.53937 级 尚 未 完 成 的 控 制 相 关、| \TU/lmtt/m/n/10.53937 mfhi/mflo/mfc0
+ []
+
+File: true_pipeline.png Graphic file (type bmp)
+<true_pipeline.png>
+File: pipeline_re.jpg Graphic file (type bmp)
+<pipeline_re.jpg>
+[12] [13] [14] [15] [16] [17] [18] [19] [20] [21]
+Overfull \hbox (3.8487pt too wide) in paragraph at lines 770--776
 \TU/SimSun(0)/m/n/10.53937 序，|  源 码 单 独 保 存 在 \TU/lmtt/m/n/10.53937 final_project/pipeline_inst/fib10_pipeline.asm \TU/SimSun(0)/m/n/10.53937 中。|
  []
 
-[10] [11]
+[22]
 File: pipeline_fib.jpg Graphic file (type bmp)
 <pipeline_fib.jpg>
- [12] (./report.aux)
+ [23] [24] (./report.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/07/14>
  ***********
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 4C5559B0BE03352E514F19FED308FE8B;2421.
+(rerunfilecheck)             Checksum: FE2A5A73CC0BE0B5B1542344ED281FF3;4833.
  ) 
 Here is how much of TeX's memory you used:
- 19110 strings out of 474773
- 408373 string characters out of 5761289
- 1946842 words of memory out of 5000000
- 40946 multiletter control sequences out of 15000+600000
- 567875 words of font info for 109 fonts, out of 8000000 for 9000
+ 19323 strings out of 474773
+ 420093 string characters out of 5761289
+ 1967842 words of memory out of 5000000
+ 41152 multiletter control sequences out of 15000+600000
+ 570999 words of font info for 125 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 93i,6n,97p,362b,614s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,9n,97p,362b,598s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on report.pdf (12 pages).
+Output written on report.pdf (24 pages).

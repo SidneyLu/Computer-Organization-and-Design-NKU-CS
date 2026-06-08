@@ -56,8 +56,12 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "inst_rom_synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 4
 set_param general.usePosixSpawnForFork 1
+set_param checkpoint.writeSynthRtdsInDcp 1
+set_msg_config -id {Synth 8-256} -limit 10000
+set_msg_config -id {Synth 8-638} -limit 10000
+set_msg_config  -id {17-179}  -suppress 
+set_msg_config  -id {17-179}  -suppress 
 set_param project.vivado.isBlockSynthRun true
 set_msg_config -msgmgr_mode ooc_run
 OPTRACE "Creating in-memory project" START { }
@@ -76,7 +80,7 @@ set_property ip_output_repo d:/1012/final_project/lab8/lab8.cache/ip [current_pr
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_ip -quiet d:/1012/final_project/lab8/lab8.srcs/sources_1/ip/inst_rom/inst_rom.xci
+read_ip -quiet D:/1012/final_project/lab8/lab8.srcs/sources_1/ip/inst_rom/inst_rom.xci
 set_property used_in_implementation false [get_files -all d:/1012/final_project/lab8/lab8.gen/sources_1/ip/inst_rom/inst_rom_ooc.xdc]
 
 OPTRACE "Adding files" END { }

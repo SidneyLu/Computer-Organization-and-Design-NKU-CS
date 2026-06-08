@@ -178,8 +178,9 @@ module decode(                      // ????
                     | inst_BGTZ & ~rs_ltz & ~rs_ez // ????0???
                     | inst_BLEZ & (rs_ltz | rs_ez) // ??????0???
                     | inst_BLTZ & rs_ltz;          // ???0???
-    // ?????????????PC=PC+4+offset<<2
-    assign br_target[31:2] = pc[31:2] + 30'd1 + {{14{offset[15]}}, offset};  
+    // Keep the original experiment-program semantics used by the provided
+    // document: branch target is based on the current PC, not PC+4.
+    assign br_target[31:2] = pc[31:2] + {{14{offset[15]}}, offset};  
     assign br_target[1:0]  = pc[1:0];
     
     //jump and branch???

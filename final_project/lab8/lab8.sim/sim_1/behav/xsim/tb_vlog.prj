@@ -1,0 +1,21 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "C:/Xilinx/2025.1/Vivado/data/rsb/busdef" \
+"../../../../lab8.gen/sources_1/ip/data_ram/sim/data_ram.v" \
+"../../../../lab8.gen/sources_1/ip/inst_rom/sim/inst_rom.v" \
+"../../../../lab8.srcs/sources_1/imports/8_pipeline_cpu/adder.v" \
+"../../../../lab8.srcs/sources_1/imports/8_pipeline_cpu/alu.v" \
+"../../../../lab8.srcs/sources_1/imports/8_pipeline_cpu/decode.v" \
+"../../../../lab8.srcs/sources_1/imports/8_pipeline_cpu/exe.v" \
+"../../../../lab8.srcs/sources_1/imports/8_pipeline_cpu/fetch.v" \
+"../../../../lab8.srcs/sources_1/imports/8_pipeline_cpu/mem.v" \
+"../../../../lab8.srcs/sources_1/imports/8_pipeline_cpu/multiply.v" \
+"../../../../lab8.srcs/sources_1/imports/8_pipeline_cpu/pipeline_cpu.v" \
+"../../../../lab8.srcs/sources_1/imports/8_pipeline_cpu/regfile.v" \
+"../../../../lab8.srcs/sources_1/imports/8_pipeline_cpu/wb.v" \
+"../../../../lab8.srcs/sources_1/imports/8_pipeline_cpu/tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

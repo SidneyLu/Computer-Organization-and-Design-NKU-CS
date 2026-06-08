@@ -1,0 +1,20 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "C:/Xilinx/2025.1/Vivado/data/rsb/busdef" \
+"../../../../multicycle.gen/sources_1/ip/data_ram/sim/data_ram.v" \
+"../../../../multicycle.gen/sources_1/ip/inst_rom/sim/inst_rom.v" \
+"../../../../multicycle.srcs/sources_1/imports/7_multi_cycle_cpu/adder.v" \
+"../../../../multicycle.srcs/sources_1/imports/7_multi_cycle_cpu/alu.v" \
+"../../../../multicycle.srcs/sources_1/imports/7_multi_cycle_cpu/decode.v" \
+"../../../../multicycle.srcs/sources_1/imports/7_multi_cycle_cpu/exe.v" \
+"../../../../multicycle.srcs/sources_1/imports/7_multi_cycle_cpu/fetch.v" \
+"../../../../multicycle.srcs/sources_1/imports/7_multi_cycle_cpu/mem.v" \
+"../../../../multicycle.srcs/sources_1/imports/7_multi_cycle_cpu/multi_cycle_cpu.v" \
+"../../../../multicycle.srcs/sources_1/imports/7_multi_cycle_cpu/regfile.v" \
+"../../../../multicycle.srcs/sources_1/imports/7_multi_cycle_cpu/wb.v" \
+"../../../../multicycle.srcs/sim_1/imports/7_multi_cycle_cpu/tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

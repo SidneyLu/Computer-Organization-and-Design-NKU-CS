@@ -70,7 +70,7 @@ module tb;
       resetn = 1;
         // Add stimulus here
     end
-   always #5 clk=~clk;
+   always #2.5 clk=~clk;
 endmodule
 
 

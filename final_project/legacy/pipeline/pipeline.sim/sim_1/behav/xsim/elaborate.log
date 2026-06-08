@@ -1,0 +1,43 @@
+Vivado Simulator v2025.1.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/Xilinx/2025.1/Vivado/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L blk_mem_gen_v8_4_11 -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_behav xil_defaultlib.tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-3091] actual bit length 4 differs from formal bit length 2 for port 'wea' [D:/1012/final_project/legacy/pipeline/pipeline.srcs/sources_1/imports/8_pipeline_cpu/pipeline_cpu.v:332]
+WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 16 for port 'dina' [D:/1012/final_project/legacy/pipeline/pipeline.srcs/sources_1/imports/8_pipeline_cpu/pipeline_cpu.v:334]
+WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 16 for port 'douta' [D:/1012/final_project/legacy/pipeline/pipeline.srcs/sources_1/imports/8_pipeline_cpu/pipeline_cpu.v:335]
+WARNING: [VRFC 10-3091] actual bit length 4 differs from formal bit length 2 for port 'web' [D:/1012/final_project/legacy/pipeline/pipeline.srcs/sources_1/imports/8_pipeline_cpu/pipeline_cpu.v:339]
+WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 16 for port 'doutb' [D:/1012/final_project/legacy/pipeline/pipeline.srcs/sources_1/imports/8_pipeline_cpu/pipeline_cpu.v:341]
+WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 16 for port 'dinb' [D:/1012/final_project/legacy/pipeline/pipeline.srcs/sources_1/imports/8_pipeline_cpu/pipeline_cpu.v:342]
+WARNING: [VRFC 10-5021] port 'enb' is not connected on this instance [D:/1012/final_project/legacy/pipeline/pipeline.srcs/sources_1/imports/8_pipeline_cpu/pipeline_cpu.v:330]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.fetch
+Compiling module xil_defaultlib.decode
+Compiling module xil_defaultlib.adder
+Compiling module xil_defaultlib.alu
+Compiling module xil_defaultlib.multiply
+Compiling module xil_defaultlib.exe
+Compiling module xil_defaultlib.mem
+Compiling module xil_defaultlib.wb
+Compiling module blk_mem_gen_v8_4_11.blk_mem_gen_v8_4_11_output_stage...
+Compiling module blk_mem_gen_v8_4_11.blk_mem_gen_v8_4_11_output_stage...
+Compiling module blk_mem_gen_v8_4_11.blk_mem_gen_v8_4_11_softecc_outp...
+Compiling module blk_mem_gen_v8_4_11.blk_mem_gen_v8_4_11_mem_module(C...
+Compiling module blk_mem_gen_v8_4_11.blk_mem_gen_v8_4_11(C_FAMILY="ar...
+Compiling module xil_defaultlib.inst_rom
+Compiling module xil_defaultlib.regfile
+Compiling module blk_mem_gen_v8_4_11.blk_mem_gen_v8_4_11_output_stage...
+Compiling module blk_mem_gen_v8_4_11.blk_mem_gen_v8_4_11_softecc_outp...
+Compiling module blk_mem_gen_v8_4_11.blk_mem_gen_v8_4_11_mem_module(C...
+Compiling module blk_mem_gen_v8_4_11.blk_mem_axi_regs_fwd_v8_4(C_DATA...
+Compiling module blk_mem_gen_v8_4_11.blk_mem_gen_v8_4_11(C_FAMILY="ar...
+Compiling module xil_defaultlib.data_ram
+Compiling module xil_defaultlib.pipeline_cpu
+Compiling module xil_defaultlib.tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_behav

@@ -1,18 +1,21 @@
 `timescale 1ns / 1ps
 //*************************************************************************
-//   > ?????: adder.v
-//   > ????  ???????????????"+"???????????????????
-//   > ????  : LOONGSON
-//   > ????  : 2016-04-14
+//   > 文件名: adder.v
+//   > 功能  : 32位加法器模块
+//   > 描述  : 实现32位加法运算，支持进位输入和输出
+//   > 作者  : LOONGSON
+//   > 日期  : 2016-04-14
 //*************************************************************************
 module adder(
-    input  [31:0] operand1,
-    input  [31:0] operand2,
-    input         cin,
-    output [31:0] result,
-    output        cout
+    input  [31:0] operand1,  // 操作数1(32位)
+    input  [31:0] operand2,  // 操作数2(32位)
+    input         cin,       // 进位输入(1位)
+    output [31:0] result,    // 运算结果(32位)
+    output        cout       // 进位输出(1位)
     );
+    // 32位加法运算：operand1 + operand2 + cin
+    // 结果为33位：{进位输出, 32位结果}
+    // 这样可以检测溢出和实现减法运算
     assign {cout,result} = operand1 + operand2 + cin;
 
 endmodule
-

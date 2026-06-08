@@ -1,100 +1,104 @@
 `timescale 1ns / 1ps
 //*************************************************************************
-//   > ?????: pipeline_cpu.v
-//   > ????  :?????CPU????????XX?????
-//   >        ???rom??????ram???????xilinx IP????????????
-//   > ????  : LOONGSON
-//   > ????  : 2016-04-14
+//   > 文件名: pipeline_cpu.v
+//   > 功能  : 五级流水线CPU顶层模块
+//   >        包含取指(IF)、译码(ID)、执行(EXE)、访存(MEM)、写回(WB)五个阶段
+//   >        指令rom和数据ram使用xilinx IP核实现
+//   > 作者  : LOONGSON
+//   > 日期  : 2016-04-14
 //*************************************************************************
-module pipeline_cpu(  // ??????cpu
-    input clk,           // ???
-    input resetn,        // ??????????????
+module pipeline_cpu(  // 五级流水线CPU顶层模块
+    input clk,           // 系统时钟信号
+    input resetn,        // 异步复位信号，低电平有效
     
-    //display data
-    input  [ 4:0] rf_addr,
-    input  [31:0] mem_addr,
-    output [31:0] rf_data,
-    output [31:0] mem_data,
-    output [31:0] IF_pc,
-    output [31:0] IF_inst,
-    output [31:0] ID_pc,
-    output [31:0] EXE_pc,
-    output [31:0] MEM_pc,
-    output [31:0] WB_pc,
+    //显示数据接口 - 用于仿真调试和观察CPU内部状态
+    input  [ 4:0] rf_addr,      // 寄存器堆测试读地址
+    input  [31:0] mem_addr,     // 数据存储器测试读地址
+    output [31:0] rf_data,      // 寄存器堆测试读数据
+    output [31:0] mem_data,     // 数据存储器测试读数据
+    output [31:0] IF_pc,        // IF阶段当前PC值
+    output [31:0] IF_inst,      // IF阶段当前指令
+    output [31:0] ID_pc,        // ID阶段当前PC值
+    output [31:0] EXE_pc,       // EXE阶段当前PC值
+    output [31:0] MEM_pc,       // MEM阶段当前PC值
+    output [31:0] WB_pc,        // WB阶段当前PC值
     
-    //5?????????
-    output [31:0] cpu_5_valid,
-    output [31:0] HI_data,
-    output [31:0] LO_data,
-    output reg [31:0] cycle_count,
-    output reg        fib_done
+    //5级流水线状态输出
+    output [31:0] cpu_5_valid,  // 5个阶段的valid信号状态，用于调试
+    output [31:0] HI_data,      // HI寄存器数据输出(乘法结果高32位)
+    output [31:0] LO_data,      // LO寄存器数据输出(乘法结果低32位)
+    output reg [31:0] cycle_count, // 周期计数器，用于性能统计
+    output reg        fib_done    // Fibonacci程序完成标志
     );
-//------------------------{5????????????}begin-------------------------//
-    //5????valid???
-    reg IF_valid;
-    reg ID_valid;
-    reg EXE_valid;
-    reg MEM_valid;
-    reg WB_valid;
-    //5????????????,????????????
-    wire IF_over;
-    wire ID_over;
-    wire EXE_over;
-    wire MEM_over;
-    wire WB_over;
-    //5??????????????????
-    wire IF_allow_in;
-    wire ID_allow_in;
-    wire EXE_allow_in;
-    wire MEM_allow_in;
-    wire WB_allow_in;
+//------------------------{5级流水线握手控制机制}begin-------------------------//
+    //5级流水线各阶段的valid信号，表示该阶段是否有有效指令
+    reg IF_valid;   // IF阶段有效标志
+    reg ID_valid;   // ID阶段有效标志
+    reg EXE_valid;  // EXE阶段有效标志
+    reg MEM_valid;  // MEM阶段有效标志
+    reg WB_valid;   // WB阶段有效标志
     
-    // syscall??eret?????????????cancel????
-    wire cancel;    // ???????????????????????????????
+    //5级流水线各阶段的完成信号，表示该阶段指令已完成处理
+    wire IF_over;   // IF阶段完成信号
+    wire ID_over;   // ID阶段完成信号
+    wire EXE_over;  // EXE阶段完成信号
+    wire MEM_over;  // MEM阶段完成信号
+    wire WB_over;   // WB阶段完成信号
     
-    //??????????????:???????????????????????????????
-    assign IF_allow_in  = (IF_over & ID_allow_in) | cancel;
-    assign ID_allow_in  = ~ID_valid  | (ID_over  & EXE_allow_in);
-    assign EXE_allow_in = ~EXE_valid | (EXE_over & MEM_allow_in);
-    assign MEM_allow_in = ~MEM_valid | (MEM_over & WB_allow_in );
-    assign WB_allow_in  = ~WB_valid  | WB_over;
+    //5级流水线各阶段的允许进入信号，用于流水线暂停控制
+    wire IF_allow_in;   // IF阶段允许新指令进入
+    wire ID_allow_in;   // ID阶段允许新指令进入
+    wire EXE_allow_in;  // EXE阶段允许新指令进入
+    wire MEM_allow_in;  // MEM阶段允许新指令进入
+    wire WB_allow_in;   // WB阶段允许新指令进入
+    
+    // syscall和eret指令产生的取消信号，用于清空流水线
+    wire cancel;    // 流水线取消信号，发生异常时清空所有阶段
+    
+    //流水线握手控制逻辑：采用握手协议实现流水线暂停和气泡插入
+    //核心思想：后级阻塞时前级也阻塞，形成流水线暂停链
+    assign IF_allow_in  = (IF_over & ID_allow_in) | cancel;  // IF允许进入：ID允许且IF完成，或发生取消
+    assign ID_allow_in  = ~ID_valid  | (ID_over  & EXE_allow_in);  // ID允许：ID空或ID完成且EXE允许
+    assign EXE_allow_in = ~EXE_valid | (EXE_over & MEM_allow_in);  // EXE允许：EXE空或EXE完成且MEM允许
+    assign MEM_allow_in = ~MEM_valid | (MEM_over & WB_allow_in );  // MEM允许：MEM空或MEM完成且WB允许
+    assign WB_allow_in  = ~WB_valid  | WB_over;  // WB允许：WB空或WB完成
    
-    //IF_valid?????????????
-   always @(posedge clk)
+    //IF_valid控制：复位后立即有效，持续取指
+    always @(posedge clk)
     begin
         if (!resetn)
         begin
-            IF_valid <= 1'b0;
+            IF_valid <= 1'b0;  // 复位时IF阶段无效
         end
         else
         begin
-            IF_valid <= 1'b1;
+            IF_valid <= 1'b1;  // 正常运行时IF阶段始终有效
         end
     end
     
-    //ID_valid
+    //ID_valid控制：根据IF完成信号和允许进入信号更新
     always @(posedge clk)
     begin
         if (!resetn || cancel)
         begin
-            ID_valid <= 1'b0;
+            ID_valid <= 1'b0;  // 复位或取消时ID阶段无效
         end
         else if (ID_allow_in)
         begin
-            ID_valid <= IF_over;
+            ID_valid <= IF_over;  // ID允许进入时，根据IF完成信号更新
         end
     end
     
-    //EXE_valid
+    //EXE_valid控制：根据ID完成信号和允许进入信号更新
     always @(posedge clk)
     begin
         if (!resetn || cancel)
         begin
-            EXE_valid <= 1'b0;
+            EXE_valid <= 1'b0;  // 复位或取消时EXE阶段无效
         end
         else if (EXE_allow_in)
         begin
-            EXE_valid <= ID_over;
+            EXE_valid <= ID_over;  // EXE允许进入时，根据ID完成信号更新
         end
     end
     
@@ -353,6 +357,12 @@ module pipeline_cpu(  // ??????cpu
         .EXE_slow_result(EXE_slow_result),// I, 1
         .MEM_wdest   (MEM_wdest   ),// I, 5
         .MEM_slow_result(MEM_slow_result),// I, 1
+        .MEM_fwd_wen (MEM_fwd_wen ),// I, 1
+        .MEM_fwd_wdest(MEM_fwd_wdest),// I, 5
+        .MEM_fwd_data(MEM_fwd_data),// I, 32
+        .WB_fwd_wen  (rf_wen      ),// I, 1
+        .WB_fwd_wdest(rf_wdest    ),// I, 5
+        .WB_fwd_data (rf_wdata    ),// I, 32
         .WB_wdest    (WB_wdest    ),// I, 5
         
         //??PC
@@ -478,5 +488,3 @@ module pipeline_cpu(  // ??????cpu
     end
 //--------------------------{??????????}end----------------------------//
 endmodule
-
-

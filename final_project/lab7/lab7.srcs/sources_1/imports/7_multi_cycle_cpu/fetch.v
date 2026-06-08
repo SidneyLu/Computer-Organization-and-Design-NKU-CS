@@ -25,7 +25,8 @@ module fetch(                    // ????
 //-----{?????????PC}begin
     wire [31:0] next_pc;
     wire [31:0] seq_pc;
-     reg  [31:0] pc;
+    reg  [31:0] pc;
+    reg  [31:0] pc_buf;
     //???pc
     wire        jbr_taken;
     wire [31:0] jbr_target;
@@ -42,10 +43,17 @@ module fetch(                    // ????
         if (!resetn)
         begin
             pc <= `STARTADDR; // ????????????????
+            pc_buf <= `STARTADDR;
         end
         else if (next_fetch)
         begin
             pc <= next_pc;    // ?????????????
+        end
+        if (IF_valid)
+        begin
+            // inst_rom is synchronous; latch the request PC that matches
+            // the instruction word visible in the current fetch cycle.
+            pc_buf <= pc;
         end
     end
 //-----{?????????PC}end
@@ -62,18 +70,25 @@ module fetch(                    // ????
     //??IF_valid??????????IF_over???
    always @(posedge clk)
     begin
-        IF_over <= IF_valid;
+        if (!resetn || next_fetch)
+        begin
+            IF_over <= 1'b0;
+        end
+        else
+        begin
+            IF_over <= IF_valid;
+        end
     end
     //??????rom??????????IF_valid????IF_over????
     //??????????
 //-----{IF??????}end
 
 //-----{IF->ID????}begin
-    assign IF_ID_bus = {pc, inst};
+    assign IF_ID_bus = {pc_buf, inst};
 //-----{IF->ID????}end
 
 //-----{??IF????PC??????}begin
-    assign IF_pc   = pc;
+    assign IF_pc   = pc_buf;
     assign IF_inst = inst;
 //-----{??IF????PC??????}end
 endmodule
